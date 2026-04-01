@@ -2,8 +2,25 @@
 import Sidebar from "@/components/Sidebar";
 import { ExportIcon, PlusIcon } from "@/components/Icons";
 import Link from "next/link";
+import { useMemo } from "react";
 
 /* ── Static data (replace with API calls) ── */
+
+
+function useGreeting(name: string) {
+  return useMemo(() => {
+    const hour = new Date().getHours();
+    let greeting: string;
+    let emoji: string;
+    if (hour >= 5 && hour < 12)       { greeting = "Good morning";   emoji = "☀️"; }
+    else if (hour >= 12 && hour < 17) { greeting = "Good afternoon"; emoji = "🌤️"; }
+    else if (hour >= 17 && hour < 21) { greeting = "Good evening";   emoji = "🌆"; }
+    else                              { greeting = "Good night";      emoji = "🌙"; }
+    return { text: `${greeting}, ${name}`, emoji };
+  }, [name]);
+}
+ 
+
 const STATS = [
   { label: "Total Conversations", value: "2,847", change: "↑ 12.5% from last week", up: true,
     icon: <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#14A085" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg> },
@@ -65,6 +82,7 @@ const ACTIVITY = [
 ];
 
 export default function DashboardPage() {
+   const { text: greetingText, emoji } = useGreeting("Stark");
   return (
     <div className="flex  h-screen bg-[#F7FAFC] overflow-hidden">
       <Sidebar />
@@ -73,7 +91,7 @@ export default function DashboardPage() {
         {/* Header */}
         <header className="bg-none mt-12 bg-[#FFFFFF1A]/10 backdrop-blur-sm  border-gray-100 px-8 py-5 flex items-center justify-between sticky top-0 z-10">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Good morning, Sarah</h1>
+            <h1 className="text-2xl font-bold text-gray-900">{greetingText} <span>{emoji}</span></h1>
             <p className="text-md text-gray-400 mt-0.5">{"Here's what's happening with your support today"}</p>
           </div>
           <div className="flex items-center gap-3">

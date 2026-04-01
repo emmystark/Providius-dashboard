@@ -16,3 +16,5 @@ export {default as ExportIcon } from './ExportIcon';
 export {default as KnowledgeBaseIcon } from './KnowledgeBaseIcon';
 export {default as PlusIcon } from './PlusIcon';
 export {default as SettingsIcon } from './SettingsIcon';
+
+export { default as CheckIco } from "./CheckIco";

@@ -28,7 +28,7 @@ export default function AddChannelPage() {
     <div className="flex h-screen bg-[#F7FAFC] overflow-hidden">
       <Sidebar />
 
-      <main className="flex-1 overflow-y-auto mt-10 ml-10 w-[70%] px-10 py-8">
+        <main className="flex-1 overflow-y-auto mt-10 ml-10 w-[70%] px-10 py-8">
         {/* Page header */}
         <h1 className="text-2xl font-bold text-gray-900 mb-1">Add a New Channel</h1>
         <p className="text-sm text-gray-400 mb-8">
@@ -75,7 +75,7 @@ export default function AddChannelPage() {
                 key={id}
                 type="button"
                 onClick={() => setSelected(id)}
-                className={`relative  h-64  rounded-2xl p-6 cursor-pointer transition-all duration-150 bg-white text-left ${on ? "border-[#0D9488] bg-[#ddf4f0]" : "border-gray-200 hover:border-[#0D9488] hover:bg-[#0D9488]-lighter"}`}
+                className={`relative  h-64  rounded-2xl p-6 cursor-pointer transition-all duration-150  text-left ${on ? "border-[#00A389] border bg-[#E6F6F3]" : "border-gray-200 hover:border-[#0D9488] hover:bg-[#F0FDFA]"}`}
               >
                 {popular && (
                   <span className="absolute top-3 left-3 bg-[#0D9488] text-white text-[10px] font-semibold px-2 py-0.5 rounded-full">
@@ -110,6 +110,6 @@ export default function AddChannelPage() {
           </Link>
         </div>
       </main>
-    </div>
+      </div>
   );
 }

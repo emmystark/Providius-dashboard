@@ -26,7 +26,8 @@ export default function ChannelsPage() {
       <div className="w-full ml-36 max-w-2xl">
         <Stepper current={3} />
       </div>
-      <div className="w-full">
+      <form action="/onboarding/train">
+        <div className="w-full">
 
         <h2 className="text-2xl font-bold text-gray-900 mb-1 text-center">Connect your support channels</h2>
         <p className="text-gray-400 text-sm mb-8 text-center">Add a channel for your&nbsp;business support</p>
@@ -39,7 +40,7 @@ export default function ChannelsPage() {
                         key={id}
                         type="button"
                         onClick={() => toggle(id)}
-                        className={`relative  h-64  rounded-2xl p-6 cursor-pointer transition-all duration-150 bg-white text-left ${on ? "border-[#0D9488] bg-[#ddf4f0]" : "border-gray-200 hover:border-[#0D9488] hover:bg-[#0D9488]-lighter"}`}
+                        className={`relative  h-64  rounded-2xl p-6 cursor-pointer transition-all duration-150  text-left ${on ? "border-[#00A389] border bg-[#E6F6F3]" : "border-gray-200 hover:border-[#0D9488] hover:bg-[#F0FDFA]"}`}
                       >
                         {popular && (
                           <span className="absolute top-3 left-3 bg-[#0D9488] text-white text-[10px] font-semibold px-2 py-0.5 rounded-full">
@@ -71,15 +72,12 @@ export default function ChannelsPage() {
             <button type="button" className="text-[#F7FAFC]0 hover:text-gray-700 font-medium text-sm transition-colors cursor-pointer">Back</button>
           </Link>
           <div className="flex items-center gap-3">
-            <Link href="/onboarding/train">
-              <button type="button" className="border border-gray-200 hover:border-gray-300 text-[#F7FAFC]0 hover:text-gray-700 font-medium rounded-xl px-6 py-3 text-sm transition-colors cursor-pointer bg-white">Skip</button>
-            </Link>
-            <Link href="/onboarding/train">
-              <button type="button" className="bg-[#0D9488] hover:bg-[#0D9488]-dark text-white font-semibold rounded-xl px-8 py-3 text-sm transition-colors cursor-pointer">Continue</button>
-            </Link>
+              <button type="submit" className="border border-gray-200 hover:border-gray-300 text-[#F7FAFC]0 hover:text-gray-700 font-medium rounded-xl px-6 py-3 text-sm transition-colors cursor-pointer bg-white">Skip</button>
+              <button type="submit" className="bg-[#0D9488] hover:bg-[#0D9488]-dark text-white font-semibold rounded-xl px-8 py-3 text-sm transition-colors cursor-pointer">Continue</button>
           </div>
         </div>
       </div>
+      </form>
     </div>
     </div>
   );

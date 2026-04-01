@@ -7,9 +7,9 @@ const STEPS = [
   { n: 4, label: "Train AI" },
 ];
 
-export default function Stepper({ current }: { current: number }) {
+export default function Stepperj({ current }: { current: number }) {
   return (
-    <div className="flex items-center justify-center mb-10">
+    <div className="flex items-center justify-center relative left-[-315px] mb-10">
       {STEPS.map((step, i) => {
         const done = step.n < current;
         const active = step.n === current;

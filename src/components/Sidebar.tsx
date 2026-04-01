@@ -18,7 +18,7 @@ const NAV = [
 export default function Sidebar() {
   const path = usePathname();
   return (
-    <aside className="w-64 rounded-3xl ml-6 mt-10 pl-2 flex-shrink-0 bg-white border-r border-gray-100 flex flex-col h-screen sticky top-0">
+    <aside className="w-64 rounded-3xl ml-6 mt-10 pl-2 flex-shrink-0 bg-white border-r border-gray-100 flex flex-col h-[92%] sticky top-0">
       {/* Logo */}
       <div className="flex float-left w-60 right-[9%] top-[-2%] gap-2.5 px-0 py-0 absolute border-gray-100">
         <ProvidusLogo />
@@ -27,7 +27,7 @@ export default function Sidebar() {
       </div>
 
       {/* Nav */}
-      <nav className="flex-1 mt-20 p-0 px-3 py-4 space-y-0.5">
+      <nav className="flex-1 mt-20 p-0 z-50 px-3 py-4 space-y-0.5">
         {NAV.map(({ label, href, Icon }) => {
           const active = path === href;
           return (

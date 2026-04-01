@@ -22,7 +22,8 @@ export default function WorkspacePage() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex items-start justify-center pt-16 pb-16 px-4">
-      <div className="w-full max-w-[750px] bg-[#F8FAFC] rounded-2xl  mt-4 mr-28 border-gray-100 px-12 py-12">
+      <form action="/onboarding/channels">
+        <div className="w-full max-w-[750px] bg-[#F8FAFC] rounded-2xl  mt-4 mr-28 border-gray-100 px-12 py-12">
         <Stepper current={2} />
 
         <div className="center ml-10">
@@ -39,6 +40,7 @@ export default function WorkspacePage() {
               type="text"
               className="w-full border-none border-gray-200 rounded-xl px-4 py-3 text-md text-gray-900 placeholder-gray-400 bg-white outline-none transition-all focus:border-[#0D9488] focus:ring-2 focus:ring-[#0D9488]/10"
               value={name}
+              required
               onChange={(e) => setName(e.target.value)}
               placeholder="Acme Corporation"
             />
@@ -51,6 +53,7 @@ export default function WorkspacePage() {
               <select
                 className={`w-full border-none border-gray-200 rounded-xl px-4 py-3 text-md bg-white outline-none transition-all focus:border-[#0D9488] focus:ring-2 focus:ring-[#0D9488]/10 appearance-none cursor-pointer pr-10 ${industry ? "text-gray-900" : "text-gray-400"}`}
                 value={industry}
+                required
                 onChange={(e) => setIndustry(e.target.value)}
               >
                 <option value="" disabled>Select your industry</option>
@@ -111,12 +114,13 @@ export default function WorkspacePage() {
           <Link href="/">
             <button type="button" className="text-[#F7FAFC]0 hover:text-gray-700 font-medium text-md transition-colors cursor-pointer">Back</button>
           </Link>
-          <Link href="/onboarding/channels">
-            <button type="button" className="bg-[#0D9488] hover:bg-[#0D9488]-dark text-white font-semibold rounded-xl px-8 py-3 text-md transition-colors cursor-pointer">Continue</button>
-          </Link>
+         
+            <button type="submit" className="bg-[#0D9488] hover:bg-[#0D9488]-dark text-white font-semibold rounded-xl px-8 py-3 text-md transition-colors cursor-pointer">Continue</button>
+          
         </div>
         </div>
       </div>
+      </form>
     </div>
   );
 }

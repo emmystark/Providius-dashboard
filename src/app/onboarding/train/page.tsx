@@ -36,7 +36,8 @@ export default function TrainAIPage() {
       <div className="w-full max-w-2xl">
         <Stepper current={4} />
       </div>
-      <div className="w-full max-w-[620px] ml-10">
+      <form action="/dashboard">
+        <div className="w-full max-w-[620px] ml-10">
 
         <h2 className="text-2xl font-bold text-gray-900 mb-1">Build Your Knowledge Base</h2>
         <p className="text-gray-400 text-sm mb-8">
@@ -144,14 +145,13 @@ export default function TrainAIPage() {
           </Link>
           <div className="flex items-center gap-3">
             <Link href="/dashboard">
-              <button type="button" className="border border-gray-200 hover:border-gray-300 text-[#F7FAFC]0 hover:text-gray-700 font-medium rounded-xl px-6 py-3 text-sm transition-colors cursor-pointer bg-white">Skip</button>
+              <button type="submit" className="border border-gray-200 hover:border-gray-300 text-[#F7FAFC]0 hover:text-gray-700 font-medium rounded-xl px-6 py-3 text-sm transition-colors cursor-pointer bg-white">Skip</button>
             </Link>
-            <Link href="/dashboard">
-              <button type="button" className="bg-[#0D9488] hover:bg-[#0D9488]-dark text-white font-semibold rounded-xl px-8 py-3 text-sm transition-colors cursor-pointer">Continue</button>
-            </Link>
+              <button type="submit" className="bg-[#0D9488] hover:bg-[#0D9488]-dark text-white font-semibold rounded-xl px-8 py-3 text-sm transition-colors cursor-pointer">Continue</button>
           </div>
         </div>
       </div>
+      </form>
     </div>
     </div>
   );

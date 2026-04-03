@@ -4,23 +4,23 @@ import { useRouter } from "next/navigation";
 import Sidebar from "@/components/Sidebar";
 
 const LOGS = [
-  { ts: "2023-11-24 14:22:01", query: '"Where is my order?"',    response: '"Your order is in transit…"', status: "Success" },
-  { ts: "2023-11-24 14:18:45", query: '"Track #ABC-123"',         response: "—",                          status: "Failed" },
-  { ts: "2023-11-24 13:55:12", query: '"Where is order #9900?"', response: '"Delivered on Nov 22"',       status: "Success" },
-  { ts: "2023-11-24 13:10:07", query: '"Order 77821 status"',    response: '"In transit, ETA tomorrow"',  status: "Success" },
+  { ts: "2023-11-24 14:22:01", query: '"Where is my order?"', response: '"Your order is in transit…"', status: "Success" },
+  { ts: "2023-11-24 14:18:45", query: '"Track #ABC-123"', response: "—", status: "Failed" },
+  { ts: "2023-11-24 13:55:12", query: '"Where is order #9900?"', response: '"Delivered on Nov 22"', status: "Success" },
+  { ts: "2023-11-24 13:10:07", query: '"Order 77821 status"', response: '"In transit, ETA tomorrow"', status: "Success" },
 ];
 
 export default function RuleDetailPage() {
   const router = useRouter();
-  const [active, setActive]         = useState(true);
-  const [triggerType, setTrigger]   = useState("Customer Intent");
-  const [intentName, setIntent]     = useState("track_order");
-  const [apiUrl, setApiUrl]         = useState("https://api.store.com/v1/orders/track");
-  const [method, setMethod]         = useState("POST");
-  const [saved, setSaved]           = useState(false);
+  const [active, setActive] = useState(true);
+  const [triggerType, setTrigger] = useState("Customer Intent");
+  const [intentName, setIntent] = useState("track_order");
+  const [apiUrl, setApiUrl] = useState("https://api.store.com/v1/orders/track");
+  const [method, setMethod] = useState("POST");
+  const [saved, setSaved] = useState(false);
 
 
-   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   const save = () => { setSaved(true); setTimeout(() => setSaved(false), 2000); };
 
@@ -28,29 +28,29 @@ export default function RuleDetailPage() {
 
 
   const testRule = () => {
-  // TODO: Implement your test logic here
-  // console.log("Testing current rule...");
-  // alert("Rule test started! (Check console for details)");
-  
-  // Example real implementation:
-  // fetch('/api/rules/test', {
-  //   method: 'POST',
-  //   body: JSON.stringify({ intent: intentName, apiUrl, method })
-  // });
+    // TODO: Implement your test logic here
+    // console.log("Testing current rule...");
+    // alert("Rule test started! (Check console for details)");
 
-  router.push("/dashboard/automation/rules/test");
+    // Example real implementation:
+    // fetch('/api/rules/test', {
+    //   method: 'POST',
+    //   body: JSON.stringify({ intent: intentName, apiUrl, method })
+    // });
 
-};
+    router.push("/dashboard/automation/rules/test");
 
-const deleteRule = () => {
-  if (!confirm("Are you sure you want to delete this rule?")) return;
+  };
 
-  // console.log("Deleting current rule...");
-  alert("Rule deleted successfully!");
+  const deleteRule = () => {
+    if (!confirm("Are you sure you want to delete this rule?")) return;
 
-  // Redirect back to rules list after deletion
-  router.push("/dashboard/automation");
-};
+    // console.log("Deleting current rule...");
+    alert("Rule deleted successfully!");
+
+    // Redirect back to rules list after deletion
+    router.push("/dashboard/automation");
+  };
 
 
   return (
@@ -71,13 +71,13 @@ const deleteRule = () => {
           <div className="flex items-center gap-3">
             <div className="bg-white p-4 px-7 items-center flex gap-4 rounded-full">
               <span className="text-sm text-gray-600 font-bold">Activate</span>
-            <button
-              type="button"
-              onClick={() => setActive((v) => !v)}
-              className={`relative inline-flex h-6 w-11 rounded-full transition-colors duration-200 ${active ? "bg-[#14A085]" : "bg-gray-300"}`}
-            >
-              <span className={`inline-block h-5 w-5 rounded-full bg-white shadow-md transform transition-transform duration-200 mt-0.5 ${active ? "translate-x-5" : "translate-x-0.5"}`} />
-            </button>
+              <button
+                type="button"
+                onClick={() => setActive((v) => !v)}
+                className={`relative inline-flex h-6 w-11 rounded-full transition-colors duration-200 ${active ? "bg-[#14A085]" : "bg-gray-300"}`}
+              >
+                <span className={`inline-block h-5 w-5 rounded-full bg-white shadow-md transform transition-transform duration-200 mt-0.5 ${active ? "translate-x-5" : "translate-x-0.5"}`} />
+              </button>
             </div>
             <button
               onClick={save}
@@ -86,55 +86,55 @@ const deleteRule = () => {
               {saved ? "✓ Saved" : "Save & Publish"}
             </button>
             {/* More Options Button */}
-{/* More Options Button */}
-<button
-  onClick={(e) => {
-    e.stopPropagation();
-    setMenuOpen(menuOpen ? null : "open");   // Simple boolean toggle since there's only one rule
-  }}
-  className="w-10 h-10 flex items-center justify-center relative left-[-15px] text-gray-400 border border-none rounded-lg hover:bg-none transition-colors"
->
-  <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
-    <circle cx="12" cy="5" r="1.5" />
-    <circle cx="12" cy="12" r="1.5" />
-    <circle cx="12" cy="19" r="1.5" />
-  </svg>
-</button>
+            {/* More Options Button */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setMenuOpen(menuOpen ? null : "open");   // Simple boolean toggle since there's only one rule
+              }}
+              className="w-10 h-10 flex items-center justify-center relative left-[-15px] text-gray-400 border border-none rounded-lg hover:bg-none transition-colors"
+            >
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                <circle cx="12" cy="5" r="1.5" />
+                <circle cx="12" cy="12" r="1.5" />
+                <circle cx="12" cy="19" r="1.5" />
+              </svg>
+            </button>
 
-{/* Dropdown Menu */}
-{menuOpen && (
-  <div
-    className="absolute right-0 top-12 bg-white border border-gray-200 rounded-xl shadow-lg py-1 z-30 min-w-[170px]"
-    onClick={(e) => e.stopPropagation()}
-  >
-    <button
-      onClick={() => {
-        testRule();           // No parameter needed
-        setMenuOpen(false);
-      }}
-      className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-3 transition-colors"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 4.01V8" />
-      </svg>
-      Test rule
-    </button>
+            {/* Dropdown Menu */}
+            {menuOpen && (
+              <div
+                className="absolute right-0 top-12 bg-white border border-gray-200 rounded-xl shadow-lg py-1 z-30 min-w-[170px]"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  onClick={() => {
+                    testRule();           // No parameter needed
+                    setMenuOpen(false);
+                  }}
+                  className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-3 transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 4.01V8" />
+                  </svg>
+                  Test rule
+                </button>
 
-    <button
-      onClick={() => {
-        deleteRule();         // No parameter needed
-        setMenuOpen(false);
-      }}
-      className="w-full text-left px-4 py-3 text-sm text-red-600 hover:bg-red-50 flex items-center gap-3 transition-colors"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.595 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.595-1.858L5 7m5 4v6m4-6v6m1-10V9a1 1 0 00-1 1v1M12 4v6m2-2v2" />
-      </svg>
-      Delete rule
-    </button>
-  </div>
-)}
+                <button
+                  onClick={() => {
+                    deleteRule();         // No parameter needed
+                    setMenuOpen(false);
+                  }}
+                  className="w-full text-left px-4 py-3 text-sm text-red-600 hover:bg-red-50 flex items-center gap-3 transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.595 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.595-1.858L5 7m5 4v6m4-6v6m1-10V9a1 1 0 00-1 1v1M12 4v6m2-2v2" />
+                  </svg>
+                  Delete rule
+                </button>
+              </div>
+            )}
           </div>
         </header>
 
@@ -172,8 +172,8 @@ const deleteRule = () => {
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center">
                   <svg width="14" height="14" fill="none" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" stroke="#3B82F6" strokeWidth="2"/>
-                    <path d="M12 8v4l3 3" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="12" cy="12" r="10" stroke="#3B82F6" strokeWidth="2" />
+                    <path d="M12 8v4l3 3" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </div>
                 <h2 className="text-base font-semibold text-gray-900">Then (Actions)</h2>
@@ -188,13 +188,13 @@ const deleteRule = () => {
               <div className="flex items-center justify-between px-5 py-3 bg-gray-50 border-b border-gray-100">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded bg-gray-400 flex items-center justify-center">
-                    <svg width="8" height="8" fill="white" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="4" rx="1"/><rect x="3" y="10" width="12" height="4" rx="1"/><rect x="3" y="17" width="8" height="4" rx="1"/></svg>
+                    <svg width="8" height="8" fill="white" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="4" rx="1" /><rect x="3" y="10" width="12" height="4" rx="1" /><rect x="3" y="17" width="8" height="4" rx="1" /></svg>
                   </div>
                   <span className="text-sm font-semibold text-gray-700">Call External API</span>
                 </div>
                 <button className="text-gray-400 hover:text-gray-600">
                   <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
-                    <circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/>
+                    <circle cx="12" cy="5" r="1.5" /><circle cx="12" cy="12" r="1.5" /><circle cx="12" cy="19" r="1.5" />
                   </svg>
                 </button>
               </div>
@@ -272,9 +272,8 @@ const deleteRule = () => {
                       <td className="py-3 pr-4 text-xs text-gray-700">{log.query}</td>
                       <td className="py-3 pr-4 text-xs text-gray-500">{log.response}</td>
                       <td className="py-3 pr-4">
-                        <span className={`inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full ${
-                          log.status === "Success" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"
-                        }`}>
+                        <span className={`inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full ${log.status === "Success" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"
+                          }`}>
                           <span className={`w-1.5 h-1.5 rounded-full ${log.status === "Success" ? "bg-green-500" : "bg-red-500"}`} />
                           {log.status}
                         </span>

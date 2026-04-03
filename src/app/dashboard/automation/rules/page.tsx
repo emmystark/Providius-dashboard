@@ -20,7 +20,7 @@ export default function RuleDetailPage() {
   const [saved, setSaved] = useState(false);
 
 
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [menuOpen, setMenuOpen] = useState(false);   // boolean is fine
 
   const save = () => { setSaved(true); setTimeout(() => setSaved(false), 2000); };
 
@@ -90,7 +90,7 @@ export default function RuleDetailPage() {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                setMenuOpen(menuOpen ? null : "open");   // Simple boolean toggle since there's only one rule
+                setMenuOpen(!menuOpen);        // Simple toggle
               }}
               className="w-10 h-10 flex items-center justify-center relative left-[-15px] text-gray-400 border border-none rounded-lg hover:bg-none transition-colors"
             >

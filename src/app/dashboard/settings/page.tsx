@@ -3,6 +3,8 @@ import { useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import { useRouter } from "next/navigation";
 
+import { useTheme } from "@/components/ThemeProvider";
+
 /* ── Sub-nav tabs ── */
 const TABS = ["General", "Integrations", "Team Members", "Billing", "API Keys", "Appearance", "Notifications"];
 
@@ -426,12 +428,14 @@ function BillingTab() {
 
 /* ── Appearance tab ── */
 function AppearanceTab() {
-  const [theme, setTheme]         = useState<"Light" | "Dark" | "System">("Light");
+  // const [theme, setTheme]         = useState<"Light" | "Dark" | "System">("Light");
   const [density, setDensity]     = useState<"Comfortable" | "Compact">("Comfortable");
   const [langOpen, setLangOpen]   = useState(false);
   const [language, setLanguage]   = useState({ label: "English (US)", sub: "Primary language" });
   const [timeFormat, setTime]     = useState<"12h" | "24h">("12h");
   const [saved, setSaved]         = useState(false);
+
+  const { theme, setTheme } = useTheme();
 
   const LANGUAGES = [
     { label: "English (US)", sub: "Primary language" },

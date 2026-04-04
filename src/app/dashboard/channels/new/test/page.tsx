@@ -22,12 +22,12 @@ export default function TestActivatePage() {
   };
 
   return (
-    <div className="flex h-screen bg-white overflow-hidden">
+    <div className="flex h-screen bg-white dark:bg-gray-950 transition-colors duration-200 overflow-hidden">
       <Sidebar />
 
       <main className="flex-1 overflow-y-auto px-10 py-8">
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">Add a New Channel</h1>
-        <p className="text-sm text-gray-400 mb-6">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1 transition-colors duration-200">Add a New Channel</h1>
+        <p className="text-sm text-gray-400 dark:text-gray-500 mb-6 transition-colors duration-200">
           Connect a communication channel to start handling customer conversations with AI.
         </p>
 
@@ -38,15 +38,15 @@ export default function TestActivatePage() {
         </p>
 
         {/* Chat preview window */}
-        <div className="max-w-2xl border border-gray-200 rounded-2xl overflow-hidden bg-white">
+        <div className="max-w-2xl border border-gray-200 dark:border-gray-700 rounded-2xl bg-white dark:bg-gray-900 transition-colors duration-200 overflow-hidden bg-white">
           {/* Chat header */}
-          <div className="flex items-center gap-3 px-5 py-4 border-b border-gray-100">
-            <div className="w-8 h-8 rounded-lg bg-orange-500 flex items-center justify-center text-white text-xs font-bold">
+          <div className="flex items-center gap-3 px-5 py-4 border-b border-gray-100 dark:border-gray-800 transition-colors duration-200">
+            <div className="w-8 h-8 rounded-lg bg-orange-500 dark:bg-orange-600 flex transition-colors duration-200 items-center justify-center text-white text-xs font-bold">
               TC
             </div>
             <div>
-              <p className="text-sm font-semibold text-gray-900">Temu Company</p>
-              <p className="text-xs text-gray-400">Business Account</p>
+              <p className="text-sm font-semibold text-gray-900 dark:text-white transition-colors duration-200">Temu Company</p>
+              <p className="text-xs text-gray-400 dark:text-gray-500 transition-colors duration-200">Business Account</p>
             </div>
             {/* Expand icon */}
             <button className="ml-auto text-gray-400 hover:text-gray-600">
@@ -57,15 +57,15 @@ export default function TestActivatePage() {
           </div>
 
           {/* Messages */}
-          <div className="px-5 py-5 space-y-4 min-h-[280px] max-h-[360px] overflow-y-auto bg-gray-50">
+          <div className="px-5 py-5 space-y-4 min-h-[280px] max-h-[360px] overflow-y-auto bg-gray-50 dark:bg-gray-800 transition-colors duration-200">
             {!tested && !loading && (
-              <div className="flex items-center justify-center h-48 text-sm text-gray-400">
+              <div className="flex items-center justify-center h-48 text-sm text-gray-400 dark:text-gray-500 transition-colors duration-200">
                 Press &ldquo;Run Test&rdquo; to simulate a conversation
               </div>
             )}
 
             {loading && (
-              <div className="flex items-center justify-center h-48 gap-2 text-sm text-gray-400">
+              <div className="flex items-center justify-center h-48 gap-2 text-sm text-gray-400 dark:text-gray-500 transition-colors duration-200">
                 <svg className="animate-spin w-4 h-4 text-[#14A085]" fill="none" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeDasharray="32" strokeDashoffset="12"/>
                 </svg>
@@ -79,8 +79,8 @@ export default function TestActivatePage() {
                   <div
                     className={`px-4 py-3 rounded-2xl text-sm leading-relaxed ${
                       msg.from === "ai"
-                        ? "bg-[#14A085] text-white rounded-br-sm"
-                        : "bg-white border border-gray-200 text-gray-800 rounded-bl-sm"
+                        ? "bg-emerald-600 dark:bg-emerald-600 text-white transition-colors duration-200 rounded-br-sm"
+                        : "bg-white dark:bg-gray-800 border dark:border-gray-700 transition-colors duration-200 border border-gray-200 text-gray-800 dark:text-gray-200 transition-colors duration-200 rounded-bl-sm"
                     }`}
                   >
                     {msg.text}

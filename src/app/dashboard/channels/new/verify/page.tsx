@@ -35,12 +35,12 @@ export default function VerifyOTPPage() {
   const filled = otp.every((d) => d !== "");
 
   return (
-    <div className="flex h-screen bg-white overflow-hidden">
+    <div className="flex h-screen bg-white dark:bg-gray-950 transition-colors duration-200 overflow-hidden">
       <Sidebar />
 
       <main className="flex-1 overflow-y-auto px-10 py-8">
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">Add a New Channel</h1>
-        <p className="text-sm text-gray-400 mb-6">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1 transition-colors duration-200">Add a New Channel</h1>
+        <p className="text-sm text-gray-400 dark:text-gray-500 mb-6 transition-colors duration-200">
           Connect a communication channel to start handling customer conversations with AI.
         </p>
 
@@ -48,8 +48,8 @@ export default function VerifyOTPPage() {
 
         {/* OTP card */}
         <div className="max-w-md">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Verify Email OTP</h2>
-          <p className="text-sm text-gray-500 mb-8">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-200">Verify Email OTP</h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-8 transition-colors duration-200">
             Enter the OTP sent to{" "}
             <span className="text-gray-700 font-medium">pat*******gmail.com</span>
             {" "}to complete Account Connection
@@ -67,10 +67,10 @@ export default function VerifyOTPPage() {
                 value={digit}
                 onChange={(e) => handleChange(i, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(i, e)}
-                className={`w-12 h-12 text-center text-lg font-semibold rounded-xl border-2 outline-none transition-all ${
+                className={`w-12 h-12 text-center text-lg font-semibold rounded-xl border-2 outline-none transition-all dark:bg-gray-800 dark:text-white ${
                   digit
-                    ? "border-[#14A085] text-[#14A085]"
-                    : "border-gray-200 text-gray-900 focus:border-[#14A085]"
+                    ? "border-emerald-600 dark:border-emerald-600 text-emerald-600 dark:text-emerald-400"
+                    : "border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:border-[#14A085]"
                 }`}
               />
             ))}
@@ -81,8 +81,8 @@ export default function VerifyOTPPage() {
             onClick={() => { if (filled) router.push("/dashboard/channels/new/configure"); }}
             className={`w-full py-3 rounded-xl font-semibold text-sm transition-all ${
               filled
-                ? "bg-[#14A085] hover:bg-[#0d7a65] text-white"
-                : "bg-[#14A085]/40 text-white cursor-not-allowed"
+                ? "bg-emerald-600 dark:bg-emerald-600 hover:bg-[#0d7a65] text-white"
+                : "bg-emerald-600 dark:bg-emerald-600/40 text-white cursor-not-allowed"
             }`}
           >
             Verify

@@ -105,23 +105,23 @@ function EscalateModal({
         className="absolute inset-0 bg-black/20 backdrop-blur-[2px]"
         onClick={onClose}
       />
-      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-[440px] mx-4 p-8">
-        <h3 className="text-lg font-bold text-gray-900 mb-1">
+      <div className="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl dark:shadow-2xl w-full max-w-[440px] mx-4 p-8 transition-colors duration-200">
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1 transition-colors">
           Escalate to Human Agent
         </h3>
-        <p className="text-sm text-gray-400 mb-6">
+        <p className="text-sm text-gray-400 dark:text-gray-500 mb-6 transition-colors">
           Transfer this conversation to a specialized team member.
         </p>
 
         <div className="mb-5">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors">
             Select Agent
           </label>
           <div className="relative">
             <select
               value={agent}
               onChange={(e) => setAgent(e.target.value)}
-              className="w-full px-4 py-3 text-sm borderborder-none rounded-xl outline-none focus:border-brand-500 bg-gray-50 appearance-none pr-10"
+              className="w-full px-4 py-3 text-sm borderborder-none rounded-xl outline-none focus:border-emerald-600 dark:focus:border-emerald-400 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white appearance-none pr-10 transition-colors"
             >
               <option>Sarah Jenkins (Support Lead)</option>
               <option>Mike Chen (Technical Lead)</option>
@@ -144,20 +144,20 @@ function EscalateModal({
             value={note}
             onChange={(e) => setNote(e.target.value)}
             placeholder="Add context for the agent..."
-            className="w-full px-4 py-3 text-sm borderborder-none rounded-xl outline-none focus:border-brand-500 resize-none bg-gray-50"
+            className="w-full px-4 py-3 text-sm borderborder-none rounded-xl outline-none focus:border-emerald-600 dark:focus:border-emerald-400 resize-none bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-colors"
           />
         </div>
 
         <div className="flex gap-3">
           <button
             onClick={onClose}
-            className="flex-1 py-3 bg-gray-100 text-gray-600 text-sm font-semibold rounded-xl hover:bg-gray-200 transition-colors"
+            className="flex-1 py-3 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-sm font-semibold rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
           >
             Cancel
           </button>
           <button
             onClick={onEscalate}
-            className="flex-1 py-3 bg-[#14A085] hover:bg-[#0d7a65] text-white text-sm font-semibold rounded-xl transition-colors"
+            className="flex-1 py-3 bg-emerald-600 dark:bg-emerald-600 hover:bg-emerald-700 dark:hover:bg-emerald-700 text-white text-sm font-semibold rounded-xl transition-colors"
           >
             Escalate
           </button>
@@ -183,21 +183,21 @@ export default function ConversationsPage() {
   }
 
   return (
-    <div className="flex h-screen gap-16 bg-[#F7FAFC] overflow-hidden">
+    <div className="flex h-screen gap-16 bg-[#F7FAFC] dark:bg-gray-950 overflow-hidden transition-colors duration-200">
       <Sidebar />
 
       {/* Conversation list */}
-      <aside className="w-[23%] flex-shrink-0 mt-10 h-[92%] border-r border-gray-100 flex flex-col">
+      <aside className="w-[23%] flex-shrink-0 mt-10 h-[92%] border-r border-gray-100 dark:border-gray-800 flex flex-col transition-colors duration-200">
         {/* Search */}
-        <div className="p-8 border-none bg-white border-gray-100">
+        <div className="p-8 border-none bg-white dark:bg-gray-900 border-gray-100 dark:border-gray-800 transition-colors duration-200">
           <div className="relative mb-3">
             <Search
               size={14}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-600 transition-colors"
             />
             <input
               placeholder="Search conversations..."
-              className="w-full bg-gray-50 rounded-xl pl-9 pr-4 py-2.5 text-sm outline-none placeholder-gray-400"
+              className="w-full bg-gray-50 dark:bg-gray-800 rounded-xl pl-9 pr-4 py-2.5 text-sm outline-none placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-white transition-colors"
             />
           </div>
           <div className="flex gap-1">
@@ -205,7 +205,7 @@ export default function ConversationsPage() {
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${filter === f ? "bg-brand-50 text-brand-600" : "text-gray-500 hover:bg-gray-100"}`}
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${filter === f ? "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400" : "text-gray-500 dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800"}`}
               >
                 {f}
               </button>
@@ -213,21 +213,21 @@ export default function ConversationsPage() {
           </div>
         </div>
 
-        <div className="flex-1 bg-white overflow-y-auto scrollbar-thin divide-y divide-gray-50">
+        <div className="flex-1 bg-white dark:bg-gray-900 overflow-y-auto scrollbar-thin divide-y divide-gray-50 dark:divide-gray-800 transition-colors duration-200">
           {CONVOS.map((c) => (
             <div
               key={c.id}
-              className={`px-4 py-4 cursor-pointer hover:bg-gray-50 transition-colors border-l-2 ${c.active ? "bg-brand-50/40 border-brand-400" : "border-transparent"}`}
+              className={`px-4 py-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors border-l-2 ${c.active ? "bg-emerald-100/40 dark:bg-emerald-900/20 border-emerald-600 dark:border-emerald-500" : "border-transparent"}`}
             >
               <div className="flex items-start justify-between mb-1">
-                <span className="text-sm font-semibold text-gray-900">
+                <span className="text-sm font-semibold text-gray-900 dark:text-white transition-colors">
                   {c.name}
                 </span>
-                <span className="text-xs text-gray-400 ml-2 flex-shrink-0">
+                <span className="text-xs text-gray-400 dark:text-gray-500 ml-2 flex-shrink-0 transition-colors">
                   {c.time}
                 </span>
               </div>
-              <p className="text-xs text-gray-500 truncate mb-2">{c.preview}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 truncate mb-2 transition-colors">{c.preview}</p>
               <div className="flex items-center gap-1.5 flex-wrap">
                 <span
                   className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${c.tagColor}`}
@@ -235,7 +235,7 @@ export default function ConversationsPage() {
                   {c.tag}
                 </span>
                 {c.channel && (
-                  <span className="text-[10px] font-medium text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
+                  <span className="text-[10px] font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded-full transition-colors">
                     {c.channel}
                   </span>
                 )}
@@ -246,19 +246,19 @@ export default function ConversationsPage() {
       </aside>
 
       {/* ── Chat thread ────────────────────────────────────────────────── */}
-      <div className="w-[50%] h-[92%] mt-10 bg-white ">
+      <div className="w-[50%] h-[92%] mt-10 bg-white dark:bg-gray-900 transition-colors duration-200">
         <div className="">
           {/* <main className="flex-1 bg-white h-[96%] flex flex-col overflow-hidden"> */}
         {/* Header */}
         {/* <div> */}
-        <div className="px-6 py-3.5 border-b border-gray-100 flex items-center justify-between flex-shrink-0">
+        <div className="px-6 py-3.5 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between flex-shrink-0 transition-colors duration-200">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9  bg-[#14A085] rounded-full  hover:bg-[#0d7a65] flex items-center justify-center text-white text-sm font-bold">
+            <div className="w-9 h-9  bg-emerald-600 dark:bg-emerald-600 rounded-full  hover:bg-emerald-700 dark:hover:bg-emerald-700 flex items-center justify-center text-white text-sm font-bold transition-colors">
               EW
             </div>
             <div>
-              <p className="text-sm font-semibold text-gray-900">Emma Wilson</p>
-              <p className="text-xs text-gray-400">
+              <p className="text-sm font-semibold text-gray-900 dark:text-white transition-colors">Emma Wilson</p>
+              <p className="text-xs text-gray-400 dark:text-gray-500 transition-colors">
                 WhatsApp · Customer since Jan 2024
               </p>
             </div>
@@ -266,7 +266,7 @@ export default function ConversationsPage() {
           <div className="flex items-center gap-2">
             {escalated ? (
               <>
-                <span className="flex items-center gap-1.5 text-xs font-medium text-blue-600 bg-blue-50 px-3 py-1.5 rounded-full">
+                <span className="flex items-center gap-1.5 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1.5 rounded-full transition-colors">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"
@@ -284,8 +284,8 @@ export default function ConversationsPage() {
                   </svg>
                   Human Active
                 </span>
-                <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
-                  <div className="w-7 h-7 rounded-full  bg-[#14A085] hover:bg-[#0d7a65] flex items-center justify-center text-white text-xs font-bold">
+                <div className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors">
+                  <div className="w-7 h-7 rounded-full  bg-emerald-600 dark:bg-emerald-600 hover:bg-emerald-700 dark:hover:bg-emerald-700 flex items-center justify-center text-white text-xs font-bold transition-colors">
                     SJ
                   </div>
                   Sarah Jenkins
@@ -293,16 +293,16 @@ export default function ConversationsPage() {
               </>
             ) : (
               <>
-                <span className="flex items-center gap-1.5 text-xs font-medium text-brand-600 bg-brand-50 px-3 py-1.5 rounded-full">
-                  <span className="w-1.5 h-1.5  bg-[#14A085] hover:bg-[#0d7a65] rounded-full" /> AI
+                <span className="flex items-center gap-1.5 text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/30 px-3 py-1.5 rounded-full transition-colors">
+                  <span className="w-1.5 h-1.5  bg-emerald-600 dark:bg-emerald-400 rounded-full" /> AI
                   Active
                 </span>
-                <span className="text-xs text-gray-500 bg-gray-100 px-3 py-1.5 rounded-full">
+                <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-full transition-colors">
                   Confidence: 72%
                 </span>
                 <button
                   onClick={() => setShowEscalate(true)}
-                  className="flex items-center gap-1.5 text-xs font-semibold text-red-500 border border-red-200 px-3 py-1.5 rounded-full hover:bg-red-50 transition-colors"
+                  className="flex items-center gap-1.5 text-xs font-semibold text-red-500 dark:text-red-400 border border-red-200 dark:border-red-900/50 px-3 py-1.5 rounded-full hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
                 >
                   <svg width="10" height="10" fill="none" viewBox="0 0 24 24">
                     <path
@@ -328,7 +328,7 @@ export default function ConversationsPage() {
 
         {/* Messages */}
         <div className="flex">
-          <div className="flex-1 h-[76%] overflow-y-auto scrollbar-thin px-6 py-5 space-y-4">
+          <div className="flex-1 h-[76%] overflow-y-auto scrollbar-thin px-6 py-5 space-y-4 bg-white dark:bg-gray-900 transition-colors duration-200">
           {msgs.map((msg, i) => (
             <div
               key={i}
@@ -338,10 +338,10 @@ export default function ConversationsPage() {
                 <div
                   className={`px-4 py-3 rounded-2xl text-sm leading-relaxed ${
                     msg.from === "human"
-                      ? "bg-blue-500 text-white rounded-br-sm"
+                      ? "bg-blue-500 dark:bg-blue-600 text-white rounded-br-sm transition-colors"
                       : msg.from === "ai"
-                        ? " bg-[#14A085] text-white rounded-br-sm"
-                        : "bg-white borderborder-none text-gray-800 rounded-bl-sm shadow-sm"
+                        ? "bg-emerald-600 dark:bg-emerald-600 text-white rounded-br-sm transition-colors"
+                        : "bg-white dark:bg-gray-800 borderborder-none text-gray-800 dark:text-gray-200 rounded-bl-sm shadow-sm dark:shadow-none transition-colors"
                   }`}
                 >
                   {msg.text}
@@ -374,7 +374,7 @@ export default function ConversationsPage() {
                 </div> */}
                 {msg.from === "ai" && !escalated && (
                   <div className="flex justify-end gap-3 mt-1.5">
-                    <button className="text-[11px] text-brand-500 font-medium hover:underline">
+                    <button className="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium hover:underline transition-colors">
                       Improve response
                     </button>
                   </div>
@@ -387,7 +387,7 @@ export default function ConversationsPage() {
             <div className="mt-2">
               <textarea
                 placeholder="Suggestion for AI training"
-                className="w-full borderborder-none rounded-xl px-4 py-3 text-sm text-gray-600 outline-none focus:border-brand-500 resize-none bg-gray-50"
+                className="w-full borderborder-none rounded-xl px-4 py-3 text-sm text-gray-600 dark:text-gray-400 outline-none focus:border-emerald-600 dark:focus:border-emerald-400 resize-none bg-gray-50 dark:bg-gray-800 placeholder-gray-400 dark:placeholder-gray-500 transition-colors"
                 rows={3}
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
@@ -398,8 +398,8 @@ export default function ConversationsPage() {
 
         {/* ── Internal Notes panel (human mode) ─────────────────────────── */}
       {escalated && (
-        <aside className="w-[240px] mt-10 flex-shrink-0 border-l border-gray-100 bg-white p-4 overflow-y-auto">
-          <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-4 flex items-center gap-2">
+        <aside className="w-[240px] mt-10 flex-shrink-0 border-l border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 overflow-y-auto transition-colors duration-200">
+          <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4 flex items-center gap-2 transition-colors">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
               <path
                 d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"
@@ -442,41 +442,41 @@ export default function ConversationsPage() {
         {/* Bottom */}
         <div className="mt-48">
           {!escalated ? (
-          <div className="px-5 py-3 border-t border-gray-100 flex-shrink-0">
-            <div className="flex items-center justify-between bg-amber-50 border border-amber-200 rounded-xl px-4 py-2.5 mb-3">
+          <div className="px-5 py-3 border-t border-gray-100 dark:border-gray-800 flex-shrink-0 transition-colors duration-200">
+            <div className="flex items-center justify-between bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-900/50 rounded-xl px-4 py-2.5 mb-3 transition-colors">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-amber-500" />
-                <span className="text-xs text-amber-700 font-medium">
+                <div className="w-2 h-2 rounded-full bg-amber-500 dark:bg-amber-500" />
+                <span className="text-xs text-amber-700 dark:text-amber-400 font-medium transition-colors">
                   AI confidence dropped to 72%. Consider escalating to human
                   agent.
                 </span>
               </div>
               <button
                 onClick={() => setShowEscalate(true)}
-                className="bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors flex-shrink-0 ml-4"
+                className="bg-amber-500 dark:bg-amber-600 hover:bg-amber-600 dark:hover:bg-amber-700 text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors flex-shrink-0 ml-4"
               >
                 Escalate Now
               </button>
             </div>
-            <div className="flex items-center gap-3 bg-gray-50 borderborder-none rounded-xl px-4 py-2">
+            <div className="flex items-center gap-3 bg-gray-50 dark:bg-gray-800 borderborder-none rounded-xl px-4 py-2 transition-colors">
               <input
                 placeholder="Type a message or let AI respond..."
                 value={compose}
                 onChange={(e) => setCompose(e.target.value)}
-                className="flex-1 bg-transparent text-sm text-gray-700 placeholder-gray-400 outline-none"
+                className="flex-1 bg-transparent text-sm text-gray-700 dark:text-gray-300 placeholder-gray-400 dark:placeholder-gray-500 outline-none transition-colors"
               />
-              <button className="text-gray-400 hover:text-gray-600 transition-colors">
+              <button className="text-gray-400 dark:text-gray-600 hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
                 <Paperclip size={16} />
               </button>
-              <button className="w-8 h-8 rounded-lg  bg-[#14A085] hover:bg-[#0d7a65] flex items-center justify-center text-white hover:bg-brand-600 transition-colors">
+              <button className="w-8 h-8 rounded-lg  bg-emerald-600 dark:bg-emerald-600 hover:bg-emerald-700 dark:hover:bg-emerald-700 flex items-center justify-center text-white transition-colors">
                 <Send size={14} />
               </button>
             </div>
           </div>
         ) : (
-          <div className="px-5 mt-72 py-3 border-t border-gray-100 flex-shrink-0">
+          <div className="px-5 mt-72 py-3 border-t border-gray-100 dark:border-gray-800 flex-shrink-0 transition-colors duration-200">
             <div className="flex items-center justify-center py-1.5 mb-3">
-              <span className="text-xs text-gray-400 flex items-center gap-2">
+              <span className="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-2 transition-colors">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M12 2a10 10 0 100 20A10 10 0 0012 2z"
@@ -493,17 +493,17 @@ export default function ConversationsPage() {
                 AI Autopilot Disabled
               </span>
             </div>
-            <div className="flex items-center gap-3 bg-gray-50 borderborder-none rounded-xl px-4 py-2">
+            <div className="flex items-center gap-3 bg-gray-50 dark:bg-gray-800 borderborder-none rounded-xl px-4 py-2 transition-colors">
               <input
                 placeholder="Type a message as Sarah Jenkins..."
                 value={compose}
                 onChange={(e) => setCompose(e.target.value)}
-                className="flex-1 bg-transparent text-sm text-gray-700 placeholder-gray-400 outline-none"
+                className="flex-1 bg-transparent text-sm text-gray-700 dark:text-gray-300 placeholder-gray-400 dark:placeholder-gray-500 outline-none transition-colors"
               />
-              <button className="text-gray-400 hover:text-gray-600">
+              <button className="text-gray-400 dark:text-gray-600 hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
                 <Paperclip size={16} />
               </button>
-              <button className="w-8 h-8 rounded-lg  bg-[#14A085] hover:bg-[#0d7a65] flex items-center justify-center text-white hover:bg-brand-600">
+              <button className="w-8 h-8 rounded-lg  bg-emerald-600 dark:bg-emerald-600 hover:bg-emerald-700 dark:hover:bg-emerald-700 flex items-center justify-center text-white transition-colors">
                 <Send size={14} />
               </button>
             </div>

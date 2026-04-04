@@ -31,7 +31,7 @@ export default function TrainAIPage() {
     ]);
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center px-4 pt-20 pb-16">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-gray-950 flex transition-colors duration-200 flex-col items-center px-4 pt-20 pb-16">
     <div className="h-screen  mt-12 mr-24 ">
       <div className="w-full max-w-2xl">
         <Stepper current={4} />
@@ -39,8 +39,8 @@ export default function TrainAIPage() {
       <form action="/dashboard">
         <div className="w-full max-w-[620px] ml-10">
 
-        <h2 className="text-2xl font-bold text-gray-900 mb-1">Build Your Knowledge Base</h2>
-        <p className="text-gray-400 text-sm mb-8">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1 transition-colors duration-200">Build Your Knowledge Base</h2>
+        <p className="text-gray-400 dark:text-gray-500 text-sm mb-8 transition-colors duration-200">
           Upload documents and resources to help your AI respond accurately to customers.
         </p>
 
@@ -145,7 +145,7 @@ export default function TrainAIPage() {
           </Link>
           <div className="flex items-center gap-3">
             <Link href="/dashboard">
-              <button type="submit" className="border border-gray-200 hover:border-gray-300 text-[#F7FAFC]0 hover:text-gray-700 font-medium rounded-xl px-6 py-3 text-sm transition-colors cursor-pointer bg-white">Skip</button>
+              <button type="submit" className="border border-gray-200 dark:text-black hover:border-gray-300 text-[#F7FAFC]0 hover:text-gray-700 font-medium rounded-xl px-6 py-3 text-sm transition-colors cursor-pointer bg-white">Skip</button>
             </Link>
               <button type="submit" className="bg-[#0D9488] hover:bg-[#0D9488]-dark text-white font-semibold rounded-xl px-8 py-3 text-sm transition-colors cursor-pointer">Continue</button>
           </div>

@@ -103,23 +103,23 @@ function UploadPanel({ state, onDismiss }: { state: UploadState; onDismiss: (id:
               return (
                 <div key={s} className="flex items-center gap-2.5 py-1.5">
                   {done ? (
-                    <div className="w-4 h-4 rounded-full bg-[#14A085] flex items-center justify-center flex-shrink-0">
+                    <div className="w-4 h-4 rounded-full bg-emerald-600 dark:bg-emerald-600 flex items-center justify-center flex-shrink-0 transition-colors">
                       <Check size={9} className="text-white" strokeWidth={3} />
                     </div>
                   ) : active ? (
-                    <div className="w-4 h-4 rounded-full border-2 border-[#14A085] flex items-center justify-center flex-shrink-0">
-                      <div className="w-1.5 h-1.5 bg-[#14A085] rounded-full animate-pulse" />
+                    <div className="w-4 h-4 rounded-full border-2 border-emerald-600 dark:border-emerald-600 flex items-center justify-center flex-shrink-0 transition-colors">
+                      <div className="w-1.5 h-1.5 bg-emerald-600 dark:bg-emerald-600 rounded-full animate-pulse" />
                     </div>
                   ) : (
-                    <div className="w-4 h-4 rounded-full border-2 border-gray-200 flex-shrink-0" />
+                    <div className="w-4 h-4 rounded-full border-2 border-gray-200 dark:border-gray-700 flex-shrink-0 transition-colors" />
                   )}
-                  <span className={`text-xs transition-colors ${done ? 'text-[#14A085] font-medium' : active ? 'text-gray-700 font-medium' : 'text-gray-400'}`}>
+                  <span className={`text-xs transition-colors ${done ? 'text-emerald-600 dark:text-emerald-400 font-medium' : active ? 'text-gray-700 dark:text-gray-300 font-medium' : 'text-gray-400 dark:text-gray-500'}`}>
                     {s}
                   </span>
                 </div>
               )
             })}
-            <p className="text-xs text-gray-400 mt-3">This may take a few seconds...</p>
+            <p className="text-xs text-gray-400 dark:text-gray-500 mt-3 transition-colors">This may take a few seconds...</p>
           </div>
         </>
       )}
@@ -132,15 +132,15 @@ function IndexingCompleteModal({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px]" onClick={onClose} />
-      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-[590px] mx-4 p-24 text-center">
-        <div className="w-14 h-14 rounded-full border-2 border-[#14A085] flex items-center justify-center mx-auto mb-5">
-          <Check size={28} className="text-[#14A085]" strokeWidth={2.5} />
+      <div className="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl dark:shadow-2xl transition-colors duration-200 w-full max-w-[590px] mx-4 p-24 text-center transition-colors duration-200">
+        <div className="w-14 h-14 rounded-full border-2 border-emerald-600 dark:border-emerald-600 flex items-center justify-center mx-auto mb-5 transition-colors">
+          <Check size={28} className="text-emerald-600 dark:text-emerald-600" strokeWidth={2.5} />
         </div>
-        <h3 className="text-xl font-bold text-gray-900 mb-2">Indexing Complete</h3>
-        <p className="text-sm text-gray-400 mb-7 leading-relaxed">
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-200 transition-colors">Indexing Complete</h3>
+        <p className="text-sm text-gray-400 dark:text-gray-500 mb-7 leading-relaxed transition-colors">
           Your document has been indexed successfully and is now ready for AI queries.
         </p>
-        <button onClick={onClose} className="w-60 py-3.5 bg-[#14A085] hover:bg-[#0d7a65] text-white text-sm font-semibold rounded-xl transition-colors">
+        <button onClick={onClose} className="w-60 py-3.5 bg-emerald-600 dark:bg-emerald-600 hover:bg-emerald-700 dark:hover:bg-emerald-700 text-white text-sm font-semibold rounded-xl transition-colors">
           View Knowledge Base
         </button>
       </div>
@@ -293,19 +293,19 @@ export default function KnowledgeBasePage() {
   )
 
   return (
-    <div className="flex gap-16 h-screen bg-[#F7FAFC] overflow-hidden">
+    <div className="flex gap-16 h-screen bg-[#F7FAFC] dark:bg-gray-950 overflow-hidden transition-colors duration-200">
       <Sidebar />
 
       <div className="w-[76%] mt-[4.3%]">
         {/* Header */}
         <div className="flex items-start justify-between mb-6">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Knowledge Base</h2>
-            <p className="text-sm text-gray-400 mt-0.5">Upload and manage documents that power your AI assistant</p>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white transition-colors">Knowledge Base</h2>
+            <p className="text-sm text-gray-400 dark:text-gray-500 mt-0.5 transition-colors">Upload and manage documents that power your AI assistant</p>
           </div>
           <button
             onClick={() => fileRef.current?.click()}
-            className="flex items-center gap-2 bg-[#14A085] hover:bg-[#0d7a65] text-white font-semibold rounded-xl px-5 py-2.5 text-sm transition-colors"
+            className="flex items-center gap-2 bg-emerald-600 dark:bg-emerald-600 hover:bg-emerald-700 dark:hover:bg-emerald-700 text-white font-semibold rounded-xl px-5 py-2.5 text-sm transition-colors"
           >
             <Plus size={14} /> Add Content
           </button>
@@ -319,10 +319,10 @@ export default function KnowledgeBasePage() {
           onClick={() => activeUploads.length === 0 && fileRef.current?.click()}
           className={`border-2 border-dashed rounded-2xl transition-all mb-5 ${
             activeUploads.length > 0
-              ? 'border-[#14A085] bg-white p-6 cursor-default'
+              ? 'border-emerald-600 dark:border-emerald-600 bg-white dark:bg-gray-900 p-6 cursor-default transition-colors'
               : dragging
-              ? 'border-[#14A085] bg-[#E6F7F4] p-10 text-center cursor-pointer'
-              : 'border-gray-200 bg-white hover:border-[#14A085] p-10 text-center cursor-pointer'
+              ? 'border-emerald-600 dark:border-emerald-600 bg-emerald-100 dark:bg-emerald-900/20 p-10 text-center cursor-pointer transition-colors'
+              : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 hover:border-emerald-600 dark:hover:border-emerald-600 p-10 text-center cursor-pointer transition-colors'
           }`}
         >
           <input
@@ -384,12 +384,12 @@ export default function KnowledgeBasePage() {
         )}
 
         {/* Documents table */}
-        <div className="bg-white border border-none rounded-2xl">
-          <div className="px-6 py-4 border-b border-gray-100">
+        <div className="bg-white dark:bg-gray-900 border border-none rounded-2xl">
+          <div className="px-6 py-4 border-b dark:border-none border-gray-100">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-sm font-bold text-gray-900">Uploaded Documents</h3>
+              <h3 className="text-sm font-bold dark:text-white text-gray-900">Uploaded Documents</h3>
               <div className="flex items-center gap-2">
-                <span className="text-xs text-gray-400">{docs.length} documents</span>
+                <span className="text-xs dark:text-white text-gray-400">{docs.length} documents</span>
                 <span className="text-xs text-gray-500 font-medium">All Status</span>
               </div>
             </div>
@@ -399,7 +399,7 @@ export default function KnowledgeBasePage() {
                 <input
                   value={search} onChange={e => setSearch(e.target.value)}
                   placeholder="Search documents, content, or tags..."
-                  className="w-full bg-gray-50 border border-gray-100 rounded-xl pl-9 pr-4 py-2.5 text-sm outline-none focus:border-[#14A085] focus:ring-2 focus:ring-[#14A085]/10 transition-all"
+                  className="w-full bg-gray-50  border border-gray-100 rounded-xl pl-9 pr-4 py-2.5 text-sm outline-none focus:border-[#14A085] focus:ring-2 focus:ring-[#14A085]/10 transition-all"
                 />
               </div>
               <button className="px-4 py-2.5 bg-gray-50 border border-gray-100 rounded-xl text-sm text-gray-500 hover:border-gray-300 transition-colors">All Types</button>
@@ -411,9 +411,9 @@ export default function KnowledgeBasePage() {
           </div>
 
           {/* Column headers */}
-          <div className="grid grid-cols-12 gap-4 px-6 py-3 border-b border-gray-50">
+          <div className="grid grid-cols-12 gap-4 px-6 py-3 border-b dark:border-none border-gray-50">
             {['Document', '', 'Type', 'Status', 'Usage', 'Uploaded', 'Actions'].map((h, i) => (
-              <div key={i} className={`text-xs font-medium text-gray-400 ${
+              <div key={i} className={`text-xs font-medium  text-gray-400 ${
                 i === 0 ? 'col-span-3' : i === 1 ? 'col-span-1' :
                 i === 2 ? 'col-span-2' : i === 3 ? 'col-span-2' :
                 i === 4 ? 'col-span-2' : i === 5 ? 'col-span-1' : 'col-span-1 text-right'
@@ -422,7 +422,7 @@ export default function KnowledgeBasePage() {
           </div>
 
           {/* Rows */}
-          <div className="divide-y divide-gray-50 overflow-y-scroll h-[37.3vh]">
+          <div className="divide-y dark:divide-none divide-gray-50 overflow-y-scroll h-[37.3vh]">
             {filteredDocs.map(doc => (
               <div key={doc.id} className="grid grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-gray-50/50 transition-colors">
                 <div className="col-span-4 flex items-center gap-3 min-w-0">
@@ -430,12 +430,12 @@ export default function KnowledgeBasePage() {
                     {doc.icon}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-sm font-medium text-gray-900 truncate">{doc.name}</p>
+                    <p className="text-sm font-medium dark:text-white text-gray-900 truncate">{doc.name}</p>
                     {doc.size && <p className="text-xs text-gray-400">{doc.size}</p>}
                     {doc.url && <p className="text-xs text-gray-400 truncate">{doc.url}</p>}
                   </div>
                 </div>
-                <div className="col-span-2 text-sm text-gray-500">{doc.type}</div>
+                <div className="col-span-2 text-sm  dark:text-white text-gray-500">{doc.type}</div>
                 <div className="col-span-2">
                   <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full ${STATUS_CLS[doc.status]}`}>
                     {doc.status === 'Processing' && <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse" />}
@@ -444,11 +444,11 @@ export default function KnowledgeBasePage() {
                 </div>
                 <div className="col-span-2 text-sm">
                   {doc.usage
-                    ? <><span className="font-semibold text-gray-800">{doc.usage}</span><span className="text-gray-400"> queries</span></>
+                    ? <><span className="font-semibold dark:text-white text-gray-800">{doc.usage}</span><span className="text-gray-400"> queries</span></>
                     : <span className="text-gray-300">—</span>
                   }
                 </div>
-                <div className="col-span-1 text-xs text-gray-400 whitespace-nowrap">{doc.uploaded}</div>
+                <div className="col-span-1 text-xs  dark:text-white text-gray-400 whitespace-nowrap">{doc.uploaded}</div>
                 <div className="col-span-1 flex items-center justify-end gap-2">
                   <button onClick={() => setPreviewDoc(doc)} className="text-gray-300 hover:text-gray-500 transition-colors"><Eye size={14} /></button>
                   <button onClick={() => router.push('knowledge-base/edit')} className="text-gray-300 hover:text-[#14A085] transition-colors"><Pencil size={14} /></button>

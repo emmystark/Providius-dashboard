@@ -13,33 +13,33 @@ export default function ConfigurePage() {
   const router = useRouter();
 
   return (
-    <div className="flex h-screen bg-white overflow-hidden">
+    <div className="flex h-screen bg-white dark:bg-gray-950 transition-colors duration-200 overflow-hidden">
       <Sidebar />
 
       <main className="flex-1 overflow-y-auto px-10 py-8">
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">Add a New Channel</h1>
-        <p className="text-sm text-gray-400 mb-6">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1 transition-colors duration-200">Add a New Channel</h1>
+        <p className="text-sm text-gray-400 dark:text-gray-500 mb-6 transition-colors duration-200">
           Connect a communication channel to start handling customer conversations with AI.
         </p>
 
         <ChannelStepper current={3} />
 
         <div className="max-w-2xl">
-          <h2 className="text-lg font-semibold text-gray-900 mb-1">Configure your channel settings</h2>
-          <p className="text-sm text-gray-400 mb-8">Customize how your AI handles customer conversations on this channel</p>
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-1 transition-colors duration-200">Configure your channel settings</h2>
+          <p className="text-sm text-gray-400 dark:text-gray-500 mb-8 transition-colors duration-200">Customize how your AI handles customer conversations on this channel</p>
 
           {/* AI Behaviour */}
           <section className="mb-8">
-            <h3 className="text-base font-semibold text-gray-900 mb-4">AI Behaviour</h3>
+            <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-4 transition-colors duration-200">AI Behaviour</h3>
 
             {/* Toggle row */}
             <div className="flex items-center justify-between mb-5">
-              <span className="text-sm text-gray-700">Use AI Auto - Response</span>
+              <span className="text-sm text-gray-700 dark:text-gray-300 transition-colors duration-200">Use AI Auto - Response</span>
               <button
                 type="button"
                 onClick={() => setAiAuto((v) => !v)}
                 className={`relative inline-flex h-6 w-11 rounded-full transition-colors duration-200 ${
-                  aiAuto ? "bg-[#14A085]" : "bg-gray-300"
+                  aiAuto ? "bg-emerald-600 dark:bg-emerald-600" : "bg-gray-300"
                 }`}
               >
                 <span
@@ -65,7 +65,7 @@ export default function ConfigurePage() {
                     }`}
                   >
                     {tone === t && (
-                      <div className="w-2 h-2 rounded-full bg-[#14A085]" />
+                      <div className="w-2 h-2 rounded-full bg-emerald-600 dark:bg-emerald-600" />
                     )}
                   </div>
                   <input
@@ -84,8 +84,8 @@ export default function ConfigurePage() {
 
           {/* AI Confidence Level */}
           <section className="mb-8">
-            <h3 className="text-base font-semibold text-gray-900 mb-1">AI Confidence Level</h3>
-            <p className="text-sm text-gray-400 mb-5">
+            <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-1 transition-colors duration-200">AI Confidence Level</h3>
+            <p className="text-sm text-gray-400 dark:text-gray-500 mb-5 transition-colors duration-200">
               Adjust how much your AI should escalate to human agents versus automating responses.
             </p>
 
@@ -99,7 +99,7 @@ export default function ConfigurePage() {
                 <span className="text-xs text-gray-500 whitespace-nowrap mb-1">
                   Escalated to Human Agent
                 </span>
-                <span className="bg-[#14A085] text-white text-xs font-semibold px-2 py-0.5 rounded">
+                <span className="bg-emerald-600 dark:bg-emerald-600 text-white text-xs font-semibold px-2 py-0.5 rounded">
                   {confidence}%
                 </span>
               </div>
@@ -143,7 +143,7 @@ export default function ConfigurePage() {
             <button
               type="button"
               onClick={() => router.push("/dashboard/channels/new/test")}
-              className="bg-[#14A085] hover:bg-[#0d7a65] text-white font-semibold rounded-xl px-8 py-3 text-sm transition-colors"
+              className="bg-emerald-600 dark:bg-emerald-600 hover:bg-[#0d7a65] text-white font-semibold rounded-xl px-8 py-3 text-sm transition-colors"
             >
               Continue
             </button>

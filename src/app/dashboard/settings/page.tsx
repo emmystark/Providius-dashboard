@@ -96,35 +96,35 @@ function GeneralTab() {
   const save = () => { setSaved(true); setTimeout(() => setSaved(false), 2500); };
 
   return (
-    <div className="max-w-2xl space-y-6">
+    <div className="max-w-3xl space-y-6">
       <div>
-        <h2 className="text-2xl font-semibold text-gray-900 mb-1">General Settings</h2>
+        <h2 className="text-2xl font-semibold dark:text-white text-gray-900 mb-1">General Settings</h2>
         <p className="text-sm text-gray-400">Manage your workspace preferences</p>
       </div>
-      <div className="bg-white rounded-2xl border border-gray-100 p-6 space-y-5">
+      <div className="bg-white dark:bg-black dark:border-gray-800 rounded-2xl border border-gray-100 p-6 space-y-5">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">Workspace Name</label>
+          <label className="block text-sm font-medium dark:text-white text-gray-700 mb-1.5">Workspace Name</label>
           <input value={workspace} onChange={(e) => setWorkspace(e.target.value)}
-            className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#14A085] focus:ring-2 focus:ring-[#14A085]/10" />
+            className="w-full border dark:bg-gray-400 dark:border-none border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#14A085] focus:ring-2 dark:text-gray-700 focus:ring-[#14A085]/10" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">Contact Email</label>
+          <label className="block text-sm font-medium dark:text-white text-gray-700 mb-1.5">Contact Email</label>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-            className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#14A085] focus:ring-2 focus:ring-[#14A085]/10" />
+            className="w-full border  dark:bg-gray-400 dark:border-none border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#14A085] dark:text-gray-700 focus:ring-2 focus:ring-[#14A085]/10" />
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1.5">Timezone</label>
+            <label className="block text-sm font-medium dark:text-white text-gray-700 mb-1.5">Timezone</label>
             <select value={timezone} onChange={(e) => setTimezone(e.target.value)}
-              className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#14A085] bg-white appearance-none">
+              className="w-full border  dark:bg-gray-400 dark:border-none border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none dark:text-gray-700 focus:border-[#14A085] bg-white appearance-none">
               <option>Africa/Lagos</option><option>UTC</option><option>America/New_York</option>
               <option>Europe/London</option><option>Asia/Singapore</option>
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1.5">Language</label>
+            <label className="block text-sm font-medium dark:text-white text-gray-700 mb-1.5">Language</label>
             <select value={language} onChange={(e) => setLanguage(e.target.value)}
-              className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#14A085] bg-white appearance-none">
+              className="w-full border  dark:bg-gray-400 dark:border-none border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none dark:text-gray-700 focus:border-[#14A085] bg-white appearance-none">
               <option>English</option><option>French</option><option>Spanish</option><option>Arabic</option>
             </select>
           </div>
@@ -156,11 +156,11 @@ function IntegrationsTab() {
 
 
   const IntegrationRow = ({ item, onToggle }: { item: Integration; onToggle: (id: string) => void }) => (
-    <div className="flex items-center justify-between py-4 border-b border-gray-50 last:border-none">
+    <div className="flex items-center justify-between dark:border-none py-4 border-b border-gray-50 last:border-none">
       <div className="flex items-center gap-4">
         {item.icon}
         <div>
-          <p className="text-sm font-semibold text-gray-900">{item.name}</p>
+          <p className="text-sm font-semibold dark:text-white text-gray-900">{item.name}</p>
           {item.status === "connected"
             ? <p className="text-xs font-medium text-[#14A085] mt-0.5">Connected</p>
             : <p className="text-xs text-gray-400 mt-0.5">{item.desc}</p>
@@ -184,14 +184,14 @@ function IntegrationsTab() {
   return (
     <div className="max-w-3xl space-y-6">
       <div>
-        <h2 className="text-2xl font-semibold text-gray-900 mb-1">Integrations</h2>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">Integrations</h2>
         <p className="text-sm text-gray-400">Connect your channels and third-party services</p>
       </div>
 
       {/* Communication Channels */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6">
-        <h3 className="text-sm font-semibold text-gray-900 mb-1">Communication Channels</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8">
+      <div className="bg-white  dark:bg-black dark:border-gray-800 rounded-2xl border  border-gray-100 p-6">
+        <h3 className="text-sm font-semibold  dark:text-white text-gray-900 mb-1">Communication Channels</h3>
+        <div className="grid grid-cols-1  md:grid-cols-2 gap-x-8">
           {comm.map((item) => (
             <IntegrationRow key={item.id} item={item} onToggle={toggleComm} />
           ))}
@@ -199,8 +199,8 @@ function IntegrationsTab() {
       </div>
 
       {/* CRM & Tools */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6">
-        <h3 className="text-sm font-semibold text-gray-900 mb-1">CRM & Tools</h3>
+      <div className="bg-white  dark:bg-black dark:border-gray-800 rounded-2xl border border-gray-100 p-6">
+        <h3 className="text-sm font-semibold dark:text-white text-gray-900 mb-1">CRM & Tools</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8">
           {crm.map((item) => (
             <IntegrationRow key={item.id} item={item} onToggle={toggleCrm} />
@@ -313,21 +313,21 @@ function TeamMembersTab() {
     <div className="max-w-3xl space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-1">Team Members</h2>
+          <h2 className="text-2xl font-semibold dark:text-white text-gray-900 mb-1">Team Members</h2>
           <p className="text-sm text-gray-400">Manage your team and their permissions</p>
         </div>
         <button className="bg-[#14A085] hover:bg-[#0d7a65] text-white font-semibold rounded-xl px-5 py-2.5 text-sm transition-colors flex items-center gap-2">
           <span>+</span> Invite Member
         </button>
       </div>
-      <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
-        <div className="divide-y divide-gray-50">
+      <div className="bg-white dark:bg-black dark:border-gray-800 rounded-2xl border border-gray-100 overflow-hidden">
+        <div className="divide-y dark:divide-none divide-gray-50">
           {members.map((m) => (
             <div key={m.email} className="flex items-center justify-between px-6 py-4">
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-full bg-[#E6F7F4] flex items-center justify-center text-xs font-bold text-[#14A085]">{m.avatar}</div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-900">{m.name}</p>
+                  <p className="text-sm dark:text-white font-semibold text-gray-900">{m.name}</p>
                   <p className="text-xs text-gray-400">{m.email}</p>
                 </div>
               </div>
@@ -359,19 +359,19 @@ function APIKeysTab() {
     <div className="max-w-3xl space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-1">API Keys</h2>
+          <h2 className="text-2xl font-semibold dark:text-white text-gray-900 mb-1">API Keys</h2>
           <p className="text-sm text-gray-400">Manage your API credentials for backend integration</p>
         </div>
         <button className="bg-[#14A085] hover:bg-[#0d7a65] text-white font-semibold rounded-xl px-5 py-2.5 text-sm transition-colors flex items-center gap-2">
           <span>+</span> New Key
         </button>
       </div>
-      <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+      <div className="bg-white  dark:bg-black dark:border-gray-800 rounded-2xl border border-gray-100 overflow-hidden">
         <div className="divide-y divide-gray-50">
           {keys.map((k) => (
             <div key={k.name} className="flex items-center justify-between px-6 py-4">
               <div>
-                <p className="text-sm font-semibold text-gray-900 mb-1">{k.name}</p>
+                <p className="text-sm font-semibold dark:text-white text-gray-900 mb-1">{k.name}</p>
                 <code className="text-xs text-gray-500 bg-gray-50 px-2 py-1 rounded-lg">{k.key}</code>
               </div>
               <div className="flex items-center gap-3 text-right">
@@ -398,15 +398,15 @@ function APIKeysTab() {
 /* ── Billing tab ── */
 function BillingTab() {
   return (
-    <div className="max-w-2xl space-y-6">
+    <div className="max-w-3xl space-y-6">
       <div>
-        <h2 className="text-2xl font-semibold text-gray-900 mb-1">Billing</h2>
+        <h2 className="text-2xl font-semibold dark:text-white text-gray-900 mb-1">Billing</h2>
         <p className="text-sm text-gray-400">Manage your plan and payment details</p>
       </div>
-      <div className="bg-white rounded-2xl border border-gray-100 p-6">
+      <div className="bg-white dark:bg-black dark:border-gray-800 rounded-2xl border border-gray-100 p-6">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <p className="text-sm font-semibold text-gray-900">Free Plan</p>
+            <p className="text-sm font-semibold dark:text-white text-gray-900">Free Plan</p>
             <p className="text-xs text-gray-400 mt-0.5">1,000 conversations / month</p>
           </div>
           <span className="text-xs font-semibold bg-gray-100 text-gray-600 px-3 py-1.5 rounded-full">Current Plan</span>
@@ -448,15 +448,15 @@ function AppearanceTab() {
   const save = () => { setSaved(true); setTimeout(() => setSaved(false), 2000); };
 
   return (
-    <div className="max-w-2xl space-y-10">
+    <div className="max-w-3xl space-y-10">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-0.5">Appearance</h2>
+        <h2 className="text-2xl font-bold dark:text-white text-gray-900 mb-0.5">Appearance</h2>
         <p className="text-sm text-gray-400">Connect your channels and third-party services</p>
       </div>
 
       {/* ── Theme ── */}
       <section>
-        <p className="text-sm font-semibold text-gray-900 mb-1">Theme</p>
+        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">Theme</p>
         <p className="text-xs text-gray-400 mb-4">Select your preferred color scheme</p>
         <div className="flex items-start gap-5">
           {(["Light", "Dark", "System"] as const).map((t) => {
@@ -466,7 +466,7 @@ function AppearanceTab() {
                 key={t}
                 onClick={() => setTheme(t)}
                 className={`flex flex-col items-center gap-2 p-4 rounded-2xl border-2 w-28 transition-all ${
-                  active ? "border-[#14A085] bg-white" : "border-gray-100 bg-gray-50 hover:border-gray-200"
+                  active ? "border-[#14A085]  dark:bg-black  bg-white" : "border-gray-100  dark:bg-black dark:border-gray-800 bg-gray-50 hover:border-gray-200"
                 }`}
               >
                 {t === "Light" && (
@@ -497,7 +497,7 @@ function AppearanceTab() {
 
       {/* ── Density ── */}
       <section>
-        <p className="text-sm font-semibold text-gray-900 mb-1">Density</p>
+        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">Density</p>
         <p className="text-xs text-gray-400 mb-4">Adjust the spacing between elements</p>
         <div className="flex gap-3 mb-4">
           {(["Comfortable", "Compact"] as const).map((d) => (
@@ -507,43 +507,43 @@ function AppearanceTab() {
               className={`px-5 py-2.5 rounded-xl text-sm font-semibold border-2 transition-all ${
                 density === d
                   ? "bg-[#14A085] border-[#14A085] text-white"
-                  : "bg-white border-gray-200 text-gray-500 hover:border-gray-300"
+                  : "bg-white  dark:bg-black dark:border-gray-800 border-gray-200 text-gray-500 hover:border-gray-300"
               }`}
             >
               {d}
             </button>
           ))}
         </div>
-        <div className="flex items-start gap-2.5 bg-gray-50 border border-gray-100 rounded-xl px-4 py-3">
+        <div className="flex items-start gap-2.5  dark:bg-black dark:border-gray-800 bg-gray-50 border border-gray-100 rounded-xl px-4 py-3">
           <svg className="flex-shrink-0 mt-0.5" width="14" height="14" fill="none" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="10" stroke="#9CA3AF" strokeWidth="1.8"/>
             <path d="M12 8v4M12 16h.01" stroke="#9CA3AF" strokeWidth="1.8" strokeLinecap="round"/>
           </svg>
           <p className="text-xs text-gray-500 leading-relaxed">
-            <span className="font-semibold text-gray-700">Comfortable</span> spacing provides more breathing room between elements, ideal for larger displays.
-            <span className="font-semibold text-gray-700"> Compact</span> reduces spacing to show more content on screen.
+            <span className="font-semibold dark:text-white text-gray-700">Comfortable</span> spacing provides more breathing room between elements, ideal for larger displays.
+            <span className="font-semibold dark:text-white text-gray-700"> Compact</span> reduces spacing to show more content on screen.
           </p>
         </div>
       </section>
 
       {/* ── Language ── */}
       <section>
-        <p className="text-sm font-semibold text-gray-900 mb-1">Language</p>
+        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">Language</p>
         <p className="text-xs text-gray-400 mb-4">Select your preferred language</p>
         <div className="relative">
           <button
             onClick={() => setLangOpen((v) => !v)}
-            className="w-full flex items-center justify-between border border-gray-200 rounded-xl px-4 py-3.5 bg-white hover:border-gray-300 transition-colors"
+            className="w-full flex items-center justify-between border border-gray-200 rounded-xl px-4 py-3.5  dark:bg-black dark:border-gray-800 bg-white hover:border-gray-300 transition-colors"
           >
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-[#E6F7F4] flex items-center justify-center flex-shrink-0">
+              <div className="w-9 h-9 rounded-xl  bg-[#E6F7F4] flex items-center justify-center flex-shrink-0">
                 <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
                   <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#14A085" strokeWidth="1.8"/>
                   <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="#14A085" strokeWidth="1.8"/>
                 </svg>
               </div>
               <div className="text-left">
-                <p className="text-sm font-semibold text-gray-900">{language.label}</p>
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">{language.label}</p>
                 <p className="text-xs text-gray-400">{language.sub}</p>
               </div>
             </div>
@@ -553,7 +553,7 @@ function AppearanceTab() {
             </svg>
           </button>
           {langOpen && (
-            <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden z-10">
+            <div className="absolute top-full left-0 right-0 mt-1 bg-white  dark:bg-black dark:border-gray-800 border border-gray-200 rounded-xl shadow-lg overflow-hidden z-10">
               {LANGUAGES.map((l) => (
                 <button
                   key={l.label}
@@ -561,7 +561,7 @@ function AppearanceTab() {
                   className="w-full flex items-center justify-between px-4 py-3 hover:bg-gray-50 transition-colors text-left"
                 >
                   <div>
-                    <p className="text-sm font-medium text-gray-900">{l.label}</p>
+                    <p className="text-sm font-medium text-gray-900 dark:text-white">{l.label}</p>
                     <p className="text-xs text-gray-400">{l.sub}</p>
                   </div>
                   {language.label === l.label && (
@@ -578,7 +578,7 @@ function AppearanceTab() {
 
       {/* ── Time Format ── */}
       <section>
-        <p className="text-sm font-semibold text-gray-900 mb-1">Time Format</p>
+        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">Time Format</p>
         <p className="text-xs text-gray-400 mb-4">Choose how times are displayed</p>
         <div className="space-y-2">
           {([
@@ -591,14 +591,14 @@ function AppearanceTab() {
                 key={f.id}
                 onClick={() => setTime(f.id)}
                 className={`w-full flex items-center gap-4 px-5 py-4 rounded-2xl border-2 transition-all text-left ${
-                  active ? "border-[#14A085] bg-white" : "border-gray-100 bg-gray-50 hover:border-gray-200"
+                  active ? "border-[#14A085]  dark:bg-black dark:border-gray-800 bg-white" : "border-gray-100  dark:bg-black dark:border-gray-700 bg-gray-50 hover:border-gray-200"
                 }`}
               >
                 <span className={`text-xs font-bold w-7 flex-shrink-0 ${active ? "text-[#14A085]" : "text-gray-400"}`}>
                   {f.id}
                 </span>
                 <div className="flex-1">
-                  <p className={`text-sm font-semibold ${active ? "text-gray-900" : "text-gray-500"}`}>{f.label}</p>
+                  <p className={`text-sm font-semibold ${active ? "text-gray-900 dark:text-white" : "text-gray-500"}`}>{f.label}</p>
                   <p className="text-xs text-gray-400">{f.example}</p>
                 </div>
                 <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
@@ -618,7 +618,7 @@ function AppearanceTab() {
 
       {/* ── Automation Active preview card ── */}
       <section>
-        <div className="border border-gray-100 rounded-2xl p-5 bg-gray-50">
+        <div className="border  dark:bg-black dark:border-gray-800 border-gray-100 rounded-2xl p-5 bg-gray-50">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-xl bg-[#E6F7F4] flex items-center justify-center flex-shrink-0">
               <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
@@ -628,7 +628,7 @@ function AppearanceTab() {
               </svg>
             </div>
             <div>
-              <p className="text-sm font-semibold text-gray-900">Automation Active</p>
+              <p className="text-sm font-semibold text-gray-900 dark:text-white">Automation Active</p>
               <p className="text-xs text-gray-400">
                 Last triggered at {timeFormat === "12h" ? "2:30 PM" : "14:30"}
               </p>
@@ -675,16 +675,16 @@ function NotificationsTab() {
     { key: "newConversation",label: "New Conversations", desc: "Alert on every new incoming conversation" },
   ];
   return (
-    <div className="max-w-2xl space-y-6">
+    <div className="max-w-3xl space-y-6">
       <div>
-        <h2 className="text-2xl font-semibold text-gray-900 mb-1">Notifications</h2>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">Notifications</h2>
         <p className="text-sm text-gray-400">Choose when and how you receive alerts</p>
       </div>
-      <div className="bg-white rounded-2xl border border-gray-100 divide-y divide-gray-50">
+      <div className="bg-white dark:bg-black dark:border-gray-800 dark:divide-none rounded-2xl border border-gray-100 divide-y divide-gray-50">
         {items.map(({ key, label, desc }) => (
           <div key={key} className="flex items-center justify-between px-6 py-4">
             <div>
-              <p className="text-sm font-medium text-gray-900">{label}</p>
+              <p className="text-sm font-medium text-gray-900 dark:text-white">{label}</p>
               <p className="text-xs text-gray-400 mt-0.5">{desc}</p>
             </div>
             <button type="button" onClick={() => toggle(key)}
@@ -714,12 +714,12 @@ export default function SettingsPage() {
   const ActiveComponent = TAB_COMPONENTS[activeTab] || GeneralTab;
 
   return (
-    <div className="flex h-screen gap-16 bg-[#F8FAFC] overflow-hidden">
+    <div className="flex h-screen gap-16 bg-[#F8FAFC] dark:bg-gray-950 overflow-hidden transition-colors duration-200">
       <Sidebar />
 
       <div className="flex flex-1 w-[40%] mt-10 overflow-hidden">
         {/* Settings sub-nav */}
-        <nav className="w-48 flex-shrink-0 bg-white border-r border-gray-100 pt-8 px-3">
+        <nav className="w-48 flex-shrink-0 bg-white dark:bg-gray-900 border-r border-gray-100 dark:border-gray-800 pt-8 px-3 transition-colors duration-200">
           <div className="space-y-0.5">
             {TABS.map((tab) => (
               <button
@@ -727,8 +727,8 @@ export default function SettingsPage() {
                 onClick={() => setActiveTab(tab)}
                 className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
                   activeTab === tab
-                    ? "text-[#14A085] font-medium bg-[#E6F7F4]"
-                    : "text-gray-500 hover:text-gray-800 hover:bg-gray-50"
+                    ? "text-emerald-700 dark:text-emerald-400 font-medium bg-emerald-100 dark:bg-emerald-900/30 transition-colors"
+                    : "text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                 }`}
               >
                 {tab}
@@ -738,7 +738,7 @@ export default function SettingsPage() {
         </nav>
 
         {/* Content */}
-        <main className="flex-1 ml-12 overflow-y-auto px-8 py-8">
+        <main className="flex-1 ml-12 overflow-y-auto px-8 py-8 bg-white dark:bg-gray-900 transition-colors duration-200">
           <ActiveComponent />
         </main>
       </div>

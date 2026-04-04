@@ -9,15 +9,15 @@ export default function SignInPage() {
   const [remember, setRemember] = useState(false);
 
   return (
-    <div className=" bg-gray-100 flex items-center justify-center">
-      <div className="w-full  bg-white h-screen lg:h-[100vh] shadow-2xl overflow-hidden flex flex-col md:flex-row ">
+    <div className=" bg-gray-100 dark:bg-gray-900 flex items-center justify-center transition-colors duration-200">
+      <div className="w-full  bg-white dark:bg-gray-900 h-screen lg:h-[100vh] shadow-2xl overflow-hidden flex flex-col md:flex-row transition-colors duration-200">
 
         {/* ── Left teal panel ── */}
-        <div  className="md:w-[50%] h-[430px] lg:h-screen pt-20 bg-[#0D9488] flex flex-col p-10 lg:p-16 lg:px-20 relative overflow-hidden bg-gradient-to-br from-[#0D9488] to-[#0D9488]-dark">
+        <div  className="md:w-[50%] h-[430px] lg:h-screen pt-20 bg-[#0D9488] dark:bg-emerald-900 flex flex-col p-10 lg:p-16 lg:px-20 relative overflow-hidden bg-gradient-to-br from-[#0D9488] dark:from-emerald-800 to-[#0D9488]-dark dark:to-emerald-900 transition-colors duration-200">
           {/* Logo */}
           <div className="lg:block hidden">
             <div className="flex items-center gap-2.5 mb-12">
-            <img className="w-16 mt-10 ml-0 mx-[-60px] absolute" src="./logoa.png" alt="" />
+            <img className="w-16 mt-10 ml-0 mx-[-60px] absolute" src="./logoa.png" alt="Providius Logo" />
           </div>
             <h3 className="text-4xl text-white font-bold ml-20 top-[-40%] relative mt-[-20]">Providius</h3>
           </div>
@@ -37,7 +37,7 @@ export default function SignInPage() {
 
             {/* Placeholder image area with teal overlay feel */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#0D9488]/30 to-[#0D9488]-dark/60" />
-            <img className="lg:w-[92%] h-40 object-cover rounded-xl lg:h-[80%]" src="./lady.png" alt="" />
+            <img className="lg:w-[92%] h-40 object-cover rounded-xl lg:h-[80%]" src="./lady.png" alt="Customer Support Demo" />
             
 
             {/* Stats bar */}
@@ -58,17 +58,17 @@ export default function SignInPage() {
         </div>
 
         {/* ── Right sign-in panel ── */}
-        <div className="flex-1 flex text-md lg:text-xl flex-col bottom-2 top-[-20px] relative justify-center px-12 py-14 bg-[#F8FAFC]">
-          <h2 className="text-[23px] lg:text-[39px]  font-bold  text-gray-900 mb-2 text-center">Welcome back</h2>
-          <p className="text-gray-400 text-sm lg:text-lg lg:top-10 relative mb-9 text-center">Sign in to your workspace</p>
+        <div className="flex-1 flex text-md lg:text-xl flex-col bottom-2 top-[-20px] relative justify-center px-8 sm:px-12 py-14 bg-[#F8FAFC] dark:bg-gray-900 transition-colors duration-200">
+          <h2 className="text-[23px] lg:text-[39px]  font-bold  text-gray-900 dark:text-white mb-2 text-center transition-colors">Welcome back</h2>
+          <p className="text-gray-400 dark:text-gray-500 text-sm lg:text-lg lg:top-10 relative mb-9 text-center transition-colors">Sign in to your workspace</p>
 
-          <form action="/onboarding/workspace">
+          <form action="/onboarding/workspace" className="w-full">
             <div className="space-y-5 max-w-sm w-full mt-0 lg:mt-16 mx-auto">
             <div>
-              <label className="block lg:text-lg font-medium text-gray-700 mb-5">Email</label>
+              <label className="block lg:text-lg font-medium text-gray-700 dark:text-gray-300 mb-5 transition-colors">Email</label>
               <input
                 type="email"
-                className="w-full border-none border-gray-200 rounded-xl px-4 py-3 lg:py-4 text-lg text-gray-900 placeholder-gray-400 bg-white outline-none transition-all focus:border-[#0D9488] focus:ring-2 focus:ring-[#0D9488]/10"
+                className="w-full border-none border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 lg:py-4 text-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-gray-800 outline-none transition-all focus:border-emerald-600 dark:focus:border-emerald-400 focus:ring-2 focus:ring-emerald-600/10 dark:focus:ring-emerald-500/20"
                 placeholder="you@company.com"
                 value={email}
                 required
@@ -77,10 +77,10 @@ export default function SignInPage() {
             </div>
 
             <div>
-              <label className="block lg:text-lg font-medium mt-10 text-gray-700 mb-1.5">Password</label>
+              <label className="block lg:text-lg font-medium mt-10 text-gray-700 dark:text-gray-300 mb-1.5 transition-colors">Password</label>
               <input
                 type="password"
-                className="w-full border-none border-gray-200 rounded-xl px-4 py-3 lg:py-4 text-lg text-gray-900 placeholder-gray-400 bg-white outline-none transition-all focus:border-[#0D9488] focus:ring-2 focus:ring-[#0D9488]/10"
+                className="w-full border-none border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 lg:py-4 text-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-gray-800 outline-none transition-all focus:border-emerald-600 dark:focus:border-emerald-400 focus:ring-2 focus:ring-emerald-600/10 dark:focus:ring-emerald-500/20"
                 placeholder="••••••••"
                 value={password}
                 required
@@ -94,18 +94,18 @@ export default function SignInPage() {
                   type="checkbox"
                   checked={remember}
                   onChange={(e) => setRemember(e.target.checked)}
-                  className="rounded border-gray-300 text-[#0D9488] focus:ring-[#0D9488]"
+                  className="rounded border-gray-300 dark:border-gray-600 text-emerald-600 dark:text-emerald-500 focus:ring-emerald-600 dark:focus:ring-emerald-500 dark:bg-gray-800 transition-colors"
                 />
-                <span className="text-sm lg:text-lg text-gray-600">Remember me</span>
+                <span className="text-sm lg:text-lg text-gray-600 dark:text-gray-400 transition-colors">Remember me</span>
               </label>
-              <a href="#" className="text-sm lg:text-sm font-medium text-[#0D9488] hover:text-[#0D9488]-dark transition-colors">
+              <a href="#" className="text-sm lg:text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors">
                 Forgot password?
               </a>
             </div>
 
-              <button type="submit" className="w-full bg-[#0D9488] hover:bg-[#0D9488]-dark mt-8 text-white font-semibold rounded-2xl px-6 transition-colors cursor-pointer py-3 lg:py-4 text-lg">Sign In</button>
+              <button type="submit" className="w-full bg-emerald-600 dark:bg-emerald-600 hover:bg-emerald-700 dark:hover:bg-emerald-700 mt-8 text-white font-semibold rounded-2xl px-6 transition-colors cursor-pointer py-3 lg:py-4 text-lg disabled:opacity-70">Sign In</button>
 
-            <p className="text-center mt-8 text-xs lg:text-sm text-gray-400">Secured by 256-bit SSL encryption</p>
+            <p className="text-center mt-8 text-xs lg:text-sm text-gray-400 dark:text-gray-500 transition-colors">Secured by 256-bit SSL encryption</p>
           </div>
           </form>
         </div>

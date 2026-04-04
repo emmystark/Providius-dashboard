@@ -54,7 +54,7 @@ export default function RuleDetailPage() {
 
 
   return (
-    <div className="flex h-screen gap-8 bg-[#F8FAFC] overflow-hidden">
+    <div className="flex h-screen gap-10 bg-[#F7FAFC] dark:bg-gray-950 dark:bg-gray-950 overflow-hidden transition-colors duration-200">
       <Sidebar />
 
       <main className="flex-1 overflow-y-auto mt-10">
@@ -66,11 +66,11 @@ export default function RuleDetailPage() {
                 <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button> */}
-            <h1 className="text-2xl text-gray-900">Rule details</h1>
+            <h1 className="text-2xl text-gray-900 dark:text-white transition-colors duration-200">Rule details</h1>
           </div>
           <div className="flex items-center gap-3">
-            <div className="bg-white p-4 px-7 items-center flex gap-4 rounded-full">
-              <span className="text-sm text-gray-600 font-bold">Activate</span>
+            <div className="bg-white dark:bg-gray-800 p-4 px-7 transition-colors duration-200 items-center flex gap-4 rounded-full">
+              <span className="text-sm text-gray-600 dark:text-gray-400 font-bold transition-colors duration-200">Activate</span>
               <button
                 type="button"
                 onClick={() => setActive((v) => !v)}
@@ -141,33 +141,33 @@ export default function RuleDetailPage() {
         <div className="px-8 py-6 space-y-5 w-[98%]">
 
           {/* When (Trigger) */}
-          <div className="bg-white rounded-2xl border border-gray-100 p-6">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-6 transition-colors duration-200">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-8 h-8 rounded-lg bg-yellow-100 flex items-center justify-center text-base">⚡</div>
-              <h2 className="text-base font-semibold text-gray-900">When (Trigger)</h2>
+              <h2 className="text-base font-semibold text-gray-900 dark:text-white transition-colors duration-200">When (Trigger)</h2>
             </div>
             <div className="grid grid-cols-2 gap-5">
               <div>
-                <label className="block text-xs font-medium text-gray-500 mb-1.5">Trigger Type</label>
+                <label className="block text-xs font-medium dark:text-white text-gray-500 mb-1.5">Trigger Type</label>
                 <input
                   value={triggerType}
                   onChange={(e) => setTrigger(e.target.value)}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#14A085] focus:ring-2 focus:ring-[#14A085]/10"
+                  className="w-full border border-gray-200 dark:bg-gray-400 dark:border-none rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#14A085] focus:ring-2 focus:ring-[#14A085]/10"
                 />
               </div>
               <div>
-                <label className="block text-xs font-medium text-gray-500 mb-1.5">Intent Name</label>
+                <label className="block text-xs font-medium dark:text-white text-gray-500 mb-1.5">Intent Name</label>
                 <input
                   value={intentName}
                   onChange={(e) => setIntent(e.target.value)}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#14A085] focus:ring-2 focus:ring-[#14A085]/10"
+                  className="w-full border  dark:bg-gray-400 dark:border-none border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#14A085] focus:ring-2 focus:ring-[#14A085]/10"
                 />
               </div>
             </div>
           </div>
 
           {/* Then (Actions) */}
-          <div className="bg-white rounded-2xl border border-gray-100 p-6">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-6 transition-colors duration-200">
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center">
@@ -176,7 +176,7 @@ export default function RuleDetailPage() {
                     <path d="M12 8v4l3 3" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </div>
-                <h2 className="text-base font-semibold text-gray-900">Then (Actions)</h2>
+                <h2 className="text-base font-semibold text-gray-900 dark:text-white transition-colors duration-200">Then (Actions)</h2>
               </div>
               <button className="text-sm font-medium text-[#14A085] hover:text-[#0d7a65] transition-colors flex items-center gap-1">
                 <span>+</span> Add Step
@@ -184,13 +184,13 @@ export default function RuleDetailPage() {
             </div>
 
             {/* API config card */}
-            <div className="border border-gray-100 rounded-xl overflow-hidden">
-              <div className="flex items-center justify-between px-5 py-3 bg-gray-50 border-b border-gray-100">
+            <div className="border dark:border-gray-600 border-gray-100 rounded-xl overflow-hidden">
+              <div className="flex items-center justify-between px-5 py-3 dark:border-none dark:bg-gray-600 bg-gray-50 border-b border-gray-100">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded bg-gray-400 flex items-center justify-center">
                     <svg width="8" height="8" fill="white" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="4" rx="1" /><rect x="3" y="10" width="12" height="4" rx="1" /><rect x="3" y="17" width="8" height="4" rx="1" /></svg>
                   </div>
-                  <span className="text-sm font-semibold text-gray-700">Call External API</span>
+                  <span className="text-sm font-semibold dark:text-white text-gray-700">Call External API</span>
                 </div>
                 <button className="text-gray-400 hover:text-gray-600">
                   <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
@@ -205,30 +205,30 @@ export default function RuleDetailPage() {
                   <select
                     value={method}
                     onChange={(e) => setMethod(e.target.value)}
-                    className="border border-gray-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-gray-700 outline-none focus:border-[#14A085] bg-white"
+                    className="border  dark:bg-gray-400 dark:border-none border-gray-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-gray-700 outline-none focus:border-[#14A085] bg-white"
                   >
                     <option>POST</option><option>GET</option><option>PUT</option><option>DELETE</option>
                   </select>
                   <input
                     value={apiUrl}
                     onChange={(e) => setApiUrl(e.target.value)}
-                    className="flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#14A085] focus:ring-2 focus:ring-[#14A085]/10"
+                    className="flex-1  dark:bg-gray-400 dark:border-none border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#14A085] focus:ring-2 focus:ring-[#14A085]/10"
                   />
                 </div>
 
                 {/* Headers + Params */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <p className="text-xs font-medium text-gray-500 mb-2">Headers</p>
-                    <div className="bg-gray-50 rounded-xl p-3 space-y-1">
-                      <p className="text-xs text-gray-600 font-mono">Authorization: Bearer {"{api_key}"}</p>
-                      <p className="text-xs text-gray-600 font-mono">Content-Type: application/json</p>
+                    <p className="text-xs font-medium dark:text-white text-gray-500 mb-2">Headers</p>
+                    <div className="bg-gray-50  dark:bg-gray-400 dark:border-none rounded-xl p-3 space-y-1">
+                      <p className="text-xs dark:text-white text-gray-600 font-mono">Authorization: Bearer {"{api_key}"}</p>
+                      <p className="text-xs dark:text-white text-gray-600 font-mono">Content-Type: application/json</p>
                     </div>
                   </div>
                   <div>
-                    <p className="text-xs font-medium text-gray-500 mb-2">Parameters</p>
-                    <div className="bg-gray-50 rounded-xl p-3">
-                      <p className="text-xs text-gray-600 font-mono">order_id: {"{user_input.order_id}"}</p>
+                    <p className="text-xs font-medium dark:text-white text-gray-500 mb-2">Parameters</p>
+                    <div className="bg-gray-50  dark:bg-gray-400 dark:border-none rounded-xl p-3">
+                      <p className="text-xs dark:text-white text-gray-600 font-mono">order_id: {"{user_input.order_id}"}</p>
                     </div>
                   </div>
                 </div>
@@ -247,10 +247,10 @@ export default function RuleDetailPage() {
           </div>
 
           {/* Execution Logs */}
-          <div className="bg-white rounded-2xl border-gray-100 p-6">
+          <div className="bg-white  dark:bg-gray-900 dark:border-none rounded-2xl border-gray-100 p-6">
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-base font-semibold text-gray-900">Execution Logs</h2>
-              <button className="text-sm font-medium text-gray-500 hover:text-gray-700 border border-gray-200 rounded-lg px-3 py-1.5 transition-colors">
+              <h2 className="text-base font-semibold text-gray-900 dark:text-white transition-colors duration-200">Execution Logs</h2>
+              <button className="text-sm font-medium text-gray-500 dark:border-none hover:text-gray-700 border border-gray-200 rounded-lg px-3 py-1.5 transition-colors">
                 Export CSV
               </button>
             </div>
@@ -259,18 +259,18 @@ export default function RuleDetailPage() {
             <div className="overflow-y-scroll border-none overflow-x-hidden">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-gray-100">
+                  <tr className="border-b dark:border-none border-gray-100">
                     {["Timestamp", "Input Query", "AI Response", "Status", "Action"].map((h) => (
-                      <th key={h} className="text-left text-xs font-medium text-gray-400 pb-3 pr-4">{h}</th>
+                      <th key={h} className="text-left text-xs font-medium dark:text-white text-gray-400 pb-3 pr-4">{h}</th>
                     ))}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-50">
+                <tbody className="divide-y dark:divide-none divide-gray-50">
                   {LOGS.map((log, i) => (
-                    <tr key={i} className="hover:bg-gray-50 transition-colors">
-                      <td className="py-3 pr-4 text-xs text-gray-500 whitespace-nowrap">{log.ts}</td>
-                      <td className="py-3 pr-4 text-xs text-gray-700">{log.query}</td>
-                      <td className="py-3 pr-4 text-xs text-gray-500">{log.response}</td>
+                    <tr key={i} className="hover:bg-gray-50 dark:hover:bg-gray-500 transition-colors">
+                      <td className="py-3 pr-4 text-xs dark:text-gray-300 text-gray-500 whitespace-nowrap">{log.ts}</td>
+                      <td className="py-3 pr-4 text-xs dark:text-gray-400 text-gray-700">{log.query}</td>
+                      <td className="py-3 pr-4 text-xs dark:text-gray-300 text-gray-500">{log.response}</td>
                       <td className="py-3 pr-4">
                         <span className={`inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full ${log.status === "Success" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"
                           }`}>

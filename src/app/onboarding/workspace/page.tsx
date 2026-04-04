@@ -21,24 +21,24 @@ export default function WorkspacePage() {
   const [volume, setVolume]   = useState("");
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex items-start justify-center pt-16 pb-16 px-4">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-gray-950 flex items-start justify-center pt-16 pb-16 px-4 transition-colors duration-200">
       <form action="/onboarding/channels">
-        <div className=" w-[58%] lg:w-[100%] lg:ml-0 ml-56 lg:max-w-[750px] bg-[#F8FAFC] rounded-2xl  mt-4 lg:mr-28 border-gray-100 px-12 py-12">
+        <div className=" w-[58%] lg:w-[100%] lg:ml-0 ml-56 lg:max-w-[750px] bg-[#F8FAFC] dark:bg-gray-900 rounded-2xl  mt-4 lg:mr-28 border-gray-100 dark:border-gray-800 px-12 py-12 transition-colors duration-200">
         <Stepper current={2} />
 
         <div className="center ml-10">
-          <h2 className="text-2xl mt-12 font-bold text-gray-900 mb-1">Set up your workspace</h2>
-        <p className="text-gray-400 text-sm mb-8">
+          <h2 className="text-2xl mt-12 font-bold text-gray-900 dark:text-white mb-1 transition-colors">Set up your workspace</h2>
+        <p className="text-gray-400 dark:text-gray-500 text-sm mb-8 transition-colors">
           Tell us about your business to personalize your AI assistant
         </p>
 
         <div className="space-y-6">
           {/* Company Name */}
           <div>
-            <label className="block text-md font-medium text-gray-700 mb-1.5">Company Name</label>
+            <label className="block text-md font-medium text-gray-700 dark:text-gray-300 mb-1.5 transition-colors">Company Name</label>
             <input
               type="text"
-              className="w-full border-none border-gray-200 rounded-xl px-4 py-3 text-md text-gray-900 placeholder-gray-400 bg-white outline-none transition-all focus:border-[#0D9488] focus:ring-2 focus:ring-[#0D9488]/10"
+              className="w-full border-none border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-md text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-gray-800 outline-none transition-all focus:border-emerald-600 dark:focus:border-emerald-400 focus:ring-2 focus:ring-emerald-600/10 dark:focus:ring-emerald-500/20"
               value={name}
               required
               onChange={(e) => setName(e.target.value)}
@@ -48,10 +48,10 @@ export default function WorkspacePage() {
 
           {/* Industry */}
           <div>
-            <label className="block text-md font-medium text-gray-700 mb-1.5">Industry</label>
+            <label className="block text-md font-medium text-gray-700 dark:text-gray-300 mb-1.5 transition-colors">Industry</label>
             <div className="relative">
               <select
-                className={`w-full border-none border-gray-200 rounded-xl px-4 py-3 text-md bg-white outline-none transition-all focus:border-[#0D9488] focus:ring-2 focus:ring-[#0D9488]/10 appearance-none cursor-pointer pr-10 ${industry ? "text-gray-900" : "text-gray-400"}`}
+                className={`w-full border-none border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-md bg-white dark:bg-gray-800 outline-none transition-all focus:border-emerald-600 dark:focus:border-emerald-400 focus:ring-2 focus:ring-emerald-600/10 dark:focus:ring-emerald-500/20 appearance-none cursor-pointer pr-10 ${industry ? "text-gray-900 dark:text-white" : "text-gray-400 dark:text-gray-500"} transition-colors`}
                 value={industry}
                 required
                 onChange={(e) => setIndustry(e.target.value)}
@@ -69,7 +69,7 @@ export default function WorkspacePage() {
 
           {/* Team Size */}
           <div>
-            <label className="block text-md font-medium text-gray-700 mb-2.5">Team Size</label>
+            <label className="block text-md font-medium text-gray-700 dark:text-gray-300 mb-2.5 transition-colors">Team Size</label>
             <div className="flex gap-3">
               {SIZES.map((s) => (
                 <button
@@ -78,8 +78,8 @@ export default function WorkspacePage() {
                   onClick={() => setSize(s)}
                   className={`flex-1 py-2.5 rounded-xl text-md font-medium border-none transition-all duration-150 ${
                     size === s
-                      ? "border-[#14B8A6] bg-[#F0FDFA] text-[#0D9488] ring-1 ring-[#0D9488]"
-                      : "border-gray-200 text-[#F7FAFC]0 hover:border-gray-300"
+                      ? "border-emerald-600 dark:border-emerald-600 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 ring-1 ring-emerald-600 dark:ring-emerald-600"
+                      : "border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-400 hover:border-gray-300 dark:hover:border-gray-600 transition-colors"
                   }`}
                 >
                   {s}
@@ -90,10 +90,10 @@ export default function WorkspacePage() {
 
           {/* Monthly Volume */}
           <div>
-            <label className="block text-md font-medium text-gray-700 mb-1.5">Monthly Support Volume</label>
+            <label className="block text-md font-medium text-gray-700 dark:text-gray-300 mb-1.5 transition-colors">Monthly Support Volume</label>
             <div className="relative">
               <select
-                className={`w-full border-none border-gray-200 rounded-xl px-4 py-3 text-md bg-white outline-none transition-all focus:border-[#0D9488] focus:ring-2 focus:ring-[#0D9488]/10 appearance-none cursor-pointer pr-10 ${volume ? "text-gray-900" : "text-gray-400"}`}
+                className={`w-full border-none border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-md bg-white dark:bg-gray-800 outline-none transition-all focus:border-emerald-600 dark:focus:border-emerald-400 focus:ring-2 focus:ring-emerald-600/10 dark:focus:ring-emerald-500/20 appearance-none cursor-pointer pr-10 ${volume ? "text-gray-900 dark:text-white" : "text-gray-400 dark:text-gray-500"} transition-colors`}
                 value={volume}
                 onChange={(e) => setVolume(e.target.value)}
               >
@@ -112,10 +112,10 @@ export default function WorkspacePage() {
         {/* Navigation */}
         <div className="flex items-center justify-between mt-10">
           <Link href="/">
-            <button type="button" className="text-[#F7FAFC]0 hover:text-gray-700 font-medium text-md transition-colors cursor-pointer">Back</button>
+            <button type="button" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 font-medium text-md transition-colors cursor-pointer">Back</button>
           </Link>
          
-            <button type="submit" className="bg-[#0D9488] hover:bg-[#0D9488]-dark text-white font-semibold rounded-xl px-8 py-3 text-md transition-colors cursor-pointer">Continue</button>
+            <button type="submit" className="bg-emerald-600 dark:bg-emerald-600 hover:bg-emerald-700 dark:hover:bg-emerald-700 text-white font-semibold rounded-xl px-8 py-3 text-md transition-colors cursor-pointer">Continue</button>
           
         </div>
         </div>

@@ -25,13 +25,13 @@ export default function AddChannelPage() {
   const current = 1;
 
   return (
-    <div className="flex h-screen bg-[#F7FAFC] overflow-hidden">
+    <div className="flex h-screen bg-[#F7FAFC] dark:bg-gray-950 transition-colors duration-200 overflow-hidden">
       <Sidebar />
 
         <main className="flex-1 overflow-y-auto mt-10 ml-10 w-[70%] px-10 py-8">
         {/* Page header */}
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">Add a New Channel</h1>
-        <p className="text-sm text-gray-400 mb-8">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1 transition-colors duration-200">Add a New Channel</h1>
+        <p className="text-sm text-gray-400 dark:text-gray-500 mb-8 transition-colors duration-200">
           Connect a communication channel to start handling customer conversations with AI.
         </p>
 

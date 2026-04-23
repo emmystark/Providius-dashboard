@@ -19,7 +19,7 @@ export default function MobileStepper({ current, onBack }: MobileStepperProps) {
   const pct   = (current / total) * 100
 
   return (
-    <div className="w-full dark:bg-gray-950 bg-white">
+    <div className="w-full dark:bg-gray-950 mt-[-10%] bg-[#F1F5F9]]">
       {/* ── Row: back arrow · step badge · step label ── */}
       <div className="flex items-center gap-3 px-5 pt-5 pb-4">
         {/* Back arrow */}
@@ -27,9 +27,9 @@ export default function MobileStepper({ current, onBack }: MobileStepperProps) {
           type="button"
           onClick={onBack}
           aria-label="Go back"
-          className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 active:bg-gray-200 transition-colors"
+          className="w-12 h-12 rounded-full relative left-[-22px] bg-white dark:bg-gray-100 flex items-center justify-center flex-shrink-0 active:bg-gray-200 transition-colors"
         >
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
+          <svg width="27" height="27" fill="none" viewBox="0 0 24 24" className="">
             <path
               d="M15 18l-6-6 6-6"
               stroke="#374151"
@@ -42,7 +42,7 @@ export default function MobileStepper({ current, onBack }: MobileStepperProps) {
 
         {/* Teal circle with step number */}
         <div className="w-6 h-6 rounded-full bg-[#0D9488] flex items-center justify-center flex-shrink-0">
-          <span className="text-white text-xs font-bold leading-none">
+          <span className="text-white text-xs font-medium leading-none">
             {current}
           </span>
         </div>
@@ -55,7 +55,7 @@ export default function MobileStepper({ current, onBack }: MobileStepperProps) {
 
       {/* ── Progress bar ── */}
       {/* Track */}
-      <div className="w-full h-[5px] mt-10 rounded-xl bg-gray-200">
+      <div className="w-full h-[5px] mt-5 rounded-xl bg-gray-200">
         {/* Fill — smooth transition when step changes */}
         <div
           className="h-full bg-[#0D9488] transition-all duration-400 ease-out rounded-xl"

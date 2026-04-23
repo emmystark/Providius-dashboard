@@ -4,10 +4,122 @@ import Sidebar from "@/components/Sidebar";
 import { useRouter } from "next/navigation";
 
 import { useTheme } from "@/components/ThemeProvider";
+import MobileNav from "@/components/MobileNav";
 
 /* ── Sub-nav tabs ── */
 const TABS = ["General", "Integrations", "Team Members", "Billing", "API Keys", "Appearance", "Notifications"];
 
+
+const MOBILE_MENU = [
+  {
+    id: "General",
+    label: "General",
+    sub: "Profile, language, and timezone",
+    icon: (
+      <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+          <circle cx="12" cy="8" r="4" stroke="#3B82F6" strokeWidth="1.8"/>
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#3B82F6" strokeWidth="1.8" strokeLinecap="round"/>
+        </svg>
+      </div>
+    ),
+  },
+  {
+    id: "Integrations",
+    label: "Integrations",
+    sub: "Connect your channels and third-party services",
+    icon: (
+      <div className="w-9 h-9 rounded-xl bg-teal-50 flex items-center justify-center flex-shrink-0">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="9" height="9" rx="2" stroke="#14A085" strokeWidth="1.8"/>
+          <rect x="13" y="2" width="9" height="9" rx="2" stroke="#14A085" strokeWidth="1.8"/>
+          <rect x="2" y="13" width="9" height="9" rx="2" stroke="#14A085" strokeWidth="1.8"/>
+          <rect x="13" y="13" width="9" height="9" rx="2" stroke="#14A085" strokeWidth="1.8"/>
+        </svg>
+      </div>
+    ),
+  },
+  {
+    id: "Team Members",
+    label: "Team Members",
+    sub: "Manage Your Team Members",
+    icon: (
+      <div className="w-9 h-9 rounded-xl bg-purple-50 flex items-center justify-center flex-shrink-0">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+          <circle cx="9" cy="7" r="3" stroke="#8B5CF6" strokeWidth="1.8"/>
+          <path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke="#8B5CF6" strokeWidth="1.8" strokeLinecap="round"/>
+          <path d="M19 11c1.7.5 3 2.1 3 4" stroke="#8B5CF6" strokeWidth="1.8" strokeLinecap="round"/>
+          <circle cx="17" cy="7" r="2.5" stroke="#8B5CF6" strokeWidth="1.8"/>
+        </svg>
+      </div>
+    ),
+  },
+  {
+    id: "Automation",
+    label: "Automation",
+    sub: "Manage automated responses and actions",
+    icon: (
+      <div className="w-9 h-9 rounded-xl bg-pink-50 flex items-center justify-center flex-shrink-0">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#EC4899" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </div>
+    ),
+  },
+  {
+    id: "Billing",
+    label: "Billing",
+    sub: "Manage subscription and invoices",
+    icon: (
+      <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+          <rect x="2" y="5" width="20" height="14" rx="2" stroke="#3B82F6" strokeWidth="1.8"/>
+          <path d="M2 10h20" stroke="#3B82F6" strokeWidth="1.8"/>
+        </svg>
+      </div>
+    ),
+  },
+  {
+    id: "API Keys",
+    label: "API Keys",
+    sub: "Manage API Keys",
+    icon: (
+      <div className="w-9 h-9 rounded-xl bg-orange-50 flex items-center justify-center flex-shrink-0">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+          <circle cx="8" cy="15" r="4" stroke="#F97316" strokeWidth="1.8"/>
+          <path d="M12 11l8-8M18 2l2 2-4 4-2-2" stroke="#F97316" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </div>
+    ),
+  },
+  {
+    id: "Appearance",
+    label: "Appearance",
+    sub: "Adjust theme, layout, and interface preferences.",
+    icon: (
+      <div className="w-9 h-9 rounded-xl bg-yellow-50 flex items-center justify-center flex-shrink-0">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="3" stroke="#EAB308" strokeWidth="1.8"/>
+          <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" stroke="#EAB308" strokeWidth="1.8" strokeLinecap="round"/>
+        </svg>
+      </div>
+    ),
+  },
+  {
+    id: "Notifications",
+    label: "Notifications",
+    sub: "Alerts and email preferences",
+    icon: (
+      <div className="w-9 h-9 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+          <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="#EF4444" strokeWidth="1.8" strokeLinecap="round"/>
+          <path d="M13.73 21a2 2 0 01-3.46 0" stroke="#EF4444" strokeWidth="1.8" strokeLinecap="round"/>
+        </svg>
+      </div>
+    ),
+  },
+];
+ 
 /* ── Integrations data ── */
 interface Integration {
   id: string;
@@ -96,41 +208,41 @@ function GeneralTab() {
   const save = () => { setSaved(true); setTimeout(() => setSaved(false), 2500); };
 
   return (
-    <div className="max-w-3xl space-y-6">
+    <div className="xl:max-w-3xl space-y-6">
       <div>
-        <h2 className="text-2xl font-semibold dark:text-white text-gray-900 mb-1">General Settings</h2>
-        <p className="text-sm text-gray-400">Manage your workspace preferences</p>
+        <h2 className="text-xl xl:text-2xl font-semibold dark:text-white text-gray-900 mb-1">General Settings</h2>
+        <p className="text-xs xl:text-sm text-gray-400">Manage your workspace preferences</p>
       </div>
-      <div className="bg-white dark:bg-black dark:border-gray-800 rounded-2xl border border-gray-100 p-6 space-y-5">
+      <div className="bg-white dark:bg-black dark:border-gray-800 rounded-2xl border border-gray-100 p-4 xl:p-6 space-y-5">
         <div>
-          <label className="block text-sm font-medium dark:text-white text-gray-700 mb-1.5">Workspace Name</label>
+          <label className="block text-xs xl:text-sm font-medium dark:text-white text-gray-700 mb-1.5">Workspace Name</label>
           <input value={workspace} onChange={(e) => setWorkspace(e.target.value)}
-            className="w-full border dark:bg-gray-400 dark:border-none border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#14A085] focus:ring-2 dark:text-gray-700 focus:ring-[#14A085]/10" />
+            className="w-full border dark:bg-gray-400 dark:border-none border-gray-200 rounded-xl px-4 py-2.5 text-xs xl:text-sm outline-none focus:border-[#14A085] focus:ring-2 dark:text-gray-700 focus:ring-[#14A085]/10" />
         </div>
         <div>
-          <label className="block text-sm font-medium dark:text-white text-gray-700 mb-1.5">Contact Email</label>
+          <label className="block text-xs xl:text-sm font-medium dark:text-white text-gray-700 mb-1.5">Contact Email</label>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-            className="w-full border  dark:bg-gray-400 dark:border-none border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#14A085] dark:text-gray-700 focus:ring-2 focus:ring-[#14A085]/10" />
+            className="w-full border  dark:bg-gray-400 dark:border-none border-gray-200 rounded-xl px-4 py-2.5 text-xs xl:text-sm outline-none focus:border-[#14A085] dark:text-gray-700 focus:ring-2 focus:ring-[#14A085]/10" />
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium dark:text-white text-gray-700 mb-1.5">Timezone</label>
+            <label className="block text-xs xl:text-sm font-medium dark:text-white text-gray-700 mb-1.5">Timezone</label>
             <select value={timezone} onChange={(e) => setTimezone(e.target.value)}
-              className="w-full border  dark:bg-gray-400 dark:border-none border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none dark:text-gray-700 focus:border-[#14A085] bg-white appearance-none">
+              className="w-full border  dark:bg-gray-400 dark:border-none border-gray-200 rounded-xl px-4 py-2.5 text-xs xl:text-sm outline-none dark:text-gray-700 focus:border-[#14A085] bg-white appearance-none">
               <option>Africa/Lagos</option><option>UTC</option><option>America/New_York</option>
               <option>Europe/London</option><option>Asia/Singapore</option>
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium dark:text-white text-gray-700 mb-1.5">Language</label>
+            <label className="block text-xs xl:text-sm font-medium dark:text-white text-gray-700 mb-1.5">Language</label>
             <select value={language} onChange={(e) => setLanguage(e.target.value)}
-              className="w-full border  dark:bg-gray-400 dark:border-none border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none dark:text-gray-700 focus:border-[#14A085] bg-white appearance-none">
+              className="w-full border  dark:bg-gray-400 dark:border-none border-gray-200 rounded-xl px-4 py-2.5 text-xs xl:text-sm outline-none dark:text-gray-700 focus:border-[#14A085] bg-white appearance-none">
               <option>English</option><option>French</option><option>Spanish</option><option>Arabic</option>
             </select>
           </div>
         </div>
         <div className="flex justify-end pt-2">
-          <button onClick={save} className="bg-[#14A085] hover:bg-[#0d7a65] text-white font-semibold rounded-xl px-6 py-2.5 text-sm transition-colors">
+          <button onClick={save} className="bg-[#14A085] hover:bg-[#0d7a65] text-white font-semibold rounded-xl px-6 py-2.5 text-xs xl:text-sm transition-colors">
             {saved ? "✓ Saved" : "Save Changes"}
           </button>
         </div>
@@ -157,24 +269,24 @@ function IntegrationsTab() {
 
   const IntegrationRow = ({ item, onToggle }: { item: Integration; onToggle: (id: string) => void }) => (
     <div className="flex items-center justify-between dark:border-none py-4 border-b border-gray-50 last:border-none">
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 min-w-0">
         {item.icon}
-        <div>
-          <p className="text-sm font-semibold dark:text-white text-gray-900">{item.name}</p>
+        <div className="min-w-0">
+          <p className="text-xs xl:text-sm font-semibold dark:text-white text-gray-900 truncate">{item.name}</p>
           {item.status === "connected"
             ? <p className="text-xs font-medium text-[#14A085] mt-0.5">Connected</p>
-            : <p className="text-xs text-gray-400 mt-0.5">{item.desc}</p>
+            : <p className="text-xs text-gray-400 mt-0.5 truncate">{item.desc}</p>
           }
         </div>
       </div>
       {item.status === "connected" ? (
         <button onClick={() => router.push("/dashboard/settings/configure")}
-          className="text-sm font-medium text-gray-500 hover:text-gray-700 border border-gray-200 rounded-lg px-4 py-1.5 transition-colors hover:border-gray-300">
+          className="text-xs xl:text-sm font-medium text-gray-500 hover:text-gray-700 border border-gray-200 rounded-lg px-3 xl:px-4 py-1 xl:py-1.5 transition-colors hover:border-gray-300 flex-shrink-0">
           Configure
         </button>
       ) : (
         <button onClick={() => onToggle(item.id)}
-          className="bg-[#14A085] hover:bg-[#0d7a65] text-white font-semibold rounded-lg px-4 py-1.5 text-sm transition-colors">
+          className="bg-[#14A085] hover:bg-[#0d7a65] text-white font-semibold rounded-lg px-3 xl:px-4 py-1 xl:py-1.5 text-xs xl:text-sm transition-colors flex-shrink-0">
           Connect
         </button>
       )}
@@ -182,16 +294,16 @@ function IntegrationsTab() {
   );
 
   return (
-    <div className="max-w-3xl space-y-6">
+    <div className="xl:max-w-3xl space-y-6">
       <div>
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">Integrations</h2>
-        <p className="text-sm text-gray-400">Connect your channels and third-party services</p>
+        <h2 className="text-xl xl:text-2xl font-semibold text-gray-900 dark:text-white mb-1">Integrations</h2>
+        <p className="text-xs xl:text-sm text-gray-400">Connect your channels and third-party services</p>
       </div>
 
       {/* Communication Channels */}
-      <div className="bg-white  dark:bg-black dark:border-gray-800 rounded-2xl border  border-gray-100 p-6">
-        <h3 className="text-sm font-semibold  dark:text-white text-gray-900 mb-1">Communication Channels</h3>
-        <div className="grid grid-cols-1  md:grid-cols-2 gap-x-8">
+      <div className="bg-white  dark:bg-black dark:border-gray-800 rounded-2xl border  border-gray-100 p-4 xl:p-6">
+        <h3 className="text-xs xl:text-sm font-semibold  dark:text-white text-gray-900 mb-1">Communication Channels</h3>
+        <div className="grid grid-cols-1  xl:grid-cols-2 gap-x-8">
           {comm.map((item) => (
             <IntegrationRow key={item.id} item={item} onToggle={toggleComm} />
           ))}
@@ -199,9 +311,9 @@ function IntegrationsTab() {
       </div>
 
       {/* CRM & Tools */}
-      <div className="bg-white  dark:bg-black dark:border-gray-800 rounded-2xl border border-gray-100 p-6">
-        <h3 className="text-sm font-semibold dark:text-white text-gray-900 mb-1">CRM & Tools</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8">
+      <div className="bg-white  dark:bg-black dark:border-gray-800 rounded-2xl border border-gray-100 p-4 xl:p-6">
+        <h3 className="text-xs xl:text-sm font-semibold dark:text-white text-gray-900 mb-1">CRM & Tools</h3>
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-8">
           {crm.map((item) => (
             <IntegrationRow key={item.id} item={item} onToggle={toggleCrm} />
           ))}
@@ -304,125 +416,160 @@ function AISettingsTab() {
 
 /* ── Team Members tab ── */
 function TeamMembersTab() {
-  const [members] = useState([
-    { name: "Emma Wilson",  email: "emma@acme.com",  role: "Admin",  avatar: "EW", status: "Active" },
-    { name: "Mike Chen",    email: "mike@acme.com",   role: "Agent",  avatar: "MC", status: "Active" },
-    { name: "Sara Okafor",  email: "sara@acme.com",   role: "Agent",  avatar: "SO", status: "Inactive" },
-  ]);
+  const members = [
+    { name: "Sarah Jenkins", email: "sarah@company.com", role: "Owner",  avatar: "SJ", color: "bg-rose-100 text-rose-600" },
+    { name: "Michael Chen",  email: "m.chen@company.com", role: "Editor", avatar: "MC", color: "bg-blue-100 text-blue-600" },
+    { name: "John Doe",      email: "john@company.com",   role: "Viewer", avatar: "JD", color: "bg-[#E6F7F4] text-[#14A085]" },
+  ];
+ 
   return (
-    <div className="max-w-3xl space-y-6">
+    <div className="space-y-5">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-semibold dark:text-white text-gray-900 mb-1">Team Members</h2>
-          <p className="text-sm text-gray-400">Manage your team and their permissions</p>
+          <h2 className="text-lg font-bold text-gray-900 dark:text-white">Team</h2>
+          <p className="text-xs text-gray-400 mt-0.5">Manage your team and permissions</p>
         </div>
-        <button className="bg-[#14A085] hover:bg-[#0d7a65] text-white font-semibold rounded-xl px-5 py-2.5 text-sm transition-colors flex items-center gap-2">
-          <span>+</span> Invite Member
+        <button className="w-9 h-9 flex items-center justify-center bg-[#14A085] text-white rounded-full text-xl font-light hover:bg-[#0d7a65] transition-colors">
+          +
         </button>
       </div>
-      <div className="bg-white dark:bg-black dark:border-gray-800 rounded-2xl border border-gray-100 overflow-hidden">
-        <div className="divide-y dark:divide-none divide-gray-50">
-          {members.map((m) => (
-            <div key={m.email} className="flex items-center justify-between px-6 py-4">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-[#E6F7F4] flex items-center justify-center text-xs font-bold text-[#14A085]">{m.avatar}</div>
-                <div>
-                  <p className="text-sm dark:text-white font-semibold text-gray-900">{m.name}</p>
-                  <p className="text-xs text-gray-400">{m.email}</p>
-                </div>
+ 
+      <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden divide-y divide-gray-50 dark:divide-gray-800">
+        {members.map((m) => (
+          <div key={m.email} className="flex items-center justify-between px-4 py-4">
+            <div className="flex items-center gap-3 min-w-0">
+              {/* Avatar circle with initials */}
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${m.color}`}>
+                {m.avatar}
               </div>
-              <div className="flex items-center gap-3">
-                <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${m.status === "Active" ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>{m.status}</span>
-                <span className="text-xs text-gray-500 bg-gray-100 px-2.5 py-1 rounded-full">{m.role}</span>
-                <button className="text-gray-400 hover:text-gray-600 transition-colors">
-                  <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
-                </button>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">{m.name}</p>
+                <p className="text-xs text-gray-400 truncate">{m.email}</p>
               </div>
             </div>
-          ))}
-        </div>
+            <span className="text-xs font-medium text-gray-500 dark:text-gray-400 flex-shrink-0 ml-2">{m.role}</span>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
-
+ 
+ 
 /* ── API Keys tab ── */
-function APIKeysTab() {
-  const [keys] = useState([
-    { name: "Production Key",   key: "sk-prod-••••••••••••••••3f9a", created: "Jan 10, 2024", last: "2 min ago" },
-    { name: "Development Key",  key: "sk-dev-••••••••••••••••8c2b",  created: "Dec 5, 2023",  last: "3 days ago" },
-  ]);
-  const [copied, setCopied] = useState<string | null>(null);
-  const copy = (id: string) => { setCopied(id); setTimeout(() => setCopied(null), 1500); };
 
+function APIKeysTab() {
+  const [copied, setCopied] = useState(false);
+  const copy = () => { setCopied(true); setTimeout(() => setCopied(false), 1500); };
+ 
   return (
-    <div className="max-w-3xl space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-2xl font-semibold dark:text-white text-gray-900 mb-1">API Keys</h2>
-          <p className="text-sm text-gray-400">Manage your API credentials for backend integration</p>
-        </div>
-        <button className="bg-[#14A085] hover:bg-[#0d7a65] text-white font-semibold rounded-xl px-5 py-2.5 text-sm transition-colors flex items-center gap-2">
-          <span>+</span> New Key
-        </button>
+    <div className="space-y-5">
+      {/* Warning banner */}
+      <div className="flex items-start gap-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl px-4 py-3.5">
+        <svg className="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="#F59E0B" strokeWidth="1.8"/>
+          <path d="M12 8v4M12 16h.01" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round"/>
+        </svg>
+        <p className="text-xs text-amber-700 dark:text-amber-400 leading-relaxed">
+          Keep your API keys secure. Do not share them in public repositories or client-side code.
+        </p>
       </div>
-      <div className="bg-white  dark:bg-black dark:border-gray-800 rounded-2xl border border-gray-100 overflow-hidden">
-        <div className="divide-y divide-gray-50">
-          {keys.map((k) => (
-            <div key={k.name} className="flex items-center justify-between px-6 py-4">
-              <div>
-                <p className="text-sm font-semibold dark:text-white text-gray-900 mb-1">{k.name}</p>
-                <code className="text-xs text-gray-500 bg-gray-50 px-2 py-1 rounded-lg">{k.key}</code>
-              </div>
-              <div className="flex items-center gap-3 text-right">
-                <div>
-                  <p className="text-xs text-gray-400">Created {k.created}</p>
-                  <p className="text-xs text-gray-400">Last used {k.last}</p>
-                </div>
-                <button onClick={() => copy(k.name)} className="text-xs font-medium text-[#14A085] border border-[#14A085]/30 px-3 py-1.5 rounded-lg hover:bg-[#E6F7F4] transition-colors">
-                  {copied === k.name ? "Copied!" : "Copy"}
-                </button>
-              </div>
-            </div>
-          ))}
+ 
+      {/* Production Key */}
+      <div>
+        <div className="flex items-center justify-between mb-2">
+          <p className="text-sm font-semibold text-gray-900 dark:text-white">Production Key</p>
+          <p className="text-xs text-gray-400">Created 2d ago</p>
+        </div>
+        <div className="flex items-center justify-between bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl px-4 py-3">
+          <code className="text-xs text-gray-600 dark:text-gray-300 font-mono">sk_live_51Nz...9×2A</code>
+          <button onClick={copy} className="ml-2 text-gray-400 hover:text-[#14A085] transition-colors flex-shrink-0">
+            {copied
+              ? <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#14A085" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              : <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" strokeWidth="1.8"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" strokeWidth="1.8"/></svg>
+            }
+          </button>
         </div>
       </div>
-      <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4">
-        <p className="text-xs font-semibold text-amber-700 mb-1">⚠️ Keep your API keys secure</p>
-        <p className="text-xs text-amber-600">Never expose API keys in client-side code. Use environment variables on your server.</p>
-      </div>
+ 
+      {/* Generate New Key */}
+      <button className="w-full flex items-center justify-center gap-2 border border-gray-200 dark:border-gray-700 rounded-2xl py-4 text-sm text-gray-500 dark:text-gray-400 hover:border-gray-300 dark:hover:border-gray-600 hover:text-gray-700 dark:hover:text-gray-300 transition-colors bg-white dark:bg-gray-900">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
+          <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+        Generate New Key
+      </button>
     </div>
   );
 }
-
+ 
 /* ── Billing tab ── */
 function BillingTab() {
   return (
-    <div className="max-w-3xl space-y-6">
-      <div>
-        <h2 className="text-2xl font-semibold dark:text-white text-gray-900 mb-1">Billing</h2>
-        <p className="text-sm text-gray-400">Manage your plan and payment details</p>
-      </div>
-      <div className="bg-white dark:bg-black dark:border-gray-800 rounded-2xl border border-gray-100 p-6">
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <p className="text-sm font-semibold dark:text-white text-gray-900">Free Plan</p>
-            <p className="text-xs text-gray-400 mt-0.5">1,000 conversations / month</p>
-          </div>
-          <span className="text-xs font-semibold bg-gray-100 text-gray-600 px-3 py-1.5 rounded-full">Current Plan</span>
-        </div>
-        <div className="h-2 bg-gray-100 rounded-full overflow-hidden mb-2">
-          <div className="h-full bg-[#14A085] rounded-full" style={{ width: "72%" }} />
-        </div>
-        <p className="text-xs text-gray-400 mb-5">720 of 1,000 conversations used this month</p>
-        <button className="w-full bg-[#14A085] hover:bg-[#0d7a65] text-white font-semibold rounded-xl py-3 text-sm transition-colors">
-          Upgrade to Pro — $49/month
+    <div className="space-y-5">
+      {/* Dark plan card */}
+      <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-[#0f2a2a] to-[#0a1f2e] p-5 relative">
+        {/* Decorative teal blob */}
+        <div className="absolute right-4 top-4 w-20 h-20 rounded-full bg-[#14A085]/30 blur-xl" />
+        <p className="text-xs text-gray-400 mb-1">Current Plan</p>
+        <p className="text-xl font-bold text-white mb-2">Pro Monthly</p>
+        <p className="text-4xl font-extrabold text-white">
+          $49<span className="text-base font-normal text-gray-400">/mo</span>
+        </p>
+        <button className="absolute right-5 bottom-5 bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-xl px-5 py-2 text-sm transition-colors">
+          Upgrade
         </button>
+      </div>
+ 
+      {/* Payment Method */}
+      <div>
+        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-3">Payment Method</p>
+        <div className="flex items-center justify-between bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl px-4 py-3.5">
+          <div className="flex items-center gap-3">
+            {/* Mastercard logo */}
+            <div className="flex flex-shrink-0">
+              <div className="w-6 h-6 rounded-full bg-red-500 opacity-90" />
+              <div className="w-6 h-6 rounded-full bg-yellow-400 opacity-90 -ml-2.5" />
+            </div>
+            <div>
+              <p className="text-sm text-gray-800 dark:text-white font-medium">•••• •••• •••• 4242</p>
+              <p className="text-xs text-gray-400">Expires 12/25</p>
+            </div>
+          </div>
+          <button className="text-sm font-semibold text-[#14A085]">Edit</button>
+        </div>
+      </div>
+ 
+      {/* Recent Invoices */}
+      <div>
+        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-3">Recent Invoices</p>
+        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl divide-y divide-gray-50 dark:divide-gray-800">
+          {[
+            { date: "Oct 12, 2023", inv: "INV-0042", amount: "$49.00" },
+            { date: "Sep 12, 2023", inv: "INV-0041", amount: "$49.00" },
+          ].map((inv) => (
+            <div key={inv.inv} className="flex items-center justify-between px-4 py-3.5">
+              <div>
+                <p className="text-sm text-gray-800 dark:text-white font-medium">{inv.date}</p>
+                <p className="text-xs text-gray-400">{inv.inv}</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-semibold text-gray-900 dark:text-white">{inv.amount}</span>
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24">
+                  <path d="M12 16l-4-4h3V4h2v8h3l-4 4z" fill="#14A085"/>
+                  <path d="M4 20h16" stroke="#14A085" strokeWidth="1.8" strokeLinecap="round"/>
+                </svg>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
-
+ 
+ 
 
 
 
@@ -448,47 +595,47 @@ function AppearanceTab() {
   const save = () => { setSaved(true); setTimeout(() => setSaved(false), 2000); };
 
   return (
-    <div className="max-w-3xl space-y-10">
+    <div className="xl:max-w-3xl mb-10 space-y-8 xl:space-y-10">
       <div>
-        <h2 className="text-2xl font-bold dark:text-white text-gray-900 mb-0.5">Appearance</h2>
-        <p className="text-sm text-gray-400">Connect your channels and third-party services</p>
+        <h2 className="text-xl xl:text-2xl font-bold dark:text-white text-gray-900 mb-0.5">Appearance</h2>
+        <p className="text-xs xl:text-sm text-gray-400">Connect your channels and third-party services</p>
       </div>
 
       {/* ── Theme ── */}
       <section>
-        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">Theme</p>
+        <p className="text-xs xl:text-sm font-semibold text-gray-900 dark:text-white mb-1">Theme</p>
         <p className="text-xs text-gray-400 mb-4">Select your preferred color scheme</p>
-        <div className="flex items-start gap-5">
+        <div className="flex items-start gap-2 xl:gap-5 overflow-x-auto pb-2">
           {(["Light", "Dark", "System"] as const).map((t) => {
             const active = theme === t;
             return (
               <button
                 key={t}
                 onClick={() => setTheme(t)}
-                className={`flex flex-col items-center gap-2 p-4 rounded-2xl border-2 w-28 transition-all ${
+                className={`flex flex-col items-center gap-2 p-3 xl:p-4 rounded-2xl border-2 w-24 xl:w-28 flex-shrink-0 transition-all ${
                   active ? "border-[#14A085]  dark:bg-black  bg-white" : "border-gray-100  dark:bg-black dark:border-gray-800 bg-gray-50 hover:border-gray-200"
                 }`}
               >
                 {t === "Light" && (
-                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+                  <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="4" stroke={active ? "#14A085" : "#9CA3AF"} strokeWidth="1.8"/>
                     <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
                       stroke={active ? "#14A085" : "#9CA3AF"} strokeWidth="1.8" strokeLinecap="round"/>
                   </svg>
                 )}
                 {t === "Dark" && (
-                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+                  <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"
                       stroke={active ? "#14A085" : "#9CA3AF"} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 )}
                 {t === "System" && (
-                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+                  <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <rect x="2" y="3" width="20" height="14" rx="2" stroke={active ? "#14A085" : "#9CA3AF"} strokeWidth="1.8"/>
                     <path d="M8 21h8M12 17v4" stroke={active ? "#14A085" : "#9CA3AF"} strokeWidth="1.8" strokeLinecap="round"/>
                   </svg>
                 )}
-                <span className={`text-sm font-medium ${active ? "text-[#14A085]" : "text-gray-400"}`}>{t}</span>
+                <span className={`text-xs xl:text-sm font-medium ${active ? "text-[#14A085]" : "text-gray-400"}`}>{t}</span>
               </button>
             );
           })}
@@ -497,14 +644,14 @@ function AppearanceTab() {
 
       {/* ── Density ── */}
       <section>
-        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">Density</p>
+        <p className="text-xs xl:text-sm font-semibold text-gray-900 dark:text-white mb-1">Density</p>
         <p className="text-xs text-gray-400 mb-4">Adjust the spacing between elements</p>
         <div className="flex gap-3 mb-4">
           {(["Comfortable", "Compact"] as const).map((d) => (
             <button
               key={d}
               onClick={() => setDensity(d)}
-              className={`px-5 py-2.5 rounded-xl text-sm font-semibold border-2 transition-all ${
+              className={`px-4 xl:px-5 py-2 xl:py-2.5 rounded-xl text-xs xl:text-sm font-semibold border-2 transition-all flex-1 xl:flex-none ${
                 density === d
                   ? "bg-[#14A085] border-[#14A085] text-white"
                   : "bg-white  dark:bg-black dark:border-gray-800 border-gray-200 text-gray-500 hover:border-gray-300"
@@ -514,8 +661,8 @@ function AppearanceTab() {
             </button>
           ))}
         </div>
-        <div className="flex items-start gap-2.5  dark:bg-black dark:border-gray-800 bg-gray-50 border border-gray-100 rounded-xl px-4 py-3">
-          <svg className="flex-shrink-0 mt-0.5" width="14" height="14" fill="none" viewBox="0 0 24 24">
+        <div className="flex items-start gap-2.5  dark:bg-black dark:border-gray-800 bg-gray-50 border border-gray-100 rounded-xl px-3 xl:px-4 py-3">
+          <svg className="flex-shrink-0 mt-0.5" width="12" height="12" fill="none" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="10" stroke="#9CA3AF" strokeWidth="1.8"/>
             <path d="M12 8v4M12 16h.01" stroke="#9CA3AF" strokeWidth="1.8" strokeLinecap="round"/>
           </svg>
@@ -528,27 +675,27 @@ function AppearanceTab() {
 
       {/* ── Language ── */}
       <section>
-        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">Language</p>
+        <p className="text-xs xl:text-sm font-semibold text-gray-900 dark:text-white mb-1">Language</p>
         <p className="text-xs text-gray-400 mb-4">Select your preferred language</p>
         <div className="relative">
           <button
             onClick={() => setLangOpen((v) => !v)}
-            className="w-full flex items-center justify-between border border-gray-200 rounded-xl px-4 py-3.5  dark:bg-black dark:border-gray-800 bg-white hover:border-gray-300 transition-colors"
+            className="w-full flex items-center justify-between border border-gray-200 rounded-xl px-3 xl:px-4 py-3 xl:py-3.5  dark:bg-black dark:border-gray-800 bg-white hover:border-gray-300 transition-colors"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl  bg-[#E6F7F4] flex items-center justify-center flex-shrink-0">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-8 xl:w-9 h-8 xl:h-9 rounded-xl  bg-[#E6F7F4] flex items-center justify-center flex-shrink-0">
                 <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
                   <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#14A085" strokeWidth="1.8"/>
                   <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="#14A085" strokeWidth="1.8"/>
                 </svg>
               </div>
-              <div className="text-left">
-                <p className="text-sm font-semibold text-gray-900 dark:text-white">{language.label}</p>
+              <div className="text-left min-w-0">
+                <p className="text-xs xl:text-sm font-semibold text-gray-900 dark:text-white truncate">{language.label}</p>
                 <p className="text-xs text-gray-400">{language.sub}</p>
               </div>
             </div>
             <svg width="16" height="16" fill="none" viewBox="0 0 24 24"
-              className={`text-gray-400 transition-transform ${langOpen ? "rotate-180" : ""}`}>
+              className={`text-gray-400 transition-transform flex-shrink-0 ${langOpen ? "rotate-180" : ""}`}>
               <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
@@ -558,14 +705,14 @@ function AppearanceTab() {
                 <button
                   key={l.label}
                   onClick={() => { setLanguage(l); setLangOpen(false); }}
-                  className="w-full flex items-center justify-between px-4 py-3 hover:bg-gray-50 transition-colors text-left"
+                  className="w-full flex items-center justify-between px-3 xl:px-4 py-3 hover:bg-gray-50 hover:dark:bg-gray-800 transition-colors text-left"
                 >
                   <div>
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">{l.label}</p>
+                    <p className="text-xs xl:text-sm font-medium text-gray-900 dark:text-white">{l.label}</p>
                     <p className="text-xs text-gray-400">{l.sub}</p>
                   </div>
                   {language.label === l.label && (
-                    <svg className="text-[#14A085]" width="14" height="14" fill="none" viewBox="0 0 24 24">
+                    <svg className="text-[#14A085] flex-shrink-0" width="14" height="14" fill="none" viewBox="0 0 24 24">
                       <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   )}
@@ -578,7 +725,7 @@ function AppearanceTab() {
 
       {/* ── Time Format ── */}
       <section>
-        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">Time Format</p>
+        <p className="text-xs xl:text-sm font-semibold text-gray-900 dark:text-white mb-1">Time Format</p>
         <p className="text-xs text-gray-400 mb-4">Choose how times are displayed</p>
         <div className="space-y-2">
           {([
@@ -590,18 +737,18 @@ function AppearanceTab() {
               <button
                 key={f.id}
                 onClick={() => setTime(f.id)}
-                className={`w-full flex items-center gap-4 px-5 py-4 rounded-2xl border-2 transition-all text-left ${
+                className={`w-full flex items-center gap-3 xl:gap-4 px-4 xl:px-5 py-3 xl:py-4 rounded-2xl border-2 transition-all text-left ${
                   active ? "border-[#14A085]  dark:bg-black dark:border-gray-800 bg-white" : "border-gray-100  dark:bg-black dark:border-gray-700 bg-gray-50 hover:border-gray-200"
                 }`}
               >
-                <span className={`text-xs font-bold w-7 flex-shrink-0 ${active ? "text-[#14A085]" : "text-gray-400"}`}>
+                <span className={`text-xs font-bold w-6 xl:w-7 flex-shrink-0 ${active ? "text-[#14A085]" : "text-gray-400"}`}>
                   {f.id}
                 </span>
-                <div className="flex-1">
-                  <p className={`text-sm font-semibold ${active ? "text-gray-900 dark:text-white" : "text-gray-500"}`}>{f.label}</p>
+                <div className="flex-1 min-w-0">
+                  <p className={`text-xs xl:text-sm font-semibold ${active ? "text-gray-900 dark:text-white" : "text-gray-500"}`}>{f.label}</p>
                   <p className="text-xs text-gray-400">{f.example}</p>
                 </div>
-                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
+                <div className={`w-4 xl:w-5 h-4 xl:h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
                   active ? "border-[#14A085] bg-[#14A085]" : "border-gray-300"
                 }`}>
                   {active && (
@@ -618,17 +765,17 @@ function AppearanceTab() {
 
       {/* ── Automation Active preview card ── */}
       <section>
-        <div className="border  dark:bg-black dark:border-gray-800 border-gray-100 rounded-2xl p-5 bg-gray-50">
+        <div className="border  dark:bg-black dark:border-gray-800 border-gray-100 rounded-2xl p-4 xl:p-5 bg-gray-50">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-[#E6F7F4] flex items-center justify-center flex-shrink-0">
-              <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+            <div className="w-9 xl:w-10 h-9 xl:h-10 rounded-xl bg-[#E6F7F4] flex items-center justify-center flex-shrink-0">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="3" stroke="#14A085" strokeWidth="1.8"/>
                 <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"
                   stroke="#14A085" strokeWidth="1.8" strokeLinecap="round"/>
               </svg>
             </div>
-            <div>
-              <p className="text-sm font-semibold text-gray-900 dark:text-white">Automation Active</p>
+            <div className="min-w-0">
+              <p className="text-xs xl:text-sm font-semibold text-gray-900 dark:text-white">Automation Active</p>
               <p className="text-xs text-gray-400">
                 Last triggered at {timeFormat === "12h" ? "2:30 PM" : "14:30"}
               </p>
@@ -648,7 +795,7 @@ function AppearanceTab() {
       <div className="flex justify-end pt-2 pb-8">
         <button
           onClick={save}
-          className="bg-[#14A085] hover:bg-[#0d7a65] text-white font-semibold rounded-xl px-8 py-3 text-sm transition-colors"
+          className="bg-[#14A085] hover:bg-[#0d7a65] text-white font-semibold rounded-xl px-6 xl:px-8 py-2 xl:py-3 text-xs xl:text-sm transition-colors"
         >
           {saved ? "✓ Saved" : "Save Changes"}
         </button>
@@ -661,42 +808,64 @@ function AppearanceTab() {
 
 
 /* ── Notifications tab ── */
+
 function NotificationsTab() {
   const [prefs, setPrefs] = useState({
-    escalations: true, resolved: false, lowConfidence: true,
-    weeklyReport: true, newConversation: false,
+    weeklyAnalytics: true,
+    securityAlerts: true,
+    escalations: false,
+    resolved: false,
+    lowConfidence: false,
+    newConversation: false,
   });
   const toggle = (key: keyof typeof prefs) => setPrefs((p) => ({ ...p, [key]: !p[key] }));
-  const items: { key: keyof typeof prefs; label: string; desc: string }[] = [
-    { key: "escalations",    label: "Escalations",       desc: "Alert when AI escalates to human" },
-    { key: "resolved",       label: "Resolved",          desc: "Alert when ticket is resolved" },
-    { key: "lowConfidence",  label: "Low AI Confidence", desc: "Alert when confidence drops below threshold" },
-    { key: "weeklyReport",   label: "Weekly Report",     desc: "Receive a weekly summary email" },
-    { key: "newConversation",label: "New Conversations", desc: "Alert on every new incoming conversation" },
-  ];
-  return (
-    <div className="max-w-3xl space-y-6">
-      <div>
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">Notifications</h2>
-        <p className="text-sm text-gray-400">Choose when and how you receive alerts</p>
+ 
+  const Toggle = ({ on, onToggle }: { on: boolean; onToggle: () => void }) => (
+    <button
+      type="button"
+      onClick={onToggle}
+      className={`relative inline-flex h-7 w-12 rounded-full transition-colors duration-200 flex-shrink-0 ${on ? "bg-[#14A085]" : "bg-gray-200 dark:bg-gray-700"}`}
+    >
+      <span className={`inline-block h-6 w-6 rounded-full bg-white shadow-md transform transition-transform duration-200 mt-0.5 ${on ? "translate-x-5" : "translate-x-0.5"}`} />
+    </button>
+  );
+ 
+  const Row = ({ label, desc, value, onToggle }: { label: string; desc: string; value: boolean; onToggle: () => void }) => (
+    <div className="flex items-center justify-between py-4 border-b border-gray-50 dark:border-gray-800 last:border-none">
+      <div className="min-w-0 pr-4">
+        <p className="text-sm font-semibold text-gray-900 dark:text-white">{label}</p>
+        <p className="text-xs text-gray-400 mt-0.5 leading-relaxed">{desc}</p>
       </div>
-      <div className="bg-white dark:bg-black dark:border-gray-800 dark:divide-none rounded-2xl border border-gray-100 divide-y divide-gray-50">
-        {items.map(({ key, label, desc }) => (
-          <div key={key} className="flex items-center justify-between px-6 py-4">
-            <div>
-              <p className="text-sm font-medium text-gray-900 dark:text-white">{label}</p>
-              <p className="text-xs text-gray-400 mt-0.5">{desc}</p>
-            </div>
-            <button type="button" onClick={() => toggle(key)}
-              className={`relative inline-flex h-6 w-11 rounded-full transition-colors duration-200 ${prefs[key] ? "bg-[#14A085]" : "bg-gray-300"}`}>
-              <span className={`inline-block h-5 w-5 rounded-full bg-white shadow-md transform transition-transform duration-200 mt-0.5 ${prefs[key] ? "translate-x-5" : "translate-x-0.5"}`} />
-            </button>
-          </div>
-        ))}
+      <Toggle on={value} onToggle={onToggle} />
+    </div>
+  );
+ 
+  return (
+    <div className="space-y-6">
+      {/* Email Notifications */}
+      <div>
+        <p className="text-xs font-semibold text-[#14A085] uppercase tracking-wider mb-3">Email Notifications</p>
+        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl px-4">
+          <Row label="Weekly Analytics" desc="Receive a summary of rule performance" value={prefs.weeklyAnalytics} onToggle={() => toggle("weeklyAnalytics")} />
+          <Row label="Security Alerts"  desc="New login or API key generation"        value={prefs.securityAlerts}  onToggle={() => toggle("securityAlerts")} />
+        </div>
+      </div>
+ 
+      {/* Push Notifications */}
+      <div>
+        <p className="text-xs font-semibold text-[#14A085] uppercase tracking-wider mb-3">Push Notifications</p>
+        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl px-4">
+          <Row label="Escalations"      desc="Alerts when AI escalates to human"         value={prefs.escalations}     onToggle={() => toggle("escalations")} />
+          <Row label="Resolved"         desc="Alert when ticket is resolved"              value={prefs.resolved}        onToggle={() => toggle("resolved")} />
+          <Row label="Low AI Confidence" desc="Alert when confidence drops below threshold" value={prefs.lowConfidence} onToggle={() => toggle("lowConfidence")} />
+          <Row label="New Conversations" desc="Alert on every new incoming conversation."  value={prefs.newConversation} onToggle={() => toggle("newConversation")} />
+        </div>
       </div>
     </div>
   );
 }
+ 
+ 
 
 /* ── Main settings page ── */
 const TAB_COMPONENTS: Record<string, React.FC> = {
@@ -710,14 +879,21 @@ const TAB_COMPONENTS: Record<string, React.FC> = {
 };
 
 export default function SettingsPage() {
-  const [activeTab, setActiveTab] = useState("General");
+  const [activeTab, setActiveTab] = useState("");
   const ActiveComponent = TAB_COMPONENTS[activeTab] || GeneralTab;
 
+
+  const router = useRouter();
+
+
   return (
-    <div className="flex h-screen gap-16 bg-[#F8FAFC] dark:bg-gray-950 overflow-hidden transition-colors duration-200">
+    <div className="flex h-screen gap-16 bg-[#F1F5F9] dark:bg-gray-950 overflow-hidden transition-colors duration-200">
       <Sidebar />
 
-      <div className="flex flex-1 w-[40%] mt-10 overflow-hidden">
+      <MobileNav/>
+
+      {/* Desktop Layout */}
+      <div className="hidden xl:flex flex-1 w-[40%] mt-10 overflow-hidden">
         {/* Settings sub-nav */}
         <nav className="w-48 flex-shrink-0 bg-white dark:bg-gray-900 border-r border-gray-100 dark:border-gray-800 pt-8 px-3 transition-colors duration-200">
           <div className="space-y-0.5">
@@ -742,6 +918,84 @@ export default function SettingsPage() {
           <ActiveComponent />
         </main>
       </div>
+
+      {/* Mobile Layout */}
+     <div className="xl:hidden mt-16 flex flex-col flex-1 overflow-hidden bg-white dark:bg-gray-900 transition-colors duration-200">
+ 
+  {activeTab === "" ? (
+    /* ──────────────────────────────────────────────────────
+       SETTINGS HOME SCREEN — full menu list (matches screenshot)
+    ────────────────────────────────────────────────────── */
+    <div className="flex-1 overflow-y-auto">
+ 
+      {/* Top bar: logo + icons */}
+      
+ 
+      {/* Page title */}
+      <div className="px-5 pt-4 pb-6">
+        <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white">Settings</h1>
+      </div>
+ 
+      {/* Menu items — spaced rows, no card wrapper, no dividers */}
+      <div className="px-5 space-y-1">
+        {MOBILE_MENU.map((item) => (
+          <button
+            key={item.id}
+            onClick={() => setActiveTab(item.id)}
+            className="w-full flex items-center gap-4 py-3.5 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-2xl px-2 transition-colors text-left"
+          >
+            {item.icon}
+            <div className="flex-1 min-w-0">
+              <p className="text-[16px] font-bold text-gray-900 dark:text-white leading-loose">
+                {item.label}
+              </p>
+              <p className="text-sm text-gray-400 mt-0.5 leading-snug">
+                {item.sub}
+              </p>
+            </div>
+            <svg
+              width="16" height="16" fill="none" viewBox="0 0 24 24"
+              className="text-gray-300 dark:text-gray-600 flex-shrink-0"
+            >
+              <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        ))}
+      </div>
+ 
+      {/* Bottom spacer */}
+      <div className="h-10" />
+    </div>
+ 
+  ) : (
+    /* ──────────────────────────────────────────────────────
+       SUB-PAGE — back arrow + title header + content
+    ────────────────────────────────────────────────────── */
+    <div className="flex-1 flex flex-col overflow-hidden">
+ 
+      {/* Header */}
+      <div 
+      onClick={() => router.back()}
+      className="flex items-center gap-3 px-5 py-4 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 flex-shrink-0">
+        <button
+          
+          className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-lg transition-colors"
+          title="Back to Settings"
+        >
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+            <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+        <h2 className="text-[17px] font-bold text-gray-900 dark:text-white">{activeTab}</h2>
+      </div>
+ 
+      {/* Scrollable content */}
+      <main className="flex-1 overflow-y-auto px-4 py-5 bg-gray-50 dark:bg-gray-950 transition-colors duration-200">
+        <ActiveComponent />
+      </main>
+    </div>
+  )}
+</div>
     </div>
   );
 }

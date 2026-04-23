@@ -2,7 +2,7 @@
 export { default as CheckIcon } from "./CheckIcon";
 // export { default as CheckIcon } from "./CheckIcon";
 export { default as WhatsAppIcon } from "./WhatsAppIcon";
-export { default as LinkedInIcon } from "./LinkedInIcon";
+export { default as Telegram } from "./Telegram";
 export { default as XIcon } from "./XIcon";
 export { default as WebChatIcon } from "./WebChatIcon";
 export { default as EmailIcon } from "./EmailIcon";

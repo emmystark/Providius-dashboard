@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Sidebar from "@/components/Sidebar";
+import MobileNav from "@/components/MobileNav";
+import { ArrowLeftIcon } from "lucide-react";
 
 const LOGS = [
   { ts: "2023-11-24 14:22:01", query: '"Where is my order?"', response: '"Your order is in transit…"', status: "Success" },
@@ -23,6 +25,16 @@ export default function RuleDetailPage() {
   const [menuOpen, setMenuOpen] = useState(false);   // boolean is fine
 
   const save = () => { setSaved(true); setTimeout(() => setSaved(false), 2000); };
+
+
+
+  const handleBack = () => {
+  if (window.history.length > 1) {
+    router.back();
+  } else {
+    router.push('/dashboard/automation'); // or wherever you want to go
+  }
+};
 
 
 
@@ -57,18 +69,20 @@ export default function RuleDetailPage() {
     <div className="flex h-screen gap-10 bg-[#F7FAFC] dark:bg-gray-950 overflow-hidden transition-colors duration-200">
       <Sidebar />
 
-      <main className="flex-1 overflow-y-auto mt-10">
+      <MobileNav/>
+
+      <main className="flex-1 overflow-y-auto mt-20 xl:mt-10">
         {/* Top bar */}
         <header className="bg-none backdrop-blur-sm sticky  border-none px-8 py-4 flex items-center justify-between top-0 z-10">
           <div className="flex items-center gap-4">
-            {/* <button onClick={() => router.back()} className="text-gray-400 hover:text-gray-600 transition-colors">
-              <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
-                <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <button onClick={handleBack} className="xl:hidden text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-lg transition-colors" title="Back to Automation">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+                <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </button> */}
-            <h1 className="text-2xl text-gray-900 dark:text-white transition-colors duration-200">Rule details</h1>
+            </button>
+            <h1 className="text-lg xl:text-2xl text-gray-900 dark:text-white transition-colors duration-200">Rule details</h1>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-3 ">
             <div className="bg-white dark:bg-gray-800 p-4 px-7 transition-colors duration-200 items-center flex gap-4 rounded-full">
               <span className="text-sm text-gray-600 dark:text-gray-400 font-bold transition-colors duration-200">Activate</span>
               <button
@@ -247,7 +261,7 @@ export default function RuleDetailPage() {
           </div>
 
           {/* Execution Logs */}
-          <div className="bg-white  dark:bg-gray-900 dark:border-none rounded-2xl border-gray-100 p-6">
+          <div className="bg-white dark:bg-gray-900 dark:border-none rounded-2xl border-gray-100 p-6">
             <div className="flex items-center justify-between mb-5">
               <h2 className="text-base font-semibold text-gray-900 dark:text-white transition-colors duration-200">Execution Logs</h2>
               <button className="text-sm font-medium text-gray-500 dark:border-none hover:text-gray-700 border border-gray-200 rounded-lg px-3 py-1.5 transition-colors">
@@ -256,7 +270,7 @@ export default function RuleDetailPage() {
             </div>
 
             {/* Table */}
-            <div className="overflow-y-scroll border-none overflow-x-hidden">
+            <div className="xl:overflow-y-scroll overflow-y-auto border-none mb-10 overflow-x-scroll xl:overflow-x-hidden">
               <table className="w-full">
                 <thead>
                   <tr className="border-b dark:border-none border-gray-100">

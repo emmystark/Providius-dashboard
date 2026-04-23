@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Sidebar from "@/components/Sidebar";
+import MobileNav from "@/components/MobileNav";
 
 interface Message {
     id: string;
@@ -118,6 +119,8 @@ export default function TestSimulatorPageContent() {
     return (
         <div className="flex h-screen gap-10 bg-[#F7FAFC] dark:bg-gray-950 overflow-hidden transition-colors duration-200">
             <Sidebar />
+
+            <MobileNav/>
 
             <div className="flex-1 flex flex-col overflow-hidden">
                 <main className="flex-1 flex flex-col mt-10 overflow-hidden">

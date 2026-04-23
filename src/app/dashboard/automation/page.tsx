@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import Link from "next/dist/client/link";
+import MobileNav from "@/components/MobileNav";
 
 interface Rule {
   id: string;
@@ -142,15 +143,18 @@ export default function AutomationPage() {
   return (
     <div className="flex h-screen gap-5 bg-[#F7FAFC] dark:bg-gray-950 overflow-hidden transition-colors duration-200">
       <Sidebar />
+
+      <MobileNav />
+
       {showModal && <NewRuleModal onClose={() => setModal(false)} onSave={(r) => setRules((p) => [...p, r])} />}
 
-      <div className="mt-10 w-[78%]">
-        <main className="flex-1 overflow-y-auto px-6 lg:px-10 py-8" onClick={() => setMenuOpen(null)}>
+      <div className="xl:mt-10 mt-16 overflow-scroll xl:overflow-x-hidden mb-10 xl:w-[78%]">
+        <main className="flex-1 overflow-y-auto px-6 xl:px-10 py-8" onClick={() => setMenuOpen(null)}>
           {/* Header */}
           <div className="flex items-start justify-between mb-8 flex-wrap gap-3">
             <div>
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Automation Rules</h1>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">Create automated responses and actions based on customer intents</p>
+              <p className="text-sm text-gray-500 xl:block hidden dark:text-gray-400 mt-0.5">Create automated responses and actions based on customer intents</p>
             </div>
             <button
               onClick={() => setModal(true)}
@@ -170,8 +174,8 @@ export default function AutomationPage() {
               <Link key={rule.id} href={`/dashboard/automation/rules/`}>
                 <div
                   className={`border mt-10 rounded-2xl p-5 py-12 transition-all cursor-pointer ${rule.status === "Draft"
-                      ? "bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 opacity-75"
-                      : "bg-white dark:bg-gray-900 border-gray-100 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 hover:shadow-md dark:hover:shadow-lg dark:hover:shadow-gray-800"
+                    ? "bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 opacity-75"
+                    : "bg-white dark:bg-gray-900 border-gray-100 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 hover:shadow-md dark:hover:shadow-lg dark:hover:shadow-gray-800"
                     }`}
                 >
                   {/* Rule header */}

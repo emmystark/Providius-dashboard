@@ -45,7 +45,7 @@ export default function Sidebar() {
   const themes: ("Light" | "Dark" | "System")[] = ["Light", "Dark", "System"];
 
   return (
-    <aside className="w-64 rounded-3xl ml-6 mt-10 pl-2 flex-shrink-0 bg-white dark:bg-gray-900 border-r border-gray-100 dark:border-gray-800 flex flex-col h-[92%] sticky top-0 transition-colors duration-200">
+    <aside className="w-64 xl:flex hidden rounded-3xl ml-6 mt-10 pl-2 flex-shrink-0 bg-white dark:bg-gray-900 border-r border-gray-100 dark:border-gray-800 flex-col h-[92%] sticky top-0 transition-colors duration-200">
       {/* Logo */}
       <div className="flex float-left w-60 right-[9%] top-[-2%] gap-2.5 px-0 py-0 absolute border-gray-100 dark:border-gray-800">
         <ProvidusLogo />
@@ -59,7 +59,7 @@ export default function Sidebar() {
           return (
             <Link key={href} href={href}>
               <div
-                className={`flex h-12 items-center gap-3 px-5 py-2.5 rounded-xl text-md font-medium transition-colors cursor-pointer w-full ${
+                className={`flex cursor-pointer h-12 items-center gap-3 px-5 py-2.5 rounded-xl text-md font-medium transition-colors cursor-pointer w-full ${
                   active
                     ? "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400"
                     : "text-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-300"

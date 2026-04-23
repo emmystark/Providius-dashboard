@@ -23,7 +23,10 @@ export default function Stepper({ current }: { current: number }) {
                     : "bg-gray-200 text-gray-400"
                 }`}
               >
-                {done ? <img className="h-[10%] p-3 w-[10px]" src="/images/check1.png" alt="" /> : step.n}
+                {done ? <svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.44651e-05 4.23087L1.40203 2.82391L3.70388 5.08598L8.8097 4.44651e-05L10.2216 1.407L3.70388 7.88996L4.44651e-05 4.23087Z" fill="white"/>
+</svg>
+ : step.n}
               </div>
               <span
                 className={`text-sm font-medium ${

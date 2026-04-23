@@ -3,6 +3,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { Plus, Search, SlidersHorizontal, Eye, Pencil, Trash2, X, Check, RotateCcw, MoreHorizontal } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import Sidebar from "@/components/Sidebar"
+import MobileNav from '@/components/MobileNav'
 
 /* ── Types ──────────────────────────────────────────────────────────────── */
 interface Doc {
@@ -95,7 +96,7 @@ function UploadPanel({ state, onDismiss }: { state: UploadState; onDismiss: (id:
           </div>
           <div className="bg-gray-50 rounded-xl p-4">
             <p className="text-sm font-medium text-gray-700 mb-3 flex items-center gap-2">
-              <span className="text-base">🤖</span> AI is analyzing your document
+              <span className="text-base"></span> AI is analyzing your document
             </p>
             {STEPS.map((s, i) => {
               const done   = i < state.step
@@ -296,18 +297,21 @@ export default function KnowledgeBasePage() {
     <div className="flex gap-16 h-screen bg-[#F7FAFC] dark:bg-gray-950 overflow-hidden transition-colors duration-200">
       <Sidebar />
 
-      <div className="w-[76%] mt-[4.3%]">
+
+      <MobileNav/>
+
+      <div className="w-full xl:w-[76%] px-6 xl:px-6 pt-24 xl:pt-[4.3%] mb-16 xl:mb-0 pb-6 xl:pb-0 overflow-y-auto">
         {/* Header */}
-        <div className="flex items-start justify-between mb-6">
+        <div className="flex flex- xl:flex-row items-start xl:items-center justify-between mb-6 gap-4">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white transition-colors">Knowledge Base</h2>
-            <p className="text-sm text-gray-400 dark:text-gray-500 mt-0.5 transition-colors">Upload and manage documents that power your AI assistant</p>
+            <h2 className="text-xl xl:text-2xl font-bold text-gray-900 dark:text-white transition-colors">Knowledge Base</h2>
+            <p className="text-xs xl:text-sm text-gray-400 dark:text-gray-500 mt-0.5 transition-colors">Upload and manage documents</p>
           </div>
           <button
             onClick={() => fileRef.current?.click()}
-            className="flex items-center gap-2 bg-emerald-600 dark:bg-emerald-600 hover:bg-emerald-700 dark:hover:bg-emerald-700 text-white font-semibold rounded-xl px-5 py-2.5 text-sm transition-colors"
+            className="flex rounded-full items-center gap-2 bg-emerald-600 dark:bg-emerald-600 hover:bg-emerald-700 dark:hover:bg-emerald-700 text-white font-semibold xl:rounded-xl px-2.5 xl:px-5 py-2 xl:py-2.5 text-xs xl:text-sm transition-colors w-fit"
           >
-            <Plus size={14} /> Add Content
+            <Plus size={14} /> <span className='xl:block hidden'>Add Content</span>
           </button>
         </div>
 
@@ -317,7 +321,7 @@ export default function KnowledgeBasePage() {
           onDragLeave={() => setDragging(false)}
           onDrop={e => { e.preventDefault(); setDragging(false); Array.from(e.dataTransfer.files).forEach(startUpload) }}
           onClick={() => activeUploads.length === 0 && fileRef.current?.click()}
-          className={`border-2 border-dashed rounded-2xl transition-all mb-5 ${
+          className={`border-2 rounded-2xl transition-all mb-5 ${
             activeUploads.length > 0
               ? 'border-emerald-600 dark:border-emerald-600 bg-white dark:bg-gray-900 p-6 cursor-default transition-colors'
               : dragging
@@ -383,8 +387,8 @@ export default function KnowledgeBasePage() {
           </div>
         )}
 
-        {/* Documents table */}
-        <div className="bg-white dark:bg-gray-900 border border-none rounded-2xl">
+        {/* Documents table - Desktop view */}
+        <div className="hidden xl:block bg-white dark:bg-gray-900 border border-none rounded-2xl">
           <div className="px-6 py-4 border-b dark:border-none border-gray-100">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm font-bold dark:text-white text-gray-900">Uploaded Documents</h3>
@@ -399,7 +403,7 @@ export default function KnowledgeBasePage() {
                 <input
                   value={search} onChange={e => setSearch(e.target.value)}
                   placeholder="Search documents, content, or tags..."
-                  className="w-full bg-gray-50  border border-gray-100 rounded-xl pl-9 pr-4 py-2.5 text-sm outline-none focus:border-[#14A085] focus:ring-2 focus:ring-[#14A085]/10 transition-all"
+                  className="w-full dark:text-black bg-gray-50  border border-gray-100 rounded-xl pl-9 pr-4 py-2.5 text-sm outline-none focus:border-[#14A085] focus:ring-2 focus:ring-[#14A085]/10 transition-all"
                 />
               </div>
               <button className="px-4 py-2.5 bg-gray-50 border border-gray-100 rounded-xl text-sm text-gray-500 hover:border-gray-300 transition-colors">All Types</button>
@@ -453,6 +457,61 @@ export default function KnowledgeBasePage() {
                   <button onClick={() => setPreviewDoc(doc)} className="text-gray-300 hover:text-gray-500 transition-colors"><Eye size={14} /></button>
                   <button onClick={() => router.push('knowledge-base/edit')} className="text-gray-300 hover:text-[#14A085] transition-colors"><Pencil size={14} /></button>
                   <button onClick={() => setDocs(d => d.filter(x => x.id !== doc.id))} className="text-gray-300 hover:text-red-400 transition-colors"><Trash2 size={14} /></button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Documents list - Mobile view */}
+        <div className="xl:hidden">
+          <div className="mb-4">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-sm font-bold dark:text-white text-gray-900">Documents ({docs.length})</h3>
+            </div>
+            <div className="relative mb-4">
+              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+              <input
+                value={search} onChange={e => setSearch(e.target.value)}
+                placeholder="Search..."
+                className="w-full dark:text-black bg-white dark:bg-gray-900 border dark:border-gray-700 border-gray-200 rounded-lg pl-9 pr-4 py-2 text-xs outline-none focus:border-[#14A085] focus:ring-1 focus:ring-[#14A085]/10 transition-all"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            {filteredDocs.map(doc => (
+              <div key={doc.id} className="bg-white dark:bg-gray-900 border dark:border-gray-700 border-gray-100 rounded-lg p-4">
+                <div className="flex items-start gap-3 mb-3">
+                  <div className={`w-10 h-10 rounded-lg ${doc.iconBg} flex items-center justify-center text-white text-[9px] font-bold flex-shrink-0`}>
+                    {doc.icon}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold dark:text-white text-gray-900 truncate">{doc.name}</p>
+                    {doc.size && <p className="text-xs text-gray-400">{doc.size}</p>}
+                  </div>
+                  <button onClick={() => setDocs(d => d.filter(x => x.id !== doc.id))} className="text-gray-300 hover:text-red-400 transition-colors flex-shrink-0">
+                    <Trash2 size={16} />
+                  </button>
+                </div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full ${STATUS_CLS[doc.status]}`}>
+                    {doc.status === 'Processing' && <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse" />}
+                    {doc.status}
+                  </span>
+                  <span className="text-xs text-gray-400">{doc.type}</span>
+                </div>
+                <div className="flex items-center justify-between text-xs text-gray-400 mb-3">
+                  <span>Uploaded {doc.uploaded}</span>
+                  {doc.usage && <span>{doc.usage} queries</span>}
+                </div>
+                <div className="flex items-center gap-2">
+                  <button onClick={() => setPreviewDoc(doc)} className="flex-1 text-xs font-medium text-[#14A085] border border-[#14A085]/30 rounded-lg py-2 hover:bg-[#E6F7F4] transition-colors">
+                    View
+                  </button>
+                  <button onClick={() => router.push('knowledge-base/edit')} className="flex-1 text-xs font-medium text-gray-600 dark:text-gray-300 border dark:border-gray-600 border-gray-200 rounded-lg py-2 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    Edit
+                  </button>
                 </div>
               </div>
             ))}

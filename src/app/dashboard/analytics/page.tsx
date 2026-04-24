@@ -261,7 +261,7 @@ export default function AnalyticsPage() {
             </div>
 
             {/* Row 2 — Escalation Insights / Top KB / Customer Satisfaction */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 mb-5">
 
               {/* Escalation Insights */}
               <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 shadow-sm dark:shadow-none transition-colors duration-200">
@@ -343,7 +343,7 @@ export default function AnalyticsPage() {
                 <span className="text-base"></span>
                 <h3 className="text-base font-semibold text-white">AI Smart Insights</h3>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
                 {[
                   { priority: "High Priority", priorityColor: "bg-red-500/20 text-red-400", icon: "/analytics/risingicon.svg", title: "Escalations increased by 15% this week.", body: 'Most users are asking about "International Shipping" which isn\'t in your KB.' },
                   { priority: "Medium", priorityColor: "bg-yellow-500/20 text-yellow-400", icon: "/analytics/mediumicon.svg", title: 'Improve "Return FAQ" document.', body: "AI confidence is dropping for return-related queries. Update policy details." },

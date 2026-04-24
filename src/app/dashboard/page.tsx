@@ -179,7 +179,7 @@ export default function DashboardPage() {
 
       <MobileNav />
 
-      <main className="flex-1 mt-12 xl:mt-0 px-4 md:px-6 xl:px-0 overflow-y-auto pb-20 xl:pb-0">
+      <main className="flex-1 mt-12 xl:mt-0 px-4 xl:px-6 xl:px-0 overflow-y-auto pb-20 xl:pb-0">
         {/* Header */}
         <header className="bg-none px-3 rounded-lg dark:bg-gray-900 mt-9 xl:mt-[3.7%] backdrop-blur-sm xl:border xl:border-b border-none border-gray-100 dark:border-gray-800 xl:px-4 xl:ml-8 xl:w-[95%] py-4 xl:py-5 flex flex-col xl:flex-row items-start xl:items-center justify-between xl:sticky top-0 z-10 xl:rounded-xl transition-colors duration-200 xl:shadow-sm dark:shadow-none">
           <div className="w-full xl:w-auto xl:mb-0">
@@ -187,7 +187,7 @@ export default function DashboardPage() {
             <p className="text-xs xl:text-sm text-gray-500 dark:text-gray-400 mt-0.5">{"Here's what's happening with your support today"}</p>
           </div>
           <div className="flex items-center gap-2 xl:gap-3 w-full xl:w-auto">
-            <button className="hidden md:flex items-center gap-2 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-xl px-3 xl:px-4 py-2 xl:py-2.5 text-xs xl:text-sm text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+            <button className="hidden xl:flex items-center gap-2 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-xl px-3 xl:px-4 py-2 xl:py-2.5 text-xs xl:text-sm text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
               <ExportIcon />
               <span className="hidden xl:inline">Export</span>
             </button>

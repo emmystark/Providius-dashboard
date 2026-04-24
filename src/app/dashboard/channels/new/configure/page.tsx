@@ -33,30 +33,30 @@ export default function ConfigurePage() {
 
       <MobileNav/>
 
-      <main className="flex-1 mt-16 xl:mt-9 overflow-y-auto px-4 md:px-6 xl:px-10 py-4 md:py-6 xl:py-8">
-        <h1 className="text-xl md:text-3xl font-semibold mb-5 text-gray-900 dark:text-white mb-10 transition-colors duration-200">Add a New Channel</h1>
-        <p className="text-xs md:text-sm hidden xl:block  text-gray-400 dark:text-gray-100 mb-6 transition-colors duration-200">
+      <main className="flex-1 mt-16 xl:mt-9 overflow-y-auto px-7 xl:px-6 xl:px-10 py-4 xl:py-6 xl:py-8">
+        <h1 className="text-xl xl:text-3xl mb-5 xl:mb-2 font-semibold mb-5 text-gray-900 dark:text-white mb-10 transition-colors duration-200">Add a New Channel</h1>
+        <p className="text-xs xl:text-sm hidden xl:block  text-gray-400 dark:text-gray-100 mb-6 transition-colors duration-200">
           Connect a communication channel to start handling customer conversations with AI.
         </p>
 
-        <div className="block xl:hidden mb-6 md:mb-8">
+        <div className="block xl:hidden mb-6 xl:mb-8">
                  <StepperIn current={3} />
                </div>
-        <div className="hidden xl:block mb-6 md:mb-8">
+        <div className="hidden xl:block mb-6 xl:mb-8">
                  <StepperDe current={3} />
                </div>
 
         <div className="max-w-5xl">
-          <h2 className="text-base md:text-lg font-semibold text-gray-900 dark:text-white mb-1 transition-colors duration-200">Configure your channel settings</h2>
-          <p className="text-xs md:text-sm text-gray-400 dark:text-gray-500 mb-6 md:mb-8 transition-colors duration-200">Customize how your AI handles customer conversations on this channel</p>
+          <h2 className="text-base xl:text-lg font-semibold text-gray-900 dark:text-white mb-1 transition-colors duration-200">Configure your channel settings</h2>
+          <p className="text-xs xl:text-sm text-gray-400 dark:text-gray-500 mb-6 xl:mb-8 transition-colors duration-200">Customize how your AI handles customer conversations on this channel</p>
 
           {/* AI Behaviour */}
-          <section className="mb-6 md:mb-8">
-            <h3 className="text-sm md:text-base font-semibold text-gray-900 dark:text-white mb-3 md:mb-4 transition-colors duration-200">AI Behaviour</h3>
+          <section className="mb-6 xl:mb-8">
+            <h3 className="text-sm xl:text-base font-semibold text-gray-900 dark:text-white mb-3 xl:mb-4 transition-colors duration-200">AI Behaviour</h3>
 
             {/* Toggle row */}
-            <div className="flex items-center justify-between mb-4 md:mb-5">
-              <span className="text-xs md:text-sm text-gray-700 dark:text-gray-300 transition-colors duration-200">Use AI Auto-Response</span>
+            <div className="flex items-center justify-between mb-4 xl:mb-5">
+              <span className="text-xs xl:text-sm text-gray-700 dark:text-gray-300 transition-colors duration-200">Use AI Auto-Response</span>
               <button
                 type="button"
                 onClick={() => setAiAuto((v) => !v)}
@@ -72,12 +72,12 @@ export default function ConfigurePage() {
               </button>
             </div>
 
-            <p className="text-xs md:text-sm text-gray-700 dark:text-gray-300 mb-2 md:mb-3">Select response tone</p>
-            <div className="space-y-0 border border-gray-200 dark:border-gray-700 rounded-lg md:rounded-xl overflow-hidden">
+            <p className="text-xs xl:text-sm text-gray-700 dark:text-gray-300 mb-2 xl:mb-3">Select response tone</p>
+            <div className="space-y-0 border border-gray-200 dark:border-gray-700 rounded-lg xl:rounded-xl overflow-hidden">
               {TONES.map((t, i) => (
                 <label
                   key={t}
-                  className={`flex items-center gap-3 px-3 md:px-5 py-3 md:py-4 cursor-pointer transition-colors hover:bg-gray-50 dark:hover:bg-gray-800 ${
+                  className={`flex items-center gap-3 px-3 xl:px-5 py-3 xl:py-4 cursor-pointer transition-colors hover:bg-gray-50 dark:hover:bg-gray-800 ${
                     i < TONES.length - 1 ? "border-b border-gray-100 dark:border-gray-700" : ""
                   }`}
                 >
@@ -98,16 +98,16 @@ export default function ConfigurePage() {
                     onChange={() => setTone(t)}
                     className="sr-only"
                   />
-                  <span className="text-xs md:text-sm text-gray-700 dark:text-gray-300">{t}</span>
+                  <span className="text-xs xl:text-sm text-gray-700 dark:text-gray-300">{t}</span>
                 </label>
               ))}
             </div>
           </section>
 
           {/* AI Confidence Level */}
-          <section className="mb-6 md:mb-8 leading-[90px]">
-            <h3 className="text-sm md:text-base font-semibold text-gray-900 dark:text-white mb-1 transition-colors duration-200">AI Confidence Level</h3>
-            <p className="text-xs md:text-sm text-gray-400 dark:text-gray-500 mb-4 md:mb-5 transition-colors duration-200">
+          <section className="mb-6 xl:mb-8 leading-[90px]">
+            <h3 className="text-sm xl:text-base font-semibold text-gray-900 dark:text-white mb-1 transition-colors duration-200">AI Confidence Level</h3>
+            <p className="text-xs xl:text-sm text-gray-400 dark:text-gray-500 mb-4 xl:mb-5 transition-colors duration-200">
               Adjust how much your AI should escalate to human agents versus automating responses.
             </p>
 
@@ -118,10 +118,10 @@ export default function ConfigurePage() {
                 className="absolute -top-8 flex flex-col items-center transition-all"
                 style={{ left: `calc(${confidence}% - 28px)` }}
               >
-                <span className="text-[10px] md:text-xs text-gray-500 whitespace-nowrap mb-1">
+                <span className="text-[10px] xl:text-xs text-gray-500 whitespace-nowrap mb-1">
                   Escalated to Human Agent
                 </span>
-                <span className="bg-emerald-600 dark:bg-emerald-600 text-white text-[10px] md:text-xs font-semibold px-2 py-0.5 rounded">
+                <span className="bg-emerald-600 dark:bg-emerald-600 text-white text-[10px] xl:text-xs font-semibold px-2 py-0.5 rounded">
                   {confidence}%
                 </span>
               </div>
@@ -138,25 +138,25 @@ export default function ConfigurePage() {
                 }}
               />
             </div>
-            <div className="flex justify-between text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-1">
+            <div className="flex justify-between text-[10px] xl:text-xs text-gray-400 dark:text-gray-500 mt-1">
               <span>More Escalation</span>
               <span>More Automation</span>
             </div>
           </section>
 
           {/* Escalation Rules */}
-          <section className="mb-8 md:mb-10">
-            <h3 className="text-sm md:text-base font-semibold text-gray-900 dark:text-white mb-1">Escalation Rules</h3>
-            <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-3">Assigned Human Agent</p>
+          <section className="mb-8 xl:mb-10">
+            <h3 className="text-sm xl:text-base font-semibold text-gray-900 dark:text-white mb-1">Escalation Rules</h3>
+            <p className="text-xs xl:text-sm text-gray-500 dark:text-gray-400 mb-3">Assigned Human Agent</p>
 
-            <div className="flex items-center gap-3 p-2 md:p-3 border border-gray-200 dark:border-gray-700 rounded-lg md:rounded-xl w-fit">
-              <div className="w-7 md:w-8 h-7 md:h-8 rounded-full bg-[#E6F7F4] dark:bg-emerald-900 flex items-center justify-center text-[10px] md:text-xs font-bold text-[#14A085] flex-shrink-0">
+            <div className="flex items-center gap-3 p-2 xl:p-3 border border-gray-200 dark:border-gray-700 rounded-lg xl:rounded-xl w-fit">
+              <div className="w-7 xl:w-8 h-7 xl:h-8 rounded-full bg-[#E6F7F4] dark:bg-emerald-900 flex items-center justify-center text-[10px] xl:text-xs font-bold text-[#14A085] flex-shrink-0">
                 EW
               </div>
-              <span className="text-xs md:text-sm font-medium text-gray-800 dark:text-gray-200">Emma Wilson</span>
+              <span className="text-xs xl:text-sm font-medium text-gray-800 dark:text-gray-200">Emma Wilson</span>
             </div>
 
-            <p className="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2 md:mt-3">
+            <p className="text-[10px] xl:text-xs text-gray-400 dark:text-gray-500 mt-2 xl:mt-3">
               If AI confidence is {confidence}% and below escalate to human agent assigned for this channel
             </p>
           </section>
@@ -165,7 +165,7 @@ export default function ConfigurePage() {
             <button
               type="button"
               onClick={() => router.push("/dashboard/channels/new/test")}
-              className="bg-emerald-600 dark:bg-[#0D9488] hover:bg-[#0d7a65] dark:hover:bg-[#0D8488] text-white font-semibold rounded-lg md:rounded-xl px-6 md:px-8 py-2.5 md:py-3 text-xs md:text-sm transition-colors"
+              className="bg-emerald-600 dark:bg-[#0D9488] hover:bg-[#0d7a65] dark:hover:bg-[#0D8488] text-white font-semibold rounded-lg xl:rounded-xl px-6 xl:px-8 py-2.5 xl:py-3 text-xs xl:text-sm transition-colors"
             >
               Continue
             </button>

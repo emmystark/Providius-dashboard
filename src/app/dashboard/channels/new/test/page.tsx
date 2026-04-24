@@ -32,34 +32,34 @@ export default function TestActivatePage() {
 
       <MobileNav/>
 
-      <main className="flex-1 mt-16 xl:mt-9  overflow-y-auto px-4 md:px-6 xl:px-10 py-4 md:py-6 xl:py-8">
-        <h1 className="text-xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-1 transition-colors duration-200">Add a New Channel</h1>
-        <p className="text-xs md:text-sm hidden xl:block text-gray-400 dark:text-gray-100 mb-6 transition-colors duration-200">
+      <main className="flex-1 mt-16 xl:mt-9  overflow-y-auto px-7 xl:px-6 xl:px-10 py-4 xl:py-6 xl:py-8">
+        <h1 className="text-xl xl:text-3xl mb-5 xl:mb-2 font-semibold text-gray-900 dark:text-white mb-1 transition-colors duration-200">Add a New Channel</h1>
+        <p className="text-xs xl:text-sm hidden xl:block text-gray-400 dark:text-gray-100 mb-6 transition-colors duration-200">
           Connect a communication channel to start handling customer conversations with AI.
         </p>
 
-        <div className="block xl:hidden mb-6 md:mb-8">
+        <div className="block xl:hidden mb-6 xl:mb-8">
                  <StepperIn current={3} />
                </div>
-        <div className="hidden xl:block mb-6 md:mb-8">
+        <div className="hidden xl:block mb-6 xl:mb-8">
                  <StepperDe current={3} />
                </div>
 
 
-        <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-4 md:mb-5">
+        <p className="text-xs xl:text-sm text-gray-500 dark:text-gray-400 mb-4 xl:mb-5">
           Run a simulated chat here to ensure your AI is functioning correctly and then activate the channel
         </p>
 
         {/* Chat preview window */}
-        <div className="max-w-5xl border border-gray-200 dark:border-gray-700 rounded-lg md:rounded-2xl bg-white dark:bg-gray-900 transition-colors duration-200 overflow-hidden">
+        <div className="max-w-5xl border border-gray-200 dark:border-gray-700 rounded-lg xl:rounded-2xl bg-white dark:bg-gray-900 transition-colors duration-200 overflow-hidden">
           {/* Chat header */}
-          <div className="flex items-center gap-2 md:gap-3 px-3 md:px-5 py-3 md:py-4 border-b border-gray-100 dark:border-gray-800 transition-colors duration-200">
-            <div className="w-7 md:w-8 h-7 md:h-8 rounded-lg bg-orange-500 dark:bg-orange-600 flex transition-colors duration-200 items-center justify-center text-white text-[10px] md:text-xs font-bold flex-shrink-0">
+          <div className="flex items-center gap-2 xl:gap-3 px-3 xl:px-5 py-3 xl:py-4 border-b border-gray-100 dark:border-gray-800 transition-colors duration-200">
+            <div className="w-7 xl:w-8 h-7 xl:h-8 rounded-lg bg-orange-500 dark:bg-orange-600 flex transition-colors duration-200 items-center justify-center text-white text-[10px] xl:text-xs font-bold flex-shrink-0">
               TC
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-xs md:text-sm font-semibold text-gray-900 dark:text-white transition-colors duration-200">Temu Company</p>
-              <p className="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 transition-colors duration-200">Business Account</p>
+              <p className="text-xs xl:text-sm font-semibold text-gray-900 dark:text-white transition-colors duration-200">Temu Company</p>
+              <p className="text-[10px] xl:text-xs text-gray-400 dark:text-gray-500 transition-colors duration-200">Business Account</p>
             </div>
             {/* Expand icon */}
             <button className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 flex-shrink-0">
@@ -70,15 +70,15 @@ export default function TestActivatePage() {
           </div>
 
           {/* Messages */}
-          <div className="px-3 md:px-5  py-3 md:py-5 space-y-3 md:space-y-4 md:max-h-[820px] max-h-[280px] overflow-y-auto bg-gray-50 dark:bg-gray-800 transition-colors duration-200">
+          <div className="px-3 xl:px-5  py-3 xl:py-5 space-y-3 xl:space-y-4 xl:max-h-[820px] max-h-[280px] overflow-y-auto bg-gray-50 dark:bg-gray-800 transition-colors duration-200">
             {!tested && !loading && (
-              <div className="flex items-center justify-center h-32 md:h-48 text-xs md:text-sm text-gray-400 dark:text-gray-500 transition-colors duration-200 text-center px-2">
+              <div className="flex items-center justify-center h-32 xl:h-48 text-xs xl:text-sm text-gray-400 dark:text-gray-500 transition-colors duration-200 text-center px-2">
                 Press &ldquo;Run Test&rdquo; to simulate a conversation
               </div>
             )}
 
             {loading && (
-              <div className="flex items-center justify-center h-32 md:h-48 gap-2 text-xs md:text-sm text-gray-400 dark:text-gray-500 transition-colors duration-200">
+              <div className="flex items-center justify-center h-32 xl:h-48 gap-2 text-xs xl:text-sm text-gray-400 dark:text-gray-500 transition-colors duration-200">
                 <svg className="animate-spin w-4 h-4 text-[#14A085]" fill="none" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeDasharray="32" strokeDashoffset="12"/>
                 </svg>
@@ -90,7 +90,7 @@ export default function TestActivatePage() {
               <div key={i} className={`flex ${msg.from === "ai" ? "justify-end" : "justify-start"}`}>
                 <div className="max-w-[78%]">
                   <div
-                    className={`px-3 md:px-4 py-2 md:py-3 rounded-lg md:rounded-2xl text-xs md:text-sm leading-relaxed ${
+                    className={`px-3 xl:px-4 py-2 xl:py-3 rounded-lg xl:rounded-2xl text-xs xl:text-sm leading-relaxed ${
                       msg.from === "ai"
                         ? "bg-emerald-600 dark:bg-emerald-600 text-white transition-colors duration-200 rounded-br-sm"
                         : "bg-white dark:bg-gray-800 border dark:border-gray-700 border-gray-200 text-gray-800 dark:text-gray-200 transition-colors duration-200 rounded-bl-sm"
@@ -99,21 +99,21 @@ export default function TestActivatePage() {
                     {msg.text}
                     {msg.from === "ai" && msg.sources && (
                       <div className="mt-2 pt-2 border-t border-white/20">
-                        <p className="text-[9px] md:text-[11px] text-white/70 mb-1">📎 Sources used:</p>
-                        <p className="text-[9px] md:text-[11px] text-white/80">{msg.sources.join(", ")}</p>
+                        <p className="text-[9px] xl:text-[11px] text-white/70 mb-1">📎 Sources used:</p>
+                        <p className="text-[9px] xl:text-[11px] text-white/80">{msg.sources.join(", ")}</p>
                       </div>
                     )}
                   </div>
                   <div className={`flex items-center gap-1.5 mt-1 ${msg.from === "ai" ? "justify-end" : "justify-start"}`}>
-                    <span className="text-[9px] md:text-[11px] text-gray-400">{msg.time}</span>
+                    <span className="text-[9px] xl:text-[11px] text-gray-400">{msg.time}</span>
                     {msg.conf && (
                       <>
-                        <span className="text-[9px] md:text-[11px] text-gray-300">·</span>
+                        <span className="text-[9px] xl:text-[11px] text-gray-300">·</span>
                         <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
                           <circle cx="12" cy="12" r="10" stroke="#14A085" strokeWidth="2"/>
                           <path d="M12 8v4l3 3" stroke="#14A085" strokeWidth="2" strokeLinecap="round"/>
                         </svg>
-                        <span className="text-[9px] md:text-[11px] text-gray-400">AI · {msg.conf}</span>
+                        <span className="text-[9px] xl:text-[11px] text-gray-400">AI · {msg.conf}</span>
                       </>
                     )}
                   </div>
@@ -124,20 +124,20 @@ export default function TestActivatePage() {
         </div>
 
         {/* Action buttons */}
-        <div className="flex items-center justify-end gap-2 md:gap-3 mt-4 md:mt-6 max-w-5xl flex-wrap">
+        <div className="flex items-center justify-end gap-2 xl:gap-3 mt-4 xl:mt-6 max-w-5xl flex-wrap">
           {tested ? (
             <>
               <button
                 type="button"
                 onClick={() => { setTested(false); runTest(); }}
-                className="text-xs md:text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 px-3 md:px-5 py-2 md:py-2.5 border border-gray-200 dark:border-gray-700 rounded-lg md:rounded-xl transition-colors"
+                className="text-xs xl:text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 px-3 xl:px-5 py-2 xl:py-2.5 border border-gray-200 dark:border-gray-700 rounded-lg xl:rounded-xl transition-colors"
               >
                 Re-run test
               </button>
               <button
                 type="button"
                 onClick={() => router.push("/dashboard")}
-                className="bg-[#14A085] hover:bg-[#0d7a65] dark:bg-[#0D9488] dark:hover:bg-[#0D8488] text-white font-semibold rounded-lg md:rounded-xl px-4 md:px-6 py-2 md:py-2.5 text-xs md:text-sm transition-colors"
+                className="bg-[#14A085] hover:bg-[#0d7a65] dark:bg-[#0D9488] dark:hover:bg-[#0D8488] text-white font-semibold rounded-lg xl:rounded-xl px-4 xl:px-6 py-2 xl:py-2.5 text-xs xl:text-sm transition-colors"
               >
                 Activate Channel
               </button>
@@ -147,7 +147,7 @@ export default function TestActivatePage() {
               type="button"
               onClick={runTest}
               disabled={loading}
-              className="flex items-center justify-center gap-2 bg-[#14A085] hover:bg-[#0d7a65] dark:bg-[#0D9488] dark:hover:bg-[#0D8488] text-white font-semibold rounded-lg md:rounded-xl px-6 md:px-8 py-2 md:py-3 text-xs md:text-sm transition-colors disabled:opacity-60 w-full md:w-auto"
+              className="flex items-center justify-center gap-2 bg-[#14A085] hover:bg-[#0d7a65] dark:bg-[#0D9488] dark:hover:bg-[#0D8488] text-white font-semibold rounded-lg xl:rounded-xl px-6 xl:px-8 py-2 xl:py-3 text-xs xl:text-sm transition-colors disabled:opacity-60 w-full xl:w-auto"
             >
               {loading ? (
                 <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">

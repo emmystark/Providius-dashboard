@@ -43,7 +43,7 @@ export default function Navbar() {
           {/* Mobile hamburger / Close button */}
           <button
             ref={buttonRef}                    // ← Attach ref here
-            className="md:hidden flex flex-col gap-1.5 p-1 cursor-pointer relative w-6 h-6"
+            className="xl:hidden flex flex-col gap-1.5 p-1 cursor-pointer relative w-6 h-6"
             onClick={() => setMenuOpen(!menuOpen)}   // ← Simplified: no need for stopPropagation anymore
           >
             {/* Top line */}

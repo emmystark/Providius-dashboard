@@ -207,13 +207,13 @@ export default function ConversationsPage() {
         className={`${selectedId ? "hidden xl:flex" : "flex"} xl:flex xl:ml-16 mt-20 px-4 xl:px-0 w-full xl:w-[23%] xl:flex-shrink-0 xl:mt-10 xl:h-[92%] h-full xl:border-r border-gray-100 dark:border-gray-800 flex-col transition-colors duration-200 pb-20 xl:pb-0 bg-white dark:bg-gray-900`}
       >
         {/* Header with Search */}
-        <div className="p-4 md:p-6 bg-white  dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 flex-shrink-0 transition-colors duration-200">
+        <div className="p-4 xl:p-6 bg-white  dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 flex-shrink-0 transition-colors duration-200">
           {/* Title and Add Button */}
           <div className="flex items-center justify-between mb-4 gap-2">
-            <h2 className="text-2xl md:text-lg font-bold text-gray-900 dark:text-white">
+            <h2 className="text-2xl xl:text-lg font-bold text-gray-900 dark:text-white">
               Conversations
             </h2>
-            <button className="flex items-center justify-center w-8 h-8 md:w-9 md:h-9 rounded-full bg-teal-500 hover:bg-teal-600 text-white flex-shrink-0 transition-colors">
+            <button className="flex items-center justify-center w-8 h-8 xl:w-9 xl:h-9 rounded-full bg-teal-500 hover:bg-teal-600 text-white flex-shrink-0 transition-colors">
               <Plus size={16} />
             </button>
           </div>
@@ -226,7 +226,7 @@ export default function ConversationsPage() {
             />
             <input
               placeholder="Search conversations..."
-              className="w-full bg-gray-50 h-10 xl:h-10 dark:bg-gray-800 rounded-lg pl-9 pr-4 py-2 text-xs md:text-sm outline-none placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-white transition-colors"
+              className="w-full bg-gray-50 h-10 xl:h-10 dark:bg-gray-800 rounded-lg pl-9 pr-4 py-2 text-xs xl:text-sm outline-none placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-white transition-colors"
             />
           </div>
 
@@ -254,49 +254,49 @@ export default function ConversationsPage() {
             <div
               key={c.id}
               onClick={() => setSelectedId(c.id)}
-              className={`px-3 md:px-4 py-3 md:py-4 cursor-pointer bg-none hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex gap-3 border-none xl:border-l-2 ${
+              className={`px-3 xl:px-4 py-3 xl:py-4 cursor-pointer bg-none hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex gap-3 border-none xl:border-l-2 ${
                 c.active
                   ? "xl:bg-teal-50 dark:bg-teal-900/10 border-teal-500"
                   : "border-transparent"
               }`}
             >
               {/* Avatar */}
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white text-xs md:text-sm font-bold flex-shrink-0">
+              <div className="w-10 h-10 xl:w-12 xl:h-12 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white text-xs xl:text-sm font-bold flex-shrink-0">
                 {getInitials(c.name)}
               </div>
 
               {/* Content */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2 mb-0.5">
-                  <span className="text-xs md:text-sm font-semibold text-gray-900 dark:text-white truncate">
+                  <span className="text-xs xl:text-sm font-semibold text-gray-900 dark:text-white truncate">
                     {c.name}
                   </span>
-                  <span className="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 ml-auto flex-shrink-0">
+                  <span className="text-[10px] xl:text-xs text-gray-400 dark:text-gray-500 ml-auto flex-shrink-0">
                     {c.time}
                   </span>
                 </div>
-                <p className="text-[11px] md:text-xs text-gray-500 dark:text-gray-400 truncate mb-2">
+                <p className="text-[11px] xl:text-xs text-gray-500 dark:text-gray-400 truncate mb-2">
                   {c.preview}
                 </p>
                 <div className="flex items-center gap-1 flex-wrap">
                   {c.tag.includes("AI") && (
-                    <span className="flex items-center gap-1 text-[9px] md:text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400">
+                    <span className="flex items-center gap-1 text-[9px] xl:text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400">
                       <span className="w-1 h-1 bg-yellow-600 rounded-full" />
                       {c.tag}
                     </span>
                   )}
                   {c.tag.includes("Escalated") && (
-                    <span className="text-[9px] md:text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400">
+                    <span className="text-[9px] xl:text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400">
                       {c.tag}
                     </span>
                   )}
                   {c.tag.includes("Resolved") && (
-                    <span className="text-[9px] md:text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                    <span className="text-[9px] xl:text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
                       {c.tag}
                     </span>
                   )}
                   {c.channel && (
-                    <span className="text-[9px] md:text-[10px] font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded-full">
+                    <span className="text-[9px] xl:text-[10px] font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded-full">
                       {c.channel}
                     </span>
                   )}
@@ -315,39 +315,39 @@ export default function ConversationsPage() {
           } inset-0 xl:ml-16 xl:inset-auto w-full xl:w-[50%] h-full xl:h-[92%] xl:mt-10 bg-white dark:bg-gray-900 transition-colors duration-200 flex flex-col z-40`}
         >
           {/* Mobile Back Button */}
-          <div className="xl:hidden px-3 md:px-4 py-3 border-b border-gray-100 dark:border-gray-800 flex items-center gap-2 flex-shrink-0">
+          <div className="xl:hidden px-3 xl:px-4 py-3 border-b border-gray-100 dark:border-gray-800 flex items-center gap-2 flex-shrink-0">
             <button
               onClick={() => setSelectedId(null)}
               className="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white transition-colors"
             >
               <X size={16} />
             </button>
-            <h3 className="text-sm md:text-base font-semibold text-gray-900 dark:text-white truncate">
+            <h3 className="text-sm xl:text-base font-semibold text-gray-900 dark:text-white truncate">
               {selectedConvo.name}
             </h3>
           </div>
 
           {/* Chat Header - Desktop visible always, Mobile shown */}
-          <div className={`px-4 md:px-6 py-3 md:py-4 border-b border-gray-100 dark:border-gray-800 ${
-            selectedId ? "hidden md:flex" : "flex"
+          <div className={`px-4 xl:px-6 py-3 xl:py-4 border-b border-gray-100 dark:border-gray-800 ${
+            selectedId ? "hidden xl:flex" : "flex"
           } xl:flex items-center justify-between flex-shrink-0 transition-colors duration-200`}>
-            <div className="flex items-center gap-2 md:gap-3">
-              <div className="w-8 h-8 md:w-9 md:h-9 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center text-white text-xs md:text-sm font-bold transition-colors">
+            <div className="flex items-center gap-2 xl:gap-3">
+              <div className="w-8 h-8 xl:w-9 xl:h-9 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center text-white text-xs xl:text-sm font-bold transition-colors">
                 {getInitials(selectedConvo.name)}
               </div>
               <div>
-                <p className="text-xs md:text-sm font-semibold text-gray-900 dark:text-white transition-colors">
+                <p className="text-xs xl:text-sm font-semibold text-gray-900 dark:text-white transition-colors">
                   {selectedConvo.name}
                 </p>
-                <p className="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 transition-colors">
+                <p className="text-[10px] xl:text-xs text-gray-500 dark:text-gray-400 transition-colors">
                   {selectedConvo.channel} · Customer since Jan 2024
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-1 md:gap-2 flex-wrap">
+            <div className="flex items-center gap-1 xl:gap-2 flex-wrap">
             {escalated ? (
               <>
-                <span className="flex items-center gap-1 text-[10px] md:text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 md:px-3 py-1 md:py-1.5 rounded-full transition-colors">
+                <span className="flex items-center gap-1 text-[10px] xl:text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 xl:px-3 py-1 xl:py-1.5 rounded-full transition-colors">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"
@@ -359,24 +359,24 @@ export default function ConversationsPage() {
                   </svg>
                   Human Active
                 </span>
-                <div className="flex items-center gap-1 md:gap-2 text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors">
-                  <div className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white text-[9px] md:text-xs font-bold transition-colors">
+                <div className="flex items-center gap-1 xl:gap-2 text-xs xl:text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors">
+                  <div className="w-6 h-6 xl:w-7 xl:h-7 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white text-[9px] xl:text-xs font-bold transition-colors">
                     SJ
                   </div>
-                  <span className="hidden md:inline">Stark Jenkins</span>
+                  <span className="hidden xl:inline">Stark Jenkins</span>
                 </div>
               </>
             ) : (
               <>
-                <span className="flex items-center gap-1 text-[10px] md:text-xs font-medium text-teal-600 dark:text-teal-400 bg-teal-100 dark:bg-teal-900/30 px-2 md:px-3 py-1 md:py-1.5 rounded-full transition-colors">
+                <span className="flex items-center gap-1 text-[10px] xl:text-xs font-medium text-teal-600 dark:text-teal-400 bg-teal-100 dark:bg-teal-900/30 px-2 xl:px-3 py-1 xl:py-1.5 rounded-full transition-colors">
                   <span className="w-1 h-1 bg-teal-600 dark:bg-teal-400 rounded-full" /> AI Active
                 </span>
-                <span className="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 md:px-3 py-1 md:py-1.5 rounded-full transition-colors">
+                <span className="text-[10px] xl:text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 xl:px-3 py-1 xl:py-1.5 rounded-full transition-colors">
                   Confidence: 72%
                 </span>
                 <button
                   onClick={() => setShowEscalate(true)}
-                  className="flex items-center gap-1 text-[10px] md:text-xs font-semibold text-red-500 dark:text-red-400 border border-red-200 dark:border-red-900/50 px-2 md:px-3 py-1 md:py-1.5 rounded-full hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                  className="flex items-center gap-1 text-[10px] xl:text-xs font-semibold text-red-500 dark:text-red-400 border border-red-200 dark:border-red-900/50 px-2 xl:px-3 py-1 xl:py-1.5 rounded-full hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
                 >
                   <svg width="10" height="10" fill="none" viewBox="0 0 24 24">
                     <path
@@ -395,7 +395,7 @@ export default function ConversationsPage() {
         </div>
 
           {/* Messages Area */}
-          <div className="flex-1 overflow-y-auto scrollbar-thin px-3 md:px-5 xl:px-6 py-3 md:py-4 xl:py-5 space-y-3 md:space-y-4 bg-white dark:bg-gray-900 transition-colors duration-200">
+          <div className="flex-1 overflow-y-auto scrollbar-thin px-3 xl:px-5 xl:px-6 py-3 xl:py-4 xl:py-5 space-y-3 xl:space-y-4 bg-white dark:bg-gray-900 transition-colors duration-200">
             {msgs.map((msg, i) => (
               <div
                 key={i}
@@ -403,7 +403,7 @@ export default function ConversationsPage() {
               >
                 <div className="max-w-[85%] xl:max-w-[72%]">
                   <div
-                    className={`px-3 md:px-4 py-2 md:py-3 rounded-2xl text-xs md:text-sm leading-relaxed ${
+                    className={`px-3 xl:px-4 py-2 xl:py-3 rounded-2xl text-xs xl:text-sm leading-relaxed ${
                       msg.from === "human"
                         ? "bg-blue-500 dark:bg-blue-600 text-white rounded-br-sm transition-colors"
                         : msg.from === "ai"
@@ -413,7 +413,7 @@ export default function ConversationsPage() {
                   >
                     {msg.text}
                     {"sources" in msg && msg.sources && (
-                      <div className="mt-1.5 md:mt-2 pt-1.5 md:pt-2 border-t border-white/20 text-[10px] md:text-[11px]">
+                      <div className="mt-1.5 xl:mt-2 pt-1.5 xl:pt-2 border-t border-white/20 text-[10px] xl:text-[11px]">
                         <p className="text-white/70 mb-0.5">📎 Sources used:</p>
                         <p className="text-emerald-200">
                           {(msg.sources as string[]).join(", ")}
@@ -422,8 +422,8 @@ export default function ConversationsPage() {
                     )}
                   </div>
                   {msg.from === "ai" && !escalated && (
-                    <div className="flex justify-end gap-2 md:gap-3 mt-1 md:mt-1.5 px-1">
-                      <button className="text-[10px] md:text-[11px] text-teal-600 dark:text-teal-400 font-medium hover:underline transition-colors">
+                    <div className="flex justify-end gap-2 xl:gap-3 mt-1 xl:mt-1.5 px-1">
+                      <button className="text-[10px] xl:text-[11px] text-teal-600 dark:text-teal-400 font-medium hover:underline transition-colors">
                         Improve
                       </button>
                     </div>
@@ -435,38 +435,38 @@ export default function ConversationsPage() {
           {/* Input Area */}
           <div className="border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 flex-shrink-0 transition-colors duration-200">
             {!escalated && (
-              <div className="p-3 md:p-4 xl:p-5 space-y-2 md:space-y-3">
-                <div className="flex items-center gap-2 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-900/50 rounded-lg px-3 md:px-4 py-2 md:py-2.5 transition-colors">
+              <div className="p-3 xl:p-4 xl:p-5 space-y-2 xl:space-y-3">
+                <div className="flex items-center gap-2 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-900/50 rounded-lg px-3 xl:px-4 py-2 xl:py-2.5 transition-colors">
                   <div className="w-1.5 h-1.5 rounded-full bg-orange-500 dark:bg-orange-500 flex-shrink-0" />
-                  <span className="text-[10px] md:text-xs text-orange-700 dark:text-orange-400 font-medium transition-colors">
+                  <span className="text-[10px] xl:text-xs text-orange-700 dark:text-orange-400 font-medium transition-colors">
                     AI confidence dropped to 72%. Consider escalating...
                   </span>
                   <button
                     onClick={() => setShowEscalate(true)}
-                    className="bg-orange-500 dark:bg-orange-600 hover:bg-orange-600 dark:hover:bg-orange-700 text-white text-[10px] md:text-xs font-semibold px-2 md:px-3 py-1 md:py-1.5 rounded transition-colors flex-shrink-0 ml-auto"
+                    className="bg-orange-500 dark:bg-orange-600 hover:bg-orange-600 dark:hover:bg-orange-700 text-white text-[10px] xl:text-xs font-semibold px-2 xl:px-3 py-1 xl:py-1.5 rounded transition-colors flex-shrink-0 ml-auto"
                   >
                     Escalate Now
                   </button>
                 </div>
-                <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 rounded-lg px-3 md:px-4 py-2 md:py-2.5 transition-colors">
+                <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 rounded-lg px-3 xl:px-4 py-2 xl:py-2.5 transition-colors">
                   <input
                     placeholder="Type a message..."
                     value={compose}
                     onChange={(e) => setCompose(e.target.value)}
-                    className="flex-1 bg-transparent text-xs md:text-sm text-gray-700 dark:text-gray-300 placeholder-gray-400 dark:placeholder-gray-500 outline-none transition-colors"
+                    className="flex-1 bg-transparent text-xs xl:text-sm text-gray-700 dark:text-gray-300 placeholder-gray-400 dark:placeholder-gray-500 outline-none transition-colors"
                   />
                   <button className="text-gray-400 dark:text-gray-600 hover:text-gray-600 dark:hover:text-gray-400 transition-colors flex-shrink-0">
                     <Paperclip size={14} />
                   </button>
-                  <button className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-teal-500 hover:bg-teal-600 dark:bg-teal-600 dark:hover:bg-teal-700 flex items-center justify-center text-white flex-shrink-0 transition-colors">
+                  <button className="w-7 h-7 xl:w-8 xl:h-8 rounded-lg bg-teal-500 hover:bg-teal-600 dark:bg-teal-600 dark:hover:bg-teal-700 flex items-center justify-center text-white flex-shrink-0 transition-colors">
                     <Send size={13} />
                   </button>
                 </div>
               </div>
             )}
             {escalated && (
-              <div className="p-3 md:p-4 xl:p-5">
-                <div className="flex items-center justify-center py-1 md:py-1.5 mb-2 md:mb-3">
+              <div className="p-3 xl:p-4 xl:p-5">
+                <div className="flex items-center justify-center py-1 xl:py-1.5 mb-2 xl:mb-3">
                   <span className="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-1.5 transition-colors">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
                       <path
@@ -484,17 +484,17 @@ export default function ConversationsPage() {
                     AI Autopilot Disabled
                   </span>
                 </div>
-                <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 rounded-lg px-3 md:px-4 py-2 md:py-2.5 transition-colors">
+                <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 rounded-lg px-3 xl:px-4 py-2 xl:py-2.5 transition-colors">
                   <input
                     placeholder="Type as Stark Jenkins..."
                     value={compose}
                     onChange={(e) => setCompose(e.target.value)}
-                    className="flex-1 bg-transparent text-xs md:text-sm text-gray-700 dark:text-gray-300 placeholder-gray-400 dark:placeholder-gray-500 outline-none transition-colors"
+                    className="flex-1 bg-transparent text-xs xl:text-sm text-gray-700 dark:text-gray-300 placeholder-gray-400 dark:placeholder-gray-500 outline-none transition-colors"
                   />
                   <button className="text-gray-400 dark:text-gray-600 hover:text-gray-600 dark:hover:text-gray-400 transition-colors flex-shrink-0">
                     <Paperclip size={14} />
                   </button>
-                  <button className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-teal-500 hover:bg-teal-600 dark:bg-teal-600 dark:hover:bg-teal-700 flex items-center justify-center text-white flex-shrink-0 transition-colors">
+                  <button className="w-7 h-7 xl:w-8 xl:h-8 rounded-lg bg-teal-500 hover:bg-teal-600 dark:bg-teal-600 dark:hover:bg-teal-700 flex items-center justify-center text-white flex-shrink-0 transition-colors">
                     <Send size={13} />
                   </button>
                 </div>

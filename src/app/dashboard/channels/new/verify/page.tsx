@@ -4,6 +4,9 @@ import { useRouter } from "next/navigation";
 import Sidebar from "@/components/Sidebar";
 import ChannelStepper from "@/components/Stepper";
 import MobileNav from "@/components/MobileNav";
+import StepperIn from "@/components/StepperIn";
+import StepperDe from "@/components/StepperDe";
+
 
 export default function VerifyOTPPage() {
   const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
@@ -43,18 +46,22 @@ export default function VerifyOTPPage() {
 
       <MobileNav/>
 
-      <main className="flex-1 overflow-y-auto px-4 md:px-6 xl:px-10 py-4 md:py-6 xl:py-8">
-        <h1 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-1 transition-colors duration-200">Add a New Channel</h1>
-        <p className="text-xs md:text-sm text-gray-400 dark:text-gray-500 mb-6 transition-colors duration-200">
+      <main className="flex-1 mt-16 xl:mt-9  overflow-y-auto px-4 md:px-6 xl:px-10 py-4 md:py-6 xl:py-8">
+        <h1 className="text-xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-1 transition-colors duration-200">Add a New Channel</h1>
+        <p className="text-xs md:text-sm hidden xl:block text-gray-400 dark:text-gray-100 mb-6 transition-colors duration-200">
           Connect a communication channel to start handling customer conversations with AI.
         </p>
 
-        <div className="mb-6 md:mb-8">
-          <ChannelStepper current={2} />
-        </div>
+        <div className="block xl:hidden mb-6 md:mb-8">
+                 <StepperIn current={3} />
+               </div>
+        <div className="hidden xl:block mb-6 md:mb-8">
+                 <StepperDe current={3} />
+               </div>
+
 
         {/* OTP card */}
-        <div className="max-w-md">
+        <div className="max-w-xl w-full border border-gray-200 dark:border-gray-800 rounded-lg md:rounded-xl p-6 md:p-10 mx-auto transition-colors duration-200">
           <h2 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-200">Verify Email OTP</h2>
           <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-6 md:mb-8 transition-colors duration-200">
             Enter the OTP sent to{" "}
@@ -74,7 +81,7 @@ export default function VerifyOTPPage() {
                 value={digit}
                 onChange={(e) => handleChange(i, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(i, e)}
-                className={`flex-1 h-11 md:h-12 text-center text-lg font-semibold rounded-lg md:rounded-xl border-2 outline-none transition-all dark:bg-gray-800 dark:text-white ${
+                className={`flex-1 h-11 md:h-12 w-10 xl:w-5 text-center text-lg font-semibold rounded-lg md:rounded-xl border-2 outline-none transition-all dark:bg-gray-800 dark:text-white ${
                   digit
                     ? "border-emerald-600 dark:border-emerald-600 text-emerald-600 dark:text-emerald-400"
                     : "border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:border-[#14A085]"

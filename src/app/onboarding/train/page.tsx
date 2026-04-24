@@ -32,20 +32,20 @@ export default function TrainAIPage() {
       })),
     ]);
 
-const router = useRouter()
-      const [step, setStep] = useState(1)
+  const router = useRouter()
+  const [step, setStep] = useState(1)
 
   return (
     <div className="xl:min-h-screen bg-[#F1F5F9] dark:bg-gray-950 flex transition-colors duration-200 flex-col items-center px-4 pt-20 pb-16">
-      <div className="xl:h-screen  mt-12 xl:mr-24 mr-8">
+      <div className="xl:h-screen  mt-2 xl:mr-24 mr-12">
         <div className="xl:block hidden">
-                  <Stepper current={2} />
-                </div>
-        
-                <div className="xl:hidden block relative w-[89%] ml-10 top-[-30px]">
-                  <MobileStepper current={4} onBack={() => router.back()} />
-        
-                </div>
+          <Stepper current={2} />
+        </div>
+
+        <div className="xl:hidden block relative w-[89%] ml-10 top-[-30px]">
+          <MobileStepper current={4} onBack={() => router.back()} />
+
+        </div>
         <form action="/dashboard">
           <div className="w-full pl-10 xl:max-w-[620px] xl:ml-10">
 
@@ -100,7 +100,7 @@ const router = useRouter()
 
             {/* URL input */}
             {showUrl && (
-              <div className="mt-4 flex gap-2">
+              <div className="mt-4 xl:w-[90.5%] flex gap-2">
                 <input
                   type="url"
                   className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 bg-white outline-none transition-all focus:border-[#0D9488] focus:ring-2 focus:ring-[#0D9488]/10 flex-1"
@@ -125,9 +125,9 @@ const router = useRouter()
 
             {/* File list */}
             {files.length > 0 && (
-              <ul className="mt-4 space-y-2">
+              <ul className="mt-4 xl:w-[86%] w-[90%] ml-3 space-y-2">
                 {files.map((f, i) => (
-                  <li key={i} className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#F7FAFC] border border-gray-100">
+                  <li key={i} className="flex items-center gap-3 px-1 xl:px-4 py-3 rounded-xl bg-[#F7FAFC] border border-gray-100">
                     <span className={`text-[10px] font-bold text-white px-1.5 py-0.5 rounded ${EXT_COLORS[f.ext] || "bg-gray-400"}`}>
                       {f.ext}
                     </span>
@@ -148,7 +148,7 @@ const router = useRouter()
             )}
 
             {/* Navigation */}
-            <div className="flex items-center justify-between mt-72">
+            <div className="flex items-center justify-between mt-32">
               <Link href="/onboarding/channels">
                 <button type="button" className="text-[#F7FAFC]0 xl:block hidden hover:text-gray-700 font-medium text-sm transition-colors cursor-pointer">Back</button>
               </Link>
@@ -156,7 +156,7 @@ const router = useRouter()
                 <Link href="/dashboard">
                   <button type="submit" className="border xl:block hidden border-gray-200 dark:text-black hover:border-gray-300 text-[#F7FAFC]0 hover:text-gray-700 font-medium rounded-xl px-6 py-3 text-sm transition-colors cursor-pointer bg-white">Skip</button>
                 </Link>
-                <button type="submit" className="bg-[#0D9488] hover:bg-[#0D9488]-dark text-white font-semibold rounded-xl xl:px-8 xl:py-3 px-44 ml-[-10px] py-4 text-sm transition-colors cursor-pointer">Continue</button>
+                <button type="submit" className="bg-[#0D9488] hover:bg-[#0D9488]-dark text-white font-semibold top-8 xl:top-0 xl:ml-2 relative rounded-xl xl:px-8 xl:py-3 px-[153px] ml-[-10px] py-4 text-sm transition-colors cursor-pointer">Continue</button>
               </div>
             </div>
           </div>

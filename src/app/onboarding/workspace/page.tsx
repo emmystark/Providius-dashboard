@@ -29,9 +29,9 @@ export default function WorkspacePage() {
 
 
   return (
-    <div className="min-h-screen bg-[#F1F5F9] dark:bg-gray-950 flex items-center justify-center xl:pt-16 pb-16 px-4 transition-colors duration-200">
+    <div className="min-h-screen p-10 bg-[#F1F5F9] dark:bg-gray-950 flex items-center justify-center xl:pt-16 pb-16 px-4 transition-colors duration-200">
       <form action="/onboarding/channels">
-        <div className=" xl:w-[100%] xl:ml-8 xl:max-w-[750px] bg-[#F1F5F9] dark:bg-gray-950 rounded-2xl  mt-4 xl:mr-28 border-gray-100 dark:border-gray-800 xl:px-12 py-12 transition-colors duration-200">
+        <div className=" xl:w-[100%] w-[95%] ml-3 xl:ml-8 xl:max-w-[750px] bg-[#F1F5F9] dark:bg-gray-950 rounded-2xl  mt-4 xl:mr-28 border-gray-100 dark:border-gray-800 xl:px-12 py-12 transition-colors duration-200">
           <div className="xl:block hidden">
             <Stepper current={2} />
           </div>
@@ -40,8 +40,8 @@ export default function WorkspacePage() {
             <MobileStepper current={2} onBack={() => router.back()} />
 
           </div>
-          <div className="center xl:ml-10 xl:w-[88%]">
-            <h2 className="text-2xl mt-12 font-bold text-gray-900 dark:text-white mb-1 transition-colors">Set up your workspace</h2>
+          <div className="center mt-[-35px] xl:mt-0 xl:ml-10 xl:w-[88%]">
+            <h2 className="text-2xl mt-12 font-bold text-gray-900 dark:text-white mb-4 xl:mb-1 transition-colors">Set up your workspace</h2>
             <p className="text-gray-400 dark:text-gray-500 text-sm mb-8 transition-colors">
               Tell us about your business to personalize your AI assistant
             </p>
@@ -128,7 +128,7 @@ export default function WorkspacePage() {
                 <button type="button" className="text-gray-600 xl:block hidden dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 font-medium text-md transition-colors cursor-pointer">Back</button>
               </Link>
 
-              <button type="submit" className="bg-[#0D9488] hover:bg-[#0D9488]-dark xl:mt-0 mt-16 text-white font-semibold rounded-xl xl:px-8 xl:py-3 px-44 py-4 text-sm transition-colors cursor-pointer">Continue</button>
+              <button type="submit" className="bg-[#0D9488] ml-[-50px] hover:bg-[#0D9488]-dark xl:mt-0 mt-16 text-white font-semibold rounded-xl xl:px-8 xl:py-3 px-[153px] py-4 text-sm transition-colors cursor-pointer">Continue</button>
 
             </div>
           </div>

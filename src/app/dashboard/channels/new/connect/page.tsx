@@ -5,10 +5,19 @@ import Sidebar from "@/components/Sidebar";
 import Stepperj from "@/components/Stepperj";
 import MobileNav from "@/components/MobileNav";
 
+import { CheckIcon, WhatsAppIcon, Telegram, WebChatIcon, EmailIcon, InstagramIcon } from "@/components/Icons";
+import StepperIn from "@/components/StepperIn";
+import StepperDe from "@/components/StepperDe";
+
+
+
 export default function ConnectAccountPage() {
   const [phone, setPhone]   = useState("+234 8160 5824 60");
   const [token, setToken]   = useState("EAAN2aW5zCVB0B026SR17");
   const router = useRouter();
+
+
+
 
   return (
     <div className="flex flex-col xl:flex-row h-screen bg-[#F7FAFC] dark:bg-gray-950 transition-colors duration-200 overflow-hidden">
@@ -18,18 +27,23 @@ export default function ConnectAccountPage() {
 
       <MobileNav/>
 
-      <main className="flex-1 overflow-y-auto px-4 md:px-6 xl:px-10 py-4 md:py-6 xl:py-8">
-        <h1 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-1 transition-colors duration-200">Add a New Channel</h1>
-        <p className="text-xs md:text-sm text-gray-400 dark:text-gray-500 mb-6 transition-colors duration-200">
+      <main className="flex-1 overflow-y-auto mt-16 xl:mt-9  px-4 md:px-6 xl:px-10 py-4 md:py-6 xl:py-8">
+        <h1 className="text-xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-1 transition-colors duration-200">Add a New Channel</h1>
+        <p className="text-xs md:text-sm hidden xl:block text-gray-400 dark:text-gray-100 mb-6 transition-colors duration-200">
           Connect a communication channel to start handling customer conversations with AI.
         </p>
 
-        <div className="mb-6 md:mb-8">
-          <Stepperj current={2} />
-        </div>
+        <div className="block xl:hidden mb-6 md:mb-8">
+                 <StepperIn current={3} />
+               </div>
+        <div className="hidden xl:block mb-6 md:mb-8">
+                 <StepperDe current={3} />
+               </div>
+
+
 
         {/* Form card */}
-        <div className="max-w-xl">
+        <div className="max-w-2xl justify-center border border-gray-200 dark:border-gray-800 rounded-lg md:rounded-xl p-6 md:p-10 mx-auto transition-colors duration-200">
           <h2 className="text-base md:text-lg text-gray-900 dark:text-white mb-6 transition-colors duration-200">
             Connect Your WhatsApp business account to Providus
           </h2>
@@ -62,7 +76,7 @@ export default function ConnectAccountPage() {
             <button
               type="button"
               onClick={() => router.push("/dashboard/channels/new/verify")}
-              className="w-full md:w-auto bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-600 dark:hover:bg-emerald-700 duration-200 text-white font-semibold rounded-lg md:rounded-xl px-6 md:px-16 py-2.5 md:py-3 text-xs md:text-sm transition-colors"
+              className="w-full md:w-auto bg-[#0D9488] hover:bg-[#0D9488] dark:bg-[#0D9488] dark:hover:bg-[#0D8488] duration-200 text-white font-semibold rounded-lg md:rounded-xl px-6 md:px-16 py-2.5 md:py-3 text-xs md:text-sm transition-colors"
             >
               Continue
             </button>

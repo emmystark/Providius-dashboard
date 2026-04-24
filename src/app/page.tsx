@@ -46,11 +46,11 @@ export default function SignInPage() {
   };
 
   return (
-    <div className=" bg-gray-100 dark:bg-gray-900 flex items-center justify-center transition-colors duration-200">
+    <div className=" bg-gray-100 dark:bg-gray-900 flex items-center overflow-hidden justify-center transition-colors duration-200">
       <div className="w-full  bg-white dark:bg-gray-900 h-screen xl:h-[100vh] shadow-2xl overflow-hidden flex flex-col xl:flex-row transition-colors duration-200">
 
         {/* ── Left teal panel ── */}
-        <div  className="xl:w-[50%] h-[42%] xl:h-screen pt-20 bg-[#0D9488] dark:bg-emerald-900 flex flex-col p-10 xl:p-16 xl:px-20 relative overflow-hidden bg-gradient-to-br from-[#0D9488] dark:from-emerald-800 to-[#0D9488]-dark dark:to-emerald-900 transition-colors duration-200">
+        <div  className="xl:w-[50%] h-[55vh] xl:h-screen pt-16 bg-[#0D9488] dark:bg-emerald-900 flex flex-col p-8 xl:p-16 xl:px-20 relative overflow-hidden bg-gradient-to-br from-[#0D9488] dark:from-emerald-800 to-[#0D9488]-dark dark:to-emerald-900 transition-colors duration-200">
           {/* Logo */}
           <div className="xl:block ">
             <div className="flex items-center gap-2.5 mb-12">
@@ -74,7 +74,7 @@ export default function SignInPage() {
 
             {/* Placeholder image area with teal overlay feel */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#0D9488]/30 to-[#0D9488]-dark/60" />
-            <img className="xl:w-[92%] h-[43%] mt-6 xl:mt-0 object-cover rounded-xl xl:h-[80%]" src="/lady.png" alt="Customer Support Demo" />
+            <img className="xl:w-[92%] h-[43%] xl:mt-0 object-cover rounded-xl xl:h-[80%]" src="/dashboard/lady.png" alt="Customer Support Demo" />
             
             {/* Navigation dots - Mobile and Tablet only */}
             <div className="xl:hidden absolute top-[65%] right-16 flex gap-2 z-10">
@@ -95,7 +95,7 @@ export default function SignInPage() {
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
-            className="xl:hidden absolute bottom-3 w-[76%] left-48 transform -translate-x-1/2 flex gap-10 m-10">
+            className="xl:hidden absolute bottom-3 w-[76%] left-44 transform -translate-x-1/2 flex gap-10 m-8">
               <div className="w-full flex gap-20 transition-transform duration-300 ease-out"
                 style={{ transform: `translateX(-${currentSlide * 122}%)` }}
               >
@@ -124,8 +124,8 @@ export default function SignInPage() {
         </div>
 
         {/* ── Right sign-in panel ── */}
-        <div className="flex-1 flex text-md xl:text-xl flex-col bottom-2 top-[-20px] relative justify-center px-8 sm:px-12 py-14 bg-[#F1F5F9] dark:bg-gray-900 transition-colors duration-200">
-          <h2 className="text-[23px] xl:text-[39px]  font-bold  text-gray-900 dark:text-white mb-2 text-center transition-colors">Welcome back</h2>
+        <div className="flex-1  overflow-y-auto xl:h-screen flex h-[50%] xl:pt-0 pt-40 text-md xl:text-xl flex-col bottom-2 top-[-20px] relative justify-center px-8 sm:px-12 py-14 bg-[#F1F5F9] dark:bg-gray-900 transition-colors duration-200">
+          <h2 className="text-[23px] xl:text-[39px]  mt-10  font-bold  text-gray-900 dark:text-white mb-2 text-center transition-colors">Welcome back</h2>
           <p className="text-gray-400 dark:text-gray-500 text-sm xl:text-lg xl:top-10 relative mb-9 text-center transition-colors">Sign in to your workspace</p>
 
           <form action="/onboarding/workspace" className="w-full">

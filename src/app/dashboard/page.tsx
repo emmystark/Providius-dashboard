@@ -357,7 +357,7 @@ export default function DashboardPage() {
       </main>
 
       {/* Mobile Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 flex items-center justify-around xl:hidden transition-colors duration-200 z-20">
+      {/* <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 flex items-center justify-around xl:hidden transition-colors duration-200 z-20">
         <button className="flex-1 flex flex-col items-center justify-center py-3 text-[#0D9488] dark:text-emerald-400 border-b-2 border-[#0D9488] dark:border-emerald-400 transition-colors">
           <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" className="mb-1">
             <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
@@ -385,7 +385,7 @@ export default function DashboardPage() {
           </svg>
           <span className="text-[10px] font-medium">Analytics</span>
         </button>
-      </nav>
+      </nav> */}
     </div>
   );
 }

@@ -513,7 +513,7 @@ export default function ConversationsPage() {
       )}
 
       {/* Bottom Navigation - Mobile Only */}
-      <nav className="xl:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 flex items-center justify-around transition-colors duration-200 z-30 h-20">
+      {/* <nav className="xl:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 flex items-center justify-around transition-colors duration-200 z-30 h-20">
         <button className="flex flex-col items-center justify-center w-full h-full gap-1 text-gray-400 hover:text-teal-500 dark:text-gray-500 dark:hover:text-teal-400 transition-colors">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <polygon points="12 2 15.09 10.26 24 12.75 18 18.91 19.54 27.88 12 23.77 4.46 27.88 6 18.91 0 12.75 8.91 10.26 12 2" />
@@ -539,7 +539,7 @@ export default function ConversationsPage() {
           </svg>
           <span className="text-[10px] font-medium">Analytics</span>
         </button>
-      </nav>
+      </nav> */}
     </div>
     // </div>
   );

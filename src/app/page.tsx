@@ -50,11 +50,11 @@ export default function SignInPage() {
       <div className="w-full  bg-white dark:bg-gray-900 h-screen xl:h-[100vh] shadow-2xl overflow-hidden flex flex-col xl:flex-row transition-colors duration-200">
 
         {/* ── Left teal panel ── */}
-        <div  className="xl:w-[50%] h-[430px] xl:h-screen pt-20 bg-[#0D9488] dark:bg-emerald-900 flex flex-col p-10 xl:p-16 xl:px-20 relative overflow-hidden bg-gradient-to-br from-[#0D9488] dark:from-emerald-800 to-[#0D9488]-dark dark:to-emerald-900 transition-colors duration-200">
+        <div  className="xl:w-[50%] h-[42%] xl:h-screen pt-20 bg-[#0D9488] dark:bg-emerald-900 flex flex-col p-10 xl:p-16 xl:px-20 relative overflow-hidden bg-gradient-to-br from-[#0D9488] dark:from-emerald-800 to-[#0D9488]-dark dark:to-emerald-900 transition-colors duration-200">
           {/* Logo */}
           <div className="xl:block ">
             <div className="flex items-center gap-2.5 mb-12">
-            <img className="xl:w-16 w-10 mt-[-10%] ml-[-1%] xl:mt-10 xl:ml-0 xl:mx-[-60px] xl:absolute" src="./logoa.png" alt="Providius Logo" />
+            <img className="xl:w-16 w-10 mt-[-10%] ml-[-1%] xl:mt-10 xl:ml-0 xl:mx-[-60px] xl:absolute" src="/logoa.png" alt="Providius Logo" />
           </div>
             <h3 className="xl:text-4xl text-2xl text-white font-bold ml-12 xl:ml-20 top-[-100%] xl:top-[-40%] relative mt-[-20]">Providius</h3>
           </div>
@@ -74,7 +74,7 @@ export default function SignInPage() {
 
             {/* Placeholder image area with teal overlay feel */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#0D9488]/30 to-[#0D9488]-dark/60" />
-            <img className="xl:w-[92%] h-40 object-cover rounded-xl xl:h-[80%]" src="./lady.png" alt="Customer Support Demo" />
+            <img className="xl:w-[92%] h-[43%] mt-6 xl:mt-0 object-cover rounded-xl xl:h-[80%]" src="/lady.png" alt="Customer Support Demo" />
             
             {/* Navigation dots - Mobile and Tablet only */}
             <div className="xl:hidden absolute top-[65%] right-16 flex gap-2 z-10">
